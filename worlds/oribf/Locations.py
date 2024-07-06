@@ -260,3 +260,15 @@ location_list = [
     "WaterVein",
     "WilhelmExp"
 ]
+
+all_trees = [
+    "BashSkillTree",
+    "ChargeFlameSkillTree",
+    "ChargeJumpSkillTree",
+    "ClimbSkillTree",
+    "DashSkillTree",
+    "DoubleJumpSkillTree",
+    "GrenadeSkillTree",
+    "StompSkillTree",
+    "WallJumpSkillTree"
+]

@@ -2,10 +2,10 @@ from BaseClasses import ItemClassification, Region
 from worlds.AutoWorld import World
 
 from .Items import OriBlindForestItem, item_dict
-from .Locations import OriBlindForestLocation, location_list
+from .Locations import OriBlindForestLocation, location_list, all_trees
 from .Options import OriBlindForestOptions
 from .Rules import apply_location_rules, apply_connection_rules
-from .Regions import locations_by_region
+from .Regions import locations_by_region, connectors
 
 
 class OriBlindForestWorld(World):
@@ -51,6 +51,17 @@ class OriBlindForestWorld(World):
 
         apply_connection_rules(self)
 
+        # go through all other connections and add any free connections that were otherwise unspecified in the rules
+        for region_name, connections in connectors.items():
+            region = self.get_region(region_name)
+            existing_connections = []
+            for exit in region.exits:
+                existing_connections.append(exit.connected_region)
+
+            for connecting_region in connections:
+                if connecting_region not in existing_connections:
+                    region.connect(self.get_region(connecting_region))
+
     def create_item(self, item: str) -> OriBlindForestItem:
         return OriBlindForestItem(item, item_dict[item][0], self.item_name_to_id[item], self.player)
 
@@ -66,7 +77,8 @@ class OriBlindForestWorld(World):
         apply_location_rules(self)
 
         self.get_location("HoruEscape").place_locked_item(self.create_event("Victory"))
-        self.multiworld.completion_condition[self.player] = lambda state: state.has("Victory", self.player)
+        self.multiworld.completion_condition[self.player] = lambda state: state.has("Victory", self.player) and \
+            all(state.can_reach_location(skill_tree, self.player) for skill_tree in all_trees)
 
         from Utils import visualize_regions
         visualize_regions(self.multiworld.get_region("Menu", self.player), "oribf_world.puml")

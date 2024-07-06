@@ -43,7 +43,7 @@ def process_access_point(world: World, access_point: Location | Entrance, access
     # for each access set for the location/entrance, set a rule using oribf_has_all
     for access_set in access_sets:
         if "Free" not in access_set:
-            add_rule(access_point, lambda state: oribf_has_all(state, access_set, world.player))
+            add_rule(access_point, lambda state: oribf_has_all(state, access_set, world.player), 'or')
     return
 
 
