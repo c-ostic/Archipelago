@@ -19,13 +19,6 @@ def apply_location_rules(world: World):
             process_access_point(world, world.get_location(location), rulesets)
 
 
-    # for each (valid) ruleset in location rules, call process_ruleset
-    for ruleset_name, ruleset in location_rules.items():
-        if ruleset_name in world.logic_sets:
-            process_ruleset(world, ruleset, True)
-    return
-
-
 def apply_connection_rules(world: World):
     # for each region in connection rules, and for each connecting region, 
     # create an entrance and call process_access_point

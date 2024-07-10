@@ -157,7 +157,6 @@ location_list = [
     "StompAreaRoofExp",
     "StompAreaExp",
     "StompAreaGrenadeExp",
-    "HoruEscape",
     "HoruFieldsHiddenExp",
     "HoruFieldsEnergyCell",
     "HoruFieldsPlant",

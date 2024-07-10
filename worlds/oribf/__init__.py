@@ -58,9 +58,8 @@ class OriBlindForestWorld(World):
 
     def set_rules(self) -> None:
         # most of the rules are set above in create_regions
-        
-        self.get_location("HoruEscape").place_locked_item(self.create_event("Victory"))
-        self.multiworld.completion_condition[self.player] = lambda state: state.has("Victory", self.player) and \
+        self.multiworld.completion_condition[self.player] = lambda state: \
+            state.can_reach_region("HoruEscapeInnerDoor", self.player) and \
             all(state.can_reach_location(skill_tree, self.player) for skill_tree in all_trees)
 
         from Utils import visualize_regions

@@ -1078,9 +1078,9 @@ location_rules = {
     "HoruEscapeOuterDoor": {
     },
     "HoruEscapeInnerDoor": {
-        "HoruEscape": {
-            "casual": [["Bash", "Stomp", "ChargeJump", "Wind", "Glide", "DoubleJump"]]
-        }
+        #"HoruEscape": {
+        #    "casual": [["Bash", "Stomp", "ChargeJump", "Wind", "Glide", "DoubleJump"]]
+        #}
     },
     "ValleyEntry": { 
         "ValleyEntryAbilityCell": {
