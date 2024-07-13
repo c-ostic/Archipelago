@@ -45,8 +45,4 @@ item_dict = {
     "EX15": (ItemClassification.filler, 6),
     "EX100": (ItemClassification.filler, 53),
     "EX200": (ItemClassification.filler, 29),
-
-    # add some extra filler exp to compensate for map locations (9) and horu room checks (8)
-    # minus the added teleporter items (10)
-    "EX50": (ItemClassification.filler, 7)
 }

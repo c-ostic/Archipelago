@@ -49,9 +49,19 @@ class OriBlindForestWorld(World):
         return OriBlindForestItem(item, item_dict[item][0], self.item_name_to_id[item], self.player)
 
     def create_items(self) -> None:
+        placed_first_energy_cell = False
+
         for item_key, item_value in item_dict.items():
             for count in range(item_value[1]):
-                self.multiworld.itempool.append(self.create_item(item_key))
+                item = self.create_item(item_key)
+                self.multiworld.itempool.append(item)
+
+                # place the first energy cell at its normal location so the player can save right away
+                if item_key == "EnergyCell" and not placed_first_energy_cell:
+                    self.get_location("FirstEnergyCell").place_locked_item(item)
+                    placed_first_energy_cell = True
+
+                
 
     def create_event(self, event: str) -> OriBlindForestItem:
         return OriBlindForestItem(event, ItemClassification.progression, None, self.player)

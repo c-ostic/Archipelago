@@ -7,6 +7,7 @@ class OriBlindForestLocation(Location):
 
 location_list = [
     "FirstPickup",
+    "FirstEnergyCell",
     "FronkeyFight",
     "GladesKeystone1",
     "GladesKeystone2",
@@ -35,6 +36,7 @@ location_list = [
     "SpiritCavernsAbilityCell",
     "GladesLaser",
     "GladesLaserGrenade",
+    "SpiritTreeExp",
     "ChargeFlameSkillTree",
     "ChargeFlameAreaPlant",
     "ChargeFlameAreaExp",
@@ -176,14 +178,6 @@ location_list = [
     "HoruLavaDrainedRightExp",
     "DoorWarpExp",
     "HoruTeleporterExp",
-    "HoruR1",
-    "HoruR2",
-    "HoruR3",
-    "HoruR4",
-    "HoruL1",
-    "HoruL2",
-    "HoruL3",
-    "HoruL4",
     "ValleyEntryAbilityCell",
     "ValleyEntryTreeExp",
     "ValleyEntryTreePlant",
@@ -257,8 +251,7 @@ location_list = [
     "MistyGrenade",
     "MistyKeystone2",
     "MistyAbilityCell",
-    "GumonSeal",
-    "SpiritTreeExp"
+    "GumonSeal"
 ]
 
 all_trees = [

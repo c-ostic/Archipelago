@@ -5,7 +5,7 @@ from .Items import item_dict
 from .Locations import OriBlindForestLocation
 from BaseClasses import CollectionState, Location, Entrance
 from ..AutoWorld import World
-from ..generic.Rules import add_rule
+from ..generic.Rules import add_rule, set_rule
 
 
 def apply_location_rules(world: World):
@@ -24,8 +24,12 @@ def apply_connection_rules(world: World):
     # create an entrance and call process_access_point
     for region_name, connections in connection_rules.items():
         region = world.get_region(region_name)
+        id = 1
         for connection, rulesets in connections.items():
-            access_point = region.connect(world.get_region(connection))
+            entrance_name = region_name + "_to_" + connection + "_" + str(id)
+            id += 1
+            region.connect(world.get_region(connection), entrance_name)
+            access_point = world.get_entrance(entrance_name)
             process_access_point(world, access_point, rulesets)
 
 
@@ -38,13 +42,18 @@ def process_access_point(world: World, access_point: Location | Entrance, rulese
 
 def process_ruleset(world: World, access_point: Location | Entrance, ruleset: list):
     # for each access set in the ruleset, add a rule for everything in the access set
+    first = True
     for access_set in ruleset:
-        add_rule(access_point, lambda state: all(oribf_has(world, state, item) for item in access_set), "or")
+        if first:
+            set_rule(access_point, lambda state: all(oribf_has(world, state, item) for item in access_set))
+            first = False
+        else:
+            add_rule(access_point, lambda state: all(oribf_has(world, state, item) for item in access_set), "or")
             
     
 def oribf_has(world: World, state: CollectionState, item) -> bool:
     if type(item) == str:
-        if item in item_dict.keys:
+        if item in item_dict.keys():
             # handles normal abilities like Dash, Climb, Wind, etc.
             return state.has(item, world.player)
         elif item == "Free":
@@ -57,7 +66,7 @@ def oribf_has(world: World, state: CollectionState, item) -> bool:
             return state.has_all(["Climb", "ChargeJump", "Grenade"], world.player)
         elif item == "ChargeFlameBurn":
             # requires minimum number of ability cells to get the ChargeFlameBurn ability
-            return state.has("ChargeFlame") and state.has("AbilityCell", world.player, 3)
+            return state.has("ChargeFlame", world.player) and state.has("AbilityCell", world.player, 3)
         elif item in ["ChargeDash", "RocketJump"]:
             # requires minimum number of ability cells to get the ChargeDash ability
             return state.has("Dash", world.player) and state.has("AbilityCell", world.player, 9)
@@ -71,7 +80,7 @@ def oribf_has(world: World, state: CollectionState, item) -> bool:
             # requires minimum number of ability cells to get the UltraDefense ability
             return state.has("AbilityCell", world.player, 19)
         elif item == "BashGrenade":
-            return state.has_all(["Bash", "Grenade"])
+            return state.has_all(["Bash", "Grenade"], world.player)
         elif item in ["Open", "OpenWorld"]:
             # open world not implemented yet
             return False

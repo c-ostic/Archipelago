@@ -8,6 +8,9 @@ location_rules = {
         "FirstPickup": {
             "casual": [["Free"]]
         },
+        "FirstEnergyCell": {
+            "casual": [["Free"]]
+        },
         "FronkeyFight": {
             "casual": [["Free"]]
         },
@@ -55,7 +58,7 @@ location_rules = {
             "casual": [["Free"]]
         },
         "GladesMap": {
-            "casual": [["Mapstone"]]
+            "casual": [["MapStone"]]
         }
     },
     "GladesMainAttic": { 
@@ -303,9 +306,9 @@ location_rules = {
             "glitched": [["Free"]]
         },
         "BlackrootMap": {
-            "casual": [["Mapstone", "WallJump"], ["Mapstone", "Climb", "DoubleJump"], ["Mapstone", "Bash", "Grenade"], ["Mapstone", "ChargeJump"]], 
-            "standard": [["Mapstone", "Climb", "AirDash"]], 
-            "expert": [["Mapstone", "Climb"]]
+            "casual": [["MapStone", "WallJump"], ["MapStone", "Climb", "DoubleJump"], ["MapStone", "Bash", "Grenade"], ["MapStone", "ChargeJump"]], 
+            "standard": [["MapStone", "Climb", "AirDash"]], 
+            "expert": [["MapStone", "Climb"]]
         }
     },
     "GrenadeAreaAccess": {
@@ -399,7 +402,7 @@ location_rules = {
             "master": [["Stomp", "DoubleJump"]]
         },
         "HollowGroveMap": {
-            "casual": [["Mapstone"]]
+            "casual": [["MapStone"]]
         },
         "HollowGroveMapPlant": {
             "casual": [["ChargeFlame"], ["Grenade"]], 
@@ -658,7 +661,7 @@ location_rules = {
     },
     "GumoHideout": { 
         "GumoHideoutMap": {
-            "casual": [["Mapstone"]]
+            "casual": [["MapStone"]]
         },
         "GumoHideoutMapstone": {
             "casual": [["WallJump"], ["DoubleJump"], ["Climb", "ChargeJump"], ["Climb", "Bash", "Grenade"], ["Glide"]], 
@@ -779,7 +782,7 @@ location_rules = {
     },
     "Swamp": { 
         "SwampMap": {
-            "casual": [["Mapstone"]]
+            "casual": [["MapStone"]]
         },
         "InnerSwampDrainExp": {
             "casual": [["CleanWater", "Climb", "ChargeJump"], ["CleanWater", "WallJump", "DoubleJump"], ["CleanWater", "Climb", "DoubleJump"], ["CleanWater", "WallJump", "Bash", "Grenade"], ["CleanWater", "Climb", "Bash", "Grenade"], ["CleanWater", "Glide", "Bash", "Grenade"], ["CleanWater", "DoubleJump", "Bash", "Grenade"], ["CleanWater", "DoubleJump", "Glide", "ChargeJump"], ["CleanWater", "WallJump", "Glide", "Stomp", "ChargeFlame"], ["CleanWater", "WallJump", "Glide", "Stomp", "Grenade"], ["CleanWater", "Climb", "Dash", "Glide"]], 
@@ -886,15 +889,15 @@ location_rules = {
     },
     "HoruInnerEntrance": { 
         "HoruLavaDrainedLeftExp": {
-            "casual": [["Open", "Bash"], ["Open", "ChargeJump"], ["Open", "DoubleJump", "Glide"]], 
-            "standard": [["Open", "Dash", "DoubleJump"], ["Open", "AirDash", "Glide"]], 
-            "expert": [["Open", "ChargeDash"]], 
-            "master": [["Open", "TripleJump"]]
+            "casual": [["Bash"], ["ChargeJump"], ["DoubleJump", "Glide"]], 
+            "standard": [["Dash", "DoubleJump"], ["AirDash", "Glide"]], 
+            "expert": [["ChargeDash"]], 
+            "master": [["TripleJump"]]
         },
         "HoruLavaDrainedRightExp": {
-            "casual": [["Open", "Glide", "Bash"], ["Open", "Grenade", "Bash"], ["Open", "ChargeJump", "Glide"]], 
-            "expert": [["Open", "ChargeDash"], ["Open", "DoubleBash"]], 
-            "master": [["Open", "ChargeJump", "TripleJump"], ["Open", "Glide", "TripleJump"]]
+            "casual": [["Glide", "Bash"], ["Grenade", "Bash"], ["ChargeJump", "Glide"]], 
+            "expert": [["ChargeDash"], ["DoubleBash"]], 
+            "master": [["ChargeJump", "TripleJump"], ["Glide", "TripleJump"]]
         }
     },
     "HoruTeleporter": { 
@@ -910,7 +913,7 @@ location_rules = {
     },
     "HoruMapLedge": { 
         "HoruMap": {
-            "casual": [["Mapstone"]]
+            "casual": [["MapStone"]]
         }
     },
     "L1OuterEntrance": {
@@ -920,12 +923,12 @@ location_rules = {
     "L1InnerDoor": {
     },
     "L1": { 
-        "HoruL1": {
-            "casual": [["Bash", "DoubleJump", "Stomp"], ["Glide", "Bash", "WallJump", "Stomp"], ["Glide", "Bash", "Climb", "Stomp"], ["Glide", "Bash", "Grenade", "Stomp"]], 
-            "standard": [["Glide", "Bash", "ChargeJump", "Stomp"], ["AirDash", "Bash", "WallJump", "Stomp"], ["AirDash", "Bash", "Climb", "Stomp"], ["AirDash", "Bash", "ChargeJump", "Stomp"], ["AirDash", "Bash", "Grenade", "Stomp"]], 
-            "expert": [["Glide", "Bash", "Stomp"], ["AirDash", "Bash", "Stomp"], ["ChargeDash", "Stomp", ("EnergyCell", 3)], ["ChargeDash", "Stomp", "DoubleJump", ("EnergyCell", 2)]], 
-            "master": [["ChargeDash", "Stomp", "DoubleJump", ("EnergyCell", 1)], ["WallJump", "TripleJump", "Stomp", "UltraDefense", ("HealthCell", 4)], ["Climb", "TripleJump", "Stomp", "UltraDefense", ("HealthCell", 4), ("EnergyCell", 2)], ["Climb", "TripleJump", "Stomp", "UltraDefense", ("HealthCell", 5), ("EnergyCell", 1)], ["Climb", "TripleJump", "Stomp", "UltraDefense", ("HealthCell", 7)], ["Bash", "Stomp", ("HealthCell", 5)], ["ChargeJump", "Stomp", ("HealthCell", 5)]]
-        }
+        #"HoruL1": {
+        #    "casual": [["Bash", "DoubleJump", "Stomp"], ["Glide", "Bash", "WallJump", "Stomp"], ["Glide", "Bash", "Climb", "Stomp"], ["Glide", "Bash", "Grenade", "Stomp"]], 
+        #    "standard": [["Glide", "Bash", "ChargeJump", "Stomp"], ["AirDash", "Bash", "WallJump", "Stomp"], ["AirDash", "Bash", "Climb", "Stomp"], ["AirDash", "Bash", "ChargeJump", "Stomp"], ["AirDash", "Bash", "Grenade", "Stomp"]], 
+        #    "expert": [["Glide", "Bash", "Stomp"], ["AirDash", "Bash", "Stomp"], ["ChargeDash", "Stomp", ("EnergyCell", 3)], ["ChargeDash", "Stomp", "DoubleJump", ("EnergyCell", 2)]], 
+        #    "master": [["ChargeDash", "Stomp", "DoubleJump", ("EnergyCell", 1)], ["WallJump", "TripleJump", "Stomp", "UltraDefense", ("HealthCell", 4)], ["Climb", "TripleJump", "Stomp", "UltraDefense", ("HealthCell", 4), ("EnergyCell", 2)], ["Climb", "TripleJump", "Stomp", "UltraDefense", ("HealthCell", 5), ("EnergyCell", 1)], ["Climb", "TripleJump", "Stomp", "UltraDefense", ("HealthCell", 7)], ["Bash", "Stomp", ("HealthCell", 5)], ["ChargeJump", "Stomp", ("HealthCell", 5)]]
+        #}
     },
     "L2OuterEntrance": {
     },
@@ -934,12 +937,12 @@ location_rules = {
     "L2InnerDoor": {
     },
     "L2": { 
-        "HoruL2": {
-            "casual": [["Stomp", "ChargeJump"], ["Stomp", "WallJump", "DoubleJump"], ["Stomp", "Bash", "Grenade"]], 
-            "standard": [["Lure", "Stomp", "Bash", "DoubleJump"], ["Stomp", "WallJump", "AirDash"], ["Stomp", "Climb", "AirDash", "DoubleJump"]], 
-            "expert": [["Stomp", "Climb", "DoubleJump", "Glide"], ["Stomp", "ChargeDash", ("EnergyCell", 1)], ["Stomp", "Climb", "AirDash"]], 
-            "master": [["Stomp", "DoubleJump", "Glide"], ["Stomp", "DoubleJump", "AirDash"], ["Stomp", "TripleJump"]]
-        }
+        #"HoruL2": {
+        #    "casual": [["Stomp", "ChargeJump"], ["Stomp", "WallJump", "DoubleJump"], ["Stomp", "Bash", "Grenade"]], 
+        #    "standard": [["Lure", "Stomp", "Bash", "DoubleJump"], ["Stomp", "WallJump", "AirDash"], ["Stomp", "Climb", "AirDash", "DoubleJump"]], 
+        #    "expert": [["Stomp", "Climb", "DoubleJump", "Glide"], ["Stomp", "ChargeDash", ("EnergyCell", 1)], ["Stomp", "Climb", "AirDash"]], 
+        #    "master": [["Stomp", "DoubleJump", "Glide"], ["Stomp", "DoubleJump", "AirDash"], ["Stomp", "TripleJump"]]
+        #}
     },
     "L3OuterEntrance": {
     },
@@ -948,12 +951,12 @@ location_rules = {
     "L3InnerDoor": {
     },
     "L3": { 
-        "HoruL3": {
-            "casual": [["Stomp", "DoubleJump", "Bash"], ["Bash", "Glide", "WallJump", "Stomp"], ["Bash", "Glide", "Climb", "Stomp"]], 
-            "standard": [["Bash", "Glide", "WallJump", "ChargeFlame"], ["Bash", "Glide", "Climb", "ChargeFlame"], ["ChargeFlame", "DoubleJump", "Bash"], ["Bash", "Climb", "ChargeJump"], ["Bash", "Grenade", "Stomp"], ["Bash", "Grenade", "ChargeFlame"], ["Bash", "AirDash", "Stomp"], ["Bash", "AirDash", "ChargeFlame"]], 
-            "expert": [["Bash", "Grenade", "ChargeJump"], ["ChargeJump", "ChargeDash", "Climb", ("EnergyCell", 2)]], 
-            "master": [["Bash", "Stomp"], ["Bash", "ChargeFlame"], ["ChargeJump", "ChargeDash", "Climb", "TripleJump", "Glide"], ["ChargeDash", "DoubleJump", "Stomp", ("EnergyCell", 2)], ["ChargeDash", ("EnergyCell", 7)], ["ChargeDash", "DoubleJump", "Glide", ("EnergyCell", 4)], ["ChargeDash", "Glide", ("EnergyCell", 6)], ["ChargeDash", "DoubleJump", "WallJump", ("EnergyCell", 6)], ["ChargeDash", "DoubleJump", "Climb", ("EnergyCell", 6)], ["ChargeDash", "Stomp", ("EnergyCell", 3)], ["Bash", "ChargeDash", ("EnergyCell", 1)], ["ChargeJump", "Climb", "DoubleJump", "Glide", ("HealthCell", 4)], ["ChargeDash", "Climb", "TripleJump", "Glide", "UltraDefense", ("EnergyCell", 2), ("HealthCell", 6)], ["ChargeDash", "Climb", "TripleJump", "Glide", "Stomp", "UltraDefense", ("EnergyCell", 1), ("HealthCell", 4)], ["ChargeJump", "Climb", "TripleJump", "UltraDefense", ("HealthCell", 3)], ["ChargeJump", "TripleJump", "Stomp", "UltraDefense", ("HealthCell", 3)], ["ChargeJump", "TripleJump", "ChargeFlame", "UltraDefense", ("HealthCell", 3)], ["GrenadeJump"]]
-        }
+        #"HoruL3": {
+        #    "casual": [["Stomp", "DoubleJump", "Bash"], ["Bash", "Glide", "WallJump", "Stomp"], ["Bash", "Glide", "Climb", "Stomp"]], 
+        #    "standard": [["Bash", "Glide", "WallJump", "ChargeFlame"], ["Bash", "Glide", "Climb", "ChargeFlame"], ["ChargeFlame", "DoubleJump", "Bash"], ["Bash", "Climb", "ChargeJump"], ["Bash", "Grenade", "Stomp"], ["Bash", "Grenade", "ChargeFlame"], ["Bash", "AirDash", "Stomp"], ["Bash", "AirDash", "ChargeFlame"]], 
+        #    "expert": [["Bash", "Grenade", "ChargeJump"], ["ChargeJump", "ChargeDash", "Climb", ("EnergyCell", 2)]], 
+        #    "master": [["Bash", "Stomp"], ["Bash", "ChargeFlame"], ["ChargeJump", "ChargeDash", "Climb", "TripleJump", "Glide"], ["ChargeDash", "DoubleJump", "Stomp", ("EnergyCell", 2)], ["ChargeDash", ("EnergyCell", 7)], ["ChargeDash", "DoubleJump", "Glide", ("EnergyCell", 4)], ["ChargeDash", "Glide", ("EnergyCell", 6)], ["ChargeDash", "DoubleJump", "WallJump", ("EnergyCell", 6)], ["ChargeDash", "DoubleJump", "Climb", ("EnergyCell", 6)], ["ChargeDash", "Stomp", ("EnergyCell", 3)], ["Bash", "ChargeDash", ("EnergyCell", 1)], ["ChargeJump", "Climb", "DoubleJump", "Glide", ("HealthCell", 4)], ["ChargeDash", "Climb", "TripleJump", "Glide", "UltraDefense", ("EnergyCell", 2), ("HealthCell", 6)], ["ChargeDash", "Climb", "TripleJump", "Glide", "Stomp", "UltraDefense", ("EnergyCell", 1), ("HealthCell", 4)], ["ChargeJump", "Climb", "TripleJump", "UltraDefense", ("HealthCell", 3)], ["ChargeJump", "TripleJump", "Stomp", "UltraDefense", ("HealthCell", 3)], ["ChargeJump", "TripleJump", "ChargeFlame", "UltraDefense", ("HealthCell", 3)], ["GrenadeJump"]]
+        #}
     },
     "L4OuterEntrance": { 
     },
@@ -969,9 +972,9 @@ location_rules = {
         }
     },
     "HoruL4CutscenePeg": { 
-        "HoruL4": {
-            "casual": [["Stomp"]]
-        },
+        #"HoruL4": {
+        #    "casual": [["Stomp"]]
+        #},
         "HoruL4LowerExp": {
             "casual": [["WallJump", "Stomp"], ["Bash", "Grenade", "Stomp"], ["ChargeJump", "Stomp"]], 
             "standard": [["Climb", "Stomp"]], 
@@ -999,9 +1002,9 @@ location_rules = {
         }
     },
     "HoruR1CutsceneTrigger": { 
-        "HoruR1": {
-            "casual": [["Free"]]
-        },
+        #"HoruR1": {
+        #    "casual": [["Free"]]
+        #},
         "HoruR1EnergyCell": {
             "casual": [["Climb", "ChargeJump"], ["Climb", "Bash", "Grenade"], ["Climb", "DoubleJump", "Glide"], ["WallJump", "DoubleJump"], ["WallJump", "Glide"]], 
             "standard": [["Bash", "Grenade"], ["WallJump", "AirDash"], ["Climb", "AirDash"]], 
@@ -1016,12 +1019,12 @@ location_rules = {
     "R2InnerDoor": {
     },
     "R2": { 
-        "HoruR2": {
-            "casual": [["Stomp", "Bash", "Glide", "DoubleJump", "WallJump"], ["Stomp", "Bash", "Glide", "DoubleJump", "Climb"], ["Stomp", "Bash", "Glide", "DoubleJump", "ChargeJump"], ["Stomp", "Bash", "Glide", "Grenade"]], 
-            "standard": [["Stomp", "Bash", "Glide", "WallJump"], ["Stomp", "Bash", "Glide", "Climb"], ["Stomp", "Bash", "Glide", "ChargeJump"]], 
-            "expert": [["Stomp", "Climb"], ["Stomp", "WallJump"], ["Stomp", "ChargeJump"], ["Stomp", "Bash", "Grenade"]], 
-            "master": [["Stomp", "DoubleJump"]]
-        }
+        #"HoruR2": {
+        #    "casual": [["Stomp", "Bash", "Glide", "DoubleJump", "WallJump"], ["Stomp", "Bash", "Glide", "DoubleJump", "Climb"], ["Stomp", "Bash", "Glide", "DoubleJump", "ChargeJump"], ["Stomp", "Bash", "Glide", "Grenade"]], 
+        #    "standard": [["Stomp", "Bash", "Glide", "WallJump"], ["Stomp", "Bash", "Glide", "Climb"], ["Stomp", "Bash", "Glide", "ChargeJump"]], 
+        #    "expert": [["Stomp", "Climb"], ["Stomp", "WallJump"], ["Stomp", "ChargeJump"], ["Stomp", "Bash", "Grenade"]], 
+        #    "master": [["Stomp", "DoubleJump"]]
+        #}
     },
     "R3OuterEntrance": {
     },
@@ -1041,9 +1044,9 @@ location_rules = {
         }
     },
     "HoruR3CutsceneTrigger": { 
-        "HoruR3": {
-            "casual": [["Free"]]
-        }
+        #"HoruR3": {
+        #    "casual": [["Free"]]
+        #}
     },
     "R4OuterEntrance": { 
     },
@@ -1061,9 +1064,9 @@ location_rules = {
     "HoruR4PuzzleEntrance": { 
     },
     "HoruR4CutsceneTrigger": { 
-        "HoruR4": {
-            "casual": [["Free"]]
-        },
+        #"HoruR4": {
+        #    "casual": [["Free"]]
+        #},
         "HoruR4DrainedExp": {
             "casual": [["DoubleJump", "Glide"], ["ChargeJump", "Climb"]], 
             "standard": [["Bash", "Grenade", "Climb"], ["Glide", "AirDash"], ["DoubleJump", "AirDash"]], 
@@ -1183,8 +1186,8 @@ location_rules = {
             "casual": [["Grenade"]]
         },
         "ValleyMap": {
-            "casual": [["Bash", "Mapstone"]], 
-            "expert": [["ChargeFlame", "ChargeJump", "Mapstone"], ["ChargeFlame", "DoubleJump", "Mapstone"], ["Grenade", "ChargeJump", "Mapstone"], ["Grenade", "DoubleJump", "Mapstone"], ["ChargeFlame", "AirDash", "Mapstone"], ["Grenade", "AirDash", "Mapstone"]]
+            "casual": [["Bash", "MapStone"]], 
+            "expert": [["ChargeFlame", "ChargeJump", "MapStone"], ["ChargeFlame", "DoubleJump", "MapStone"], ["Grenade", "ChargeJump", "MapStone"], ["Grenade", "DoubleJump", "MapStone"], ["ChargeFlame", "AirDash", "MapStone"], ["Grenade", "AirDash", "MapStone"]]
         }
     },
     "OutsideForlornCliff": { 
@@ -1207,10 +1210,10 @@ location_rules = {
     },
     "ForlornInnerDoor": { 
         "ForlornEntranceExp": {
-            "casual": [["ForlornKey", "ChargeJump", "WallJump"], ["ForlornKey", "ChargeJump", "Climb"], ["ForlornKey", "ChargeJump", "DoubleJump"], ["ForlornKey", "WallJump", "DoubleJump"], ["ForlornKey", "Climb", "DoubleJump"], ["ForlornKey", "Bash", "Grenade"], ["ForlornKey", "DoubleJump", "Open"], ["ForlornKey", "Glide", "Climb", "Open"], ["ForlornKey", "Glide", "WallJump", "Open"], ["ForlornKey", "ChargeJump", "Open"]], 
-            "expert": [["ForlornKey", "WallJump", ("HealthCell", 4)], ["ForlornKey", "Open"]], 
+            "casual": [["ForlornKey", "ChargeJump", "WallJump"], ["ForlornKey", "ChargeJump", "Climb"], ["ForlornKey", "ChargeJump", "DoubleJump"], ["ForlornKey", "WallJump", "DoubleJump"], ["ForlornKey", "Climb", "DoubleJump"], ["ForlornKey", "Bash", "Grenade"], ["ForlornKey", "DoubleJump"], ["ForlornKey", "Glide", "Climb"], ["ForlornKey", "Glide", "WallJump"], ["ForlornKey", "ChargeJump"]], 
+            "expert": [["ForlornKey", "WallJump", ("HealthCell", 4)], ["ForlornKey"]], 
             "master": [["ForlornKey", "WallJump", ("HealthCell", 3), "UltraDefense"], ["ForlornKey", "TripleJump"]], 
-            "standard": [["ForlornKey", "Dash", "Climb", "Open"], ["ForlornKey", "Dash", "WallJump", "Open"]]
+            "standard": [["ForlornKey", "Dash", "Climb"], ["ForlornKey", "Dash", "WallJump"]]
         }
     },
     "ForlornOrbPossession": { 
@@ -1233,7 +1236,7 @@ location_rules = {
     },
     "ForlornMapArea": { 
         "ForlornMap": {
-            "casual": [["ForlornKey", "Mapstone"]]
+            "casual": [["ForlornKey", "MapStone"]]
         },
         "ForlornKeystone4": {
             "casual": [["ForlornKey", "ChargeJump", "WallJump"], ["ForlornKey", "ChargeJump", "Climb"], ["ForlornKey", "Bash", "Grenade", "WallJump"], ["ForlornKey", "Bash", "Grenade", "Climb"]], 
@@ -1325,8 +1328,8 @@ location_rules = {
             "master": [["GrenadeJump"]]
         },
         "SorrowMap": {
-            "casual": [["Stomp", "Mapstone"], ["Bash", "Mapstone"]], 
-            "standard": [["Lure", "Mapstone"]]
+            "casual": [["Stomp", "MapStone"], ["Bash", "MapStone"]], 
+            "standard": [["Lure", "MapStone"]]
         }
     },
     "SorrowMapstoneWarp": { 
@@ -1584,6 +1587,7 @@ connection_rules = {
             "casual": [["Free"]]
         },
         "LowerChargeFlameArea": {
+            "casual": [["None"]],
             "glitched": [["Grenade"]]
         },
         "BlackrootDarknessRoom": {
@@ -1642,6 +1646,7 @@ connection_rules = {
             "casual": [["Free"]]
         },
         "LowerChargeFlameArea": {
+            "casual": [["None"]],
             "glitched": [["Dash"]]
         }
     },
@@ -1698,6 +1703,7 @@ connection_rules = {
             "casual": [["ChargeJump"]]
         },
         "DeathGauntletRoofPlantAccess": {
+            "casual": [["None"]],
             "expert": [["ChargeFlame", "DoubleJump", "WallJump"], ["ChargeFlame", "Bash", "WallJump"], ["ChargeFlame", "DoubleJump", "Climb"], ["ChargeFlame", "Bash", "Climb"], ["ChargeFlame", "Bash", "Grenade"]], 
             "master": [["ChargeFlame", "DoubleJump"], ["ChargeFlameBurn"]]
         },
@@ -1706,6 +1712,7 @@ connection_rules = {
             "master": [["Lure", "Bash"], ["Lure", "ChargeDash", ("EnergyCell", 1)]]
         },
         "MoonGrottoAboveTeleporter": {
+            "casual": [["None"]],
             "master": [["Lure", "Bash"]]
         }
     },
@@ -1900,6 +1907,7 @@ connection_rules = {
     },
     "SpiderSacEnergyNook": { 
         "ChargeFlameAreaPlantAccess": {
+            "casual": [["None"]],
             "master": [["ChargeFlameBurn"]]
         }
     },
@@ -1972,6 +1980,7 @@ connection_rules = {
             "glitched": [["Climb"]]
         },
         "GumoHideout": {
+            "casual": [["None"]],
             "glitched": [["Dash", "WallJump"], ["Dash", "Climb", "DoubleJump"], ["Dash", "Bash", "Grenade"], ["Dash", "ChargeJump"]]
         }
     },
@@ -2061,6 +2070,7 @@ connection_rules = {
             "master": [["WallJump"], ["DoubleJump"]]
         },
         "MoonGrottoStompPlantAccess": {
+            "casual": [["None"]],
             "master": [["Lure", "WallJump", ("HealthCell", 4)], ["Lure", "ChargeJump", ("HealthCell", 4)], ["Lure", "DoubleJump"], ["Lure", "WallJump", "Glide"], ["Lure", "ChargeDash"]]
         }
     },
@@ -2079,6 +2089,7 @@ connection_rules = {
             "casual": [["Free"]]
         },
         "OuterSwampMortarAbilityCellLedge": {
+            "casual": [["None"]],
             "glitched": [["Free"]]
         }
     },
@@ -2099,6 +2110,7 @@ connection_rules = {
     },
     "OuterSwampAbilityCellNook": { 
         "InnerSwampSkyArea": {
+            "casual": [["None"]],
             "glitched": [["Dash"]]
         }
     },
@@ -2133,6 +2145,7 @@ connection_rules = {
     },
     "OuterSwampMortarAbilityCellLedge": { 
         "OuterSwampMortarPlantAccess": {
+            "casual": [["None"]],
             "expert": [["ChargeFlame"]]
         },
         "UpperGrotto": {
@@ -2166,6 +2179,7 @@ connection_rules = {
             "master": [["DoubleJump"], ["Bash"]]
         },
         "R4InnerDoor": {
+            "casual": [["None"]],
             "glitched": [["Dash"]]
         }
     },
@@ -2181,7 +2195,7 @@ connection_rules = {
     },
     "BashTreeDoorOpened": { 
         "GinsoMiniBossDoor": {
-            "casual": [["Open", "GinsoKey"]]
+            "casual": [["GinsoKey"]]
         },
         "BashTree": {
             "casual": [["WallJump"], ["Climb"], ["ChargeJump"], ["Bash", "Grenade"]], 
@@ -2240,8 +2254,8 @@ connection_rules = {
             "master": [["WallJump", "TripleJump", ("HealthCell", 5), "UltraDefense"]]
         },
         "UpperGinsoTree": {
-            "casual": [["Open", "Bash"], ["Open", "DoubleJump"], ["Open", "Glide"], ["Open", ("HealthCell", 3)]], 
-            "standard": [["Open", "AirDash"]]
+            "casual": [["Bash"], ["DoubleJump"], ["Glide"], [("HealthCell", 3)]], 
+            "standard": [["AirDash"]]
         }
     },
     "GinsoTeleporter": { 
@@ -2314,6 +2328,7 @@ connection_rules = {
             "master": [["DoubleJump"], ["Bash", "AirDash"]]
         },
         "MoonGrottoStompPlantAccess": {
+            "casual": [["None"]],
             "expert": [["ChargeFlame"]]
         },
         "MoonGrottoSwampAccessArea": {
@@ -2326,9 +2341,11 @@ connection_rules = {
             "casual": [["Free"]]
         },
         "DeathGauntletRoof": {
+            "casual": [["None"]],
             "master": [["Lure", "Bash"]]
         },
         "MoonGrottoBelowTeleporter": {
+            "casual": [["None"]],
             "master": [["Lure", "Bash"]]
         }
     },
@@ -2437,6 +2454,7 @@ connection_rules = {
     },
     "LowerLeftGumoHideout": { 
         "LowerBlackroot": {
+            "casual": [["None"]],
             "glitched": [["Dash"]]
         },
         "GumoHideoutRedirectArea": {
@@ -2586,6 +2604,7 @@ connection_rules = {
     },
     "HoruFieldsPushBlock": { 
         "HollowGrove": {
+            "casual": [["None"]],
             "master": [["Lure", "Bash"]]
         }
     },
@@ -2631,20 +2650,20 @@ connection_rules = {
             "master": [["ChargeJump", "WallJump", "TripleJump", "Glide", ("HealthCell", 8), "UltraDefense"]]
         },
         "L2OuterEntrance": {
-            "casual": [["Stomp", "Bash", "DoubleJump", "Glide", "WallJump"], ["Stomp", "Bash", "DoubleJump", "ChargeJump", "WallJump"], ["Stomp", "Bash", "Glide", "ChargeJump", "WallJump"], ["Stomp", "Bash", "DoubleJump", "Glide", "Climb"], ["Stomp", "Bash", "DoubleJump", "ChargeJump", "Climb"], ["Stomp", "Bash", "Glide", "ChargeJump", "Climb"], ["Open", "ChargeJump", "Bash", "DoubleJump", "WallJump"], ["Open", "ChargeJump", "Bash", "DoubleJump", "Climb"], ["Open", "ChargeJump", "Bash", "Glide", "WallJump"], ["Open", "ChargeJump", "Bash", "Glide", "Climb"]], 
-            "expert": [["Stomp", "Bash", "Grenade", "WallJump"], ["Stomp", "Bash", "Grenade", "Climb"], ["ChargeJump", "WallJump", ("HealthCell", 5)], ["Open", "ChargeDash", "WallJump"], ["Open", "ChargeDash", "Climb"], ["Open", "DoubleBash"]], 
-            "master": [["Stomp", "ChargeJump", "WallJump", "TripleJump", "Glide", ("HealthCell", 8), "UltraDefense"], ["Open", "ChargeJump", "TripleJump"], ["Open", "GrenadeJump"]], 
-            "standard": [["Open", "Bash", "Grenade"], ["Open", "Bash", "DoubleJump", "Glide"], ["Open", "ChargeJump", "Bash", "WallJump"], ["Open", "ChargeJump", "Bash", "Climb"], ["Open", "ChargeJump", "WallJump", "DoubleJump"], ["Open", "ChargeJump", "WallJump", "Glide"]]
+            "casual": [["Stomp", "Bash", "DoubleJump", "Glide", "WallJump"], ["Stomp", "Bash", "DoubleJump", "ChargeJump", "WallJump"], ["Stomp", "Bash", "Glide", "ChargeJump", "WallJump"], ["Stomp", "Bash", "DoubleJump", "Glide", "Climb"], ["Stomp", "Bash", "DoubleJump", "ChargeJump", "Climb"], ["Stomp", "Bash", "Glide", "ChargeJump", "Climb"], ["ChargeJump", "Bash", "DoubleJump", "WallJump"], ["ChargeJump", "Bash", "DoubleJump", "Climb"], ["ChargeJump", "Bash", "Glide", "WallJump"], ["ChargeJump", "Bash", "Glide", "Climb"]], 
+            "expert": [["Stomp", "Bash", "Grenade", "WallJump"], ["Stomp", "Bash", "Grenade", "Climb"], ["ChargeJump", "WallJump", ("HealthCell", 5)], ["ChargeDash", "WallJump"], ["ChargeDash", "Climb"], ["DoubleBash"]], 
+            "master": [["Stomp", "ChargeJump", "WallJump", "TripleJump", "Glide", ("HealthCell", 8), "UltraDefense"], ["ChargeJump", "TripleJump"], ["GrenadeJump"]], 
+            "standard": [["Bash", "Grenade"], ["Bash", "DoubleJump", "Glide"], ["ChargeJump", "Bash", "WallJump"], ["ChargeJump", "Bash", "Climb"], ["ChargeJump", "WallJump", "DoubleJump"], ["ChargeJump", "WallJump", "Glide"]]
         },
         "L3OuterEntrance": {
-            "casual": [["Stomp", "Bash", "DoubleJump", "Glide", "WallJump"], ["Stomp", "Bash", "DoubleJump", "ChargeJump", "WallJump"], ["Stomp", "Bash", "Glide", "ChargeJump", "WallJump"], ["Stomp", "Bash", "DoubleJump", "Glide", "Climb"], ["Stomp", "Bash", "DoubleJump", "ChargeJump", "Climb"], ["Stomp", "Bash", "Glide", "ChargeJump", "Climb"], ["Open", "ChargeJump", "Bash", "DoubleJump", "WallJump"], ["Open", "ChargeJump", "Bash", "DoubleJump", "Climb"], ["Open", "ChargeJump", "Bash", "Glide", "WallJump"], ["Open", "ChargeJump", "Bash", "Glide", "Climb"]], 
-            "expert": [["Stomp", "Bash", "Grenade", "WallJump"], ["Stomp", "Bash", "Grenade", "Climb"], ["ChargeJump", "WallJump", ("HealthCell", 5)], ["Open", "ChargeDash", "WallJump"], ["Open", "ChargeDash", "Climb"], ["Open", "DoubleBash"]], 
-            "master": [["Stomp", "ChargeJump", "WallJump", "TripleJump", "Glide", ("HealthCell", 8), "UltraDefense"], ["Open", "ChargeJump", "TripleJump"], ["Open", "GrenadeJump"]], 
-            "standard": [["Open", "Bash", "Grenade"], ["Open", "Bash", "DoubleJump", "Glide"], ["Open", "ChargeJump", "Bash", "WallJump"], ["Open", "ChargeJump", "Bash", "Climb"], ["Open", "ChargeJump", "WallJump", "DoubleJump"], ["Open", "ChargeJump", "WallJump", "Glide"]]
+            "casual": [["Stomp", "Bash", "DoubleJump", "Glide", "WallJump"], ["Stomp", "Bash", "DoubleJump", "ChargeJump", "WallJump"], ["Stomp", "Bash", "Glide", "ChargeJump", "WallJump"], ["Stomp", "Bash", "DoubleJump", "Glide", "Climb"], ["Stomp", "Bash", "DoubleJump", "ChargeJump", "Climb"], ["Stomp", "Bash", "Glide", "ChargeJump", "Climb"], ["ChargeJump", "Bash", "DoubleJump", "WallJump"], ["ChargeJump", "Bash", "DoubleJump", "Climb"], ["ChargeJump", "Bash", "Glide", "WallJump"], ["ChargeJump", "Bash", "Glide", "Climb"]], 
+            "expert": [["Stomp", "Bash", "Grenade", "WallJump"], ["Stomp", "Bash", "Grenade", "Climb"], ["ChargeJump", "WallJump", ("HealthCell", 5)], ["ChargeDash", "WallJump"], ["ChargeDash", "Climb"], ["DoubleBash"]], 
+            "master": [["Stomp", "ChargeJump", "WallJump", "TripleJump", "Glide", ("HealthCell", 8), "UltraDefense"], ["ChargeJump", "TripleJump"], ["GrenadeJump"]], 
+            "standard": [["Bash", "Grenade"], ["Bash", "DoubleJump", "Glide"], ["ChargeJump", "Bash", "WallJump"], ["ChargeJump", "Bash", "Climb"], ["ChargeJump", "WallJump", "DoubleJump"], ["ChargeJump", "WallJump", "Glide"]]
         },
         "L4OuterEntrance": {
-            "casual": [["Stomp", "Bash", "DoubleJump", "Glide", "WallJump"], ["Stomp", "Bash", "DoubleJump", "ChargeJump", "WallJump"], ["Stomp", "Bash", "Glide", "ChargeJump", "WallJump"], ["Stomp", "Bash", "DoubleJump", "Glide", "Climb"], ["Stomp", "Bash", "DoubleJump", "ChargeJump", "Climb"], ["Stomp", "Bash", "Glide", "ChargeJump", "Climb"], ["Open", "Bash"], ["Open", "ChargeJump"]], 
-            "expert": [["Stomp", "Bash", "Grenade", "WallJump"], ["Stomp", "Bash", "Grenade", "Climb"], ["Open", "ChargeDash"]], 
+            "casual": [["Stomp", "Bash", "DoubleJump", "Glide", "WallJump"], ["Stomp", "Bash", "DoubleJump", "ChargeJump", "WallJump"], ["Stomp", "Bash", "Glide", "ChargeJump", "WallJump"], ["Stomp", "Bash", "DoubleJump", "Glide", "Climb"], ["Stomp", "Bash", "DoubleJump", "ChargeJump", "Climb"], ["Stomp", "Bash", "Glide", "ChargeJump", "Climb"], ["Bash"], ["ChargeJump"]], 
+            "expert": [["Stomp", "Bash", "Grenade", "WallJump"], ["Stomp", "Bash", "Grenade", "Climb"], ["ChargeDash"]], 
             "master": [["Stomp", "ChargeJump", "WallJump", "TripleJump", "Glide", ("HealthCell", 8), "UltraDefense"]]
         },
         "R1OuterEntrance": {
@@ -2653,29 +2672,29 @@ connection_rules = {
             "master": [["ChargeJump", "WallJump", "TripleJump", "Glide", ("HealthCell", 8), "UltraDefense"]]
         },
         "R2OuterEntrance": {
-            "casual": [["Bash", "DoubleJump", "Glide", "WallJump"], ["Bash", "DoubleJump", "ChargeJump", "WallJump"], ["Bash", "Glide", "ChargeJump", "WallJump"], ["Bash", "DoubleJump", "Glide", "Climb"], ["Bash", "DoubleJump", "ChargeJump", "Climb"], ["Bash", "Glide", "ChargeJump", "Climb"], ["Open", "ChargeJump", "Bash", "DoubleJump", "WallJump"], ["Open", "ChargeJump", "Bash", "DoubleJump", "Climb"], ["Open", "ChargeJump", "Bash", "Glide", "WallJump"], ["Open", "ChargeJump", "Bash", "Glide", "Climb"]], 
-            "expert": [["Bash", "Grenade", "WallJump"], ["Bash", "Grenade", "Climb"], ["Open", "ChargeDash", "WallJump"], ["Open", "ChargeDash", "Climb"], ["Open", "DoubleBash"]], 
-            "master": [["ChargeJump", "WallJump", "TripleJump", "Glide", ("HealthCell", 8), "UltraDefense"], ["Open", "ChargeJump", "TripleJump"], ["Open", "GrenadeJump"]], 
-            "standard": [["Open", "Bash", "Grenade"], ["Open", "Bash", "DoubleJump", "Glide"], ["Open", "ChargeJump", "Bash", "WallJump"], ["Open", "ChargeJump", "Bash", "Climb"], ["Open", "ChargeJump", "Dash", "DoubleJump", "WallJump"], ["Open", "ChargeJump", "Dash", "Glide", "WallJump"]]
+            "casual": [["Bash", "DoubleJump", "Glide", "WallJump"], ["Bash", "DoubleJump", "ChargeJump", "WallJump"], ["Bash", "Glide", "ChargeJump", "WallJump"], ["Bash", "DoubleJump", "Glide", "Climb"], ["Bash", "DoubleJump", "ChargeJump", "Climb"], ["Bash", "Glide", "ChargeJump", "Climb"], ["ChargeJump", "Bash", "DoubleJump", "WallJump"], ["ChargeJump", "Bash", "DoubleJump", "Climb"], ["ChargeJump", "Bash", "Glide", "WallJump"], ["ChargeJump", "Bash", "Glide", "Climb"]], 
+            "expert": [["Bash", "Grenade", "WallJump"], ["Bash", "Grenade", "Climb"], ["ChargeDash", "WallJump"], ["ChargeDash", "Climb"], ["DoubleBash"]], 
+            "master": [["ChargeJump", "WallJump", "TripleJump", "Glide", ("HealthCell", 8), "UltraDefense"], ["ChargeJump", "TripleJump"], ["GrenadeJump"]], 
+            "standard": [["Bash", "Grenade"], ["Bash", "DoubleJump", "Glide"], ["ChargeJump", "Bash", "WallJump"], ["ChargeJump", "Bash", "Climb"], ["ChargeJump", "Dash", "DoubleJump", "WallJump"], ["ChargeJump", "Dash", "Glide", "WallJump"]]
         },
         "R3OuterEntrance": {
-            "casual": [["Stomp", "Bash", "DoubleJump", "Glide", "WallJump"], ["Stomp", "Bash", "DoubleJump", "ChargeJump", "WallJump"], ["Stomp", "Bash", "Glide", "ChargeJump", "WallJump"], ["Stomp", "Bash", "DoubleJump", "Glide", "Climb"], ["Stomp", "Bash", "DoubleJump", "ChargeJump", "Climb"], ["Stomp", "Bash", "Glide", "ChargeJump", "Climb"], ["Open", "ChargeJump", "Bash", "DoubleJump", "WallJump"], ["Open", "ChargeJump", "Bash", "DoubleJump", "Climb"], ["Open", "ChargeJump", "Bash", "Glide", "WallJump"], ["Open", "ChargeJump", "Bash", "Glide", "Climb"]], 
-            "expert": [["Stomp", "Bash", "Grenade", "WallJump"], ["Stomp", "Bash", "Grenade", "Climb"], ["ChargeJump", "WallJump", ("HealthCell", 5)], ["Open", "ChargeDash", "WallJump"], ["Open", "ChargeDash", "Climb"], ["Open", "DoubleBash"]], 
-            "master": [["Stomp", "ChargeJump", "WallJump", "TripleJump", "Glide", ("HealthCell", 8), "UltraDefense"], ["Open", "ChargeJump", "TripleJump"], ["Open", "GrenadeJump"]], 
-            "standard": [["Open", "Bash", "Grenade"], ["Open", "Bash", "DoubleJump", "Glide"], ["Open", "ChargeJump", "Bash", "WallJump"], ["Open", "ChargeJump", "Bash", "Climb"], ["Open", "ChargeJump", "WallJump", "DoubleJump"], ["Open", "ChargeJump", "WallJump", "Glide"]]
+            "casual": [["Stomp", "Bash", "DoubleJump", "Glide", "WallJump"], ["Stomp", "Bash", "DoubleJump", "ChargeJump", "WallJump"], ["Stomp", "Bash", "Glide", "ChargeJump", "WallJump"], ["Stomp", "Bash", "DoubleJump", "Glide", "Climb"], ["Stomp", "Bash", "DoubleJump", "ChargeJump", "Climb"], ["Stomp", "Bash", "Glide", "ChargeJump", "Climb"], ["ChargeJump", "Bash", "DoubleJump", "WallJump"], ["ChargeJump", "Bash", "DoubleJump", "Climb"], ["ChargeJump", "Bash", "Glide", "WallJump"], ["ChargeJump", "Bash", "Glide", "Climb"]], 
+            "expert": [["Stomp", "Bash", "Grenade", "WallJump"], ["Stomp", "Bash", "Grenade", "Climb"], ["ChargeJump", "WallJump", ("HealthCell", 5)], ["ChargeDash", "WallJump"], ["ChargeDash", "Climb"], ["DoubleBash"]], 
+            "master": [["Stomp", "ChargeJump", "WallJump", "TripleJump", "Glide", ("HealthCell", 8), "UltraDefense"], ["ChargeJump", "TripleJump"], ["GrenadeJump"]], 
+            "standard": [["Bash", "Grenade"], ["Bash", "DoubleJump", "Glide"], ["ChargeJump", "Bash", "WallJump"], ["ChargeJump", "Bash", "Climb"], ["ChargeJump", "WallJump", "DoubleJump"], ["ChargeJump", "WallJump", "Glide"]]
         },
         "R4OuterEntrance": {
-            "casual": [["Stomp", "Bash", "DoubleJump", "Glide", "WallJump"], ["Stomp", "Bash", "DoubleJump", "ChargeJump", "WallJump"], ["Stomp", "Bash", "Glide", "ChargeJump", "WallJump"], ["Stomp", "Bash", "DoubleJump", "Glide", "Climb"], ["Stomp", "Bash", "DoubleJump", "ChargeJump", "Climb"], ["Stomp", "Bash", "Glide", "ChargeJump", "Climb"], ["Open", "Bash", "Grenade"], ["Open", "ChargeJump", "WallJump"], ["Open", "ChargeJump", "Climb"], ["Open", "ChargeJump", "DoubleJump"]], 
-            "expert": [["Stomp", "Bash", "Grenade", "WallJump"], ["Stomp", "Bash", "Grenade", "Climb"], ["Open", "ChargeDash"], ["Open", "DoubleBash"]], 
+            "casual": [["Stomp", "Bash", "DoubleJump", "Glide", "WallJump"], ["Stomp", "Bash", "DoubleJump", "ChargeJump", "WallJump"], ["Stomp", "Bash", "Glide", "ChargeJump", "WallJump"], ["Stomp", "Bash", "DoubleJump", "Glide", "Climb"], ["Stomp", "Bash", "DoubleJump", "ChargeJump", "Climb"], ["Stomp", "Bash", "Glide", "ChargeJump", "Climb"], ["Bash", "Grenade"], ["ChargeJump", "WallJump"], ["ChargeJump", "Climb"], ["ChargeJump", "DoubleJump"]], 
+            "expert": [["Stomp", "Bash", "Grenade", "WallJump"], ["Stomp", "Bash", "Grenade", "Climb"], ["ChargeDash"], ["DoubleBash"]], 
             "master": [["Stomp", "ChargeJump", "WallJump", "TripleJump", "Glide", ("HealthCell", 8), "UltraDefense"]]
         },
         "HoruBasement": {
-            "casual": [["Stomp", "Bash", "DoubleJump", "Glide", "WallJump"], ["Stomp", "Bash", "DoubleJump", "ChargeJump", "WallJump"], ["Stomp", "Bash", "Glide", "ChargeJump", "WallJump"], ["Stomp", "Bash", "DoubleJump", "Glide", "Climb"], ["Stomp", "Bash", "DoubleJump", "ChargeJump", "Climb"], ["Stomp", "Bash", "Glide", "ChargeJump", "Climb"], ["Open"]], 
+            "casual": [["Stomp", "Bash", "DoubleJump", "Glide", "WallJump"], ["Stomp", "Bash", "DoubleJump", "ChargeJump", "WallJump"], ["Stomp", "Bash", "Glide", "ChargeJump", "WallJump"], ["Stomp", "Bash", "DoubleJump", "Glide", "Climb"], ["Stomp", "Bash", "DoubleJump", "ChargeJump", "Climb"], ["Stomp", "Bash", "Glide", "ChargeJump", "Climb"]], 
             "expert": [["Free"]], 
             "master": [["Stomp", "ChargeJump", "WallJump", "TripleJump", "Glide", ("HealthCell", 8), "UltraDefense"]]
         },
         "HoruTeleporter": {
-            "casual": [["Stomp", "Bash", "DoubleJump", "Glide", "WallJump"], ["Stomp", "Bash", "DoubleJump", "ChargeJump", "WallJump"], ["Stomp", "Bash", "Glide", "ChargeJump", "WallJump"], ["Stomp", "Bash", "DoubleJump", "Glide", "Climb"], ["Stomp", "Bash", "DoubleJump", "ChargeJump", "Climb"], ["Stomp", "Bash", "Glide", "ChargeJump", "Climb"], ["Open"]], 
+            "casual": [["Stomp", "Bash", "DoubleJump", "Glide", "WallJump"], ["Stomp", "Bash", "DoubleJump", "ChargeJump", "WallJump"], ["Stomp", "Bash", "Glide", "ChargeJump", "WallJump"], ["Stomp", "Bash", "DoubleJump", "Glide", "Climb"], ["Stomp", "Bash", "DoubleJump", "ChargeJump", "Climb"], ["Stomp", "Bash", "Glide", "ChargeJump", "Climb"]], 
             "expert": [["Stomp", "Bash", "Grenade", "WallJump"], ["Stomp", "Bash", "Grenade", "Climb"]], 
             "master": [["Stomp", "ChargeJump", "WallJump", "TripleJump", "Glide", ("HealthCell", 8), "UltraDefense"]]
         }
@@ -2685,9 +2704,9 @@ connection_rules = {
             "casual": [["Free"]]
         },
         "HoruInnerEntrance": {
-            "casual": [["Open", "ChargeJump", "WallJump"], ["Open", "ChargeJump", "Climb"], ["Open", "Bash", "Grenade"]], 
-            "expert": [["Open", "DoubleBash"]], 
-            "master": [["Open", "ChargeJump", "DoubleJump"], ["Open", "WallJump", "TripleJump"]]
+            "casual": [["ChargeJump", "WallJump"], ["ChargeJump", "Climb"], ["Bash", "Grenade"]], 
+            "expert": [["DoubleBash"]], 
+            "master": [["ChargeJump", "DoubleJump"], ["WallJump", "TripleJump"]]
         }
     },
     "HoruBasement": { 
@@ -2709,15 +2728,15 @@ connection_rules = {
             "standard": [["AirDash", "ChargeJump", "DoubleJump"]]
         },
         "L3OuterEntrance": {
-            "casual": [["Open", "Bash", "Glide"]]
+            "casual": [["Bash", "Glide"]]
         },
         "L2OuterEntrance": {
-            "casual": [["Open", "ChargeJump", "Glide"]], 
-            "standard": [["Open", "AirDash", "ChargeJump", "DoubleJump"]]
+            "casual": [["ChargeJump", "Glide"]], 
+            "standard": [["AirDash", "ChargeJump", "DoubleJump"]]
         },
         "R2OuterEntrance": {
-            "casual": [["Open", "ChargeJump", "Glide"]], 
-            "standard": [["Open", "AirDash", "ChargeJump", "DoubleJump"]]
+            "casual": [["ChargeJump", "Glide"]], 
+            "standard": [["AirDash", "ChargeJump", "DoubleJump"]]
         },
         "HoruInnerEntrance": {
             "casual": [["Bash", "Glide"], ["ChargeJump", "Glide"]]
@@ -2749,14 +2768,14 @@ connection_rules = {
             "casual": [["Free"]]
         },
         "L3OuterEntrance": {
-            "casual": [["Open", "Glide"], ["Open", "ChargeJump", "DoubleJump"]], 
-            "standard": [["Open", "ChargeJump", "Climb"], ["Open", "DoubleJump", "Climb"], ["Open", "DoubleJump", "WallJump"], ["Open", "BashGrenade"], ["Open", "AirDash"]], 
-            "expert": [["Open", "DoubleJump"], ["Open", "ChargeJump"]]
+            "casual": [["Glide"], ["ChargeJump", "DoubleJump"]], 
+            "standard": [["ChargeJump", "Climb"], ["DoubleJump", "Climb"], ["DoubleJump", "WallJump"], ["BashGrenade"], ["AirDash"]], 
+            "expert": [["DoubleJump"], ["ChargeJump"]]
         },
         "HoruInnerEntrance": {
-            "casual": [["Open", "Glide"], ["Open", "ChargeJump", "DoubleJump"]], 
-            "standard": [["Open", "ChargeJump", "Climb"], ["Open", "DoubleJump", "Climb"], ["Open", "DoubleJump", "WallJump"], ["Open", "BashGrenade"], ["Open", "AirDash"]], 
-            "expert": [["Open", "DoubleJump"], ["Open", "ChargeJump"]]
+            "casual": [["Glide"], ["ChargeJump", "DoubleJump"]], 
+            "standard": [["ChargeJump", "Climb"], ["DoubleJump", "Climb"], ["DoubleJump", "WallJump"], ["BashGrenade"], ["AirDash"]], 
+            "expert": [["DoubleJump"], ["ChargeJump"]]
         }
     },
     "L2OuterDoor": { 
@@ -2785,16 +2804,16 @@ connection_rules = {
             "casual": [["Free"]]
         },
         "HoruInnerEntrance": {
-            "casual": [["Open", "Glide"], ["Open", "DoubleJump"]], 
-            "standard": [["Open", "AirDash"], ["Open", "BashGrenade"], ["Open", "ChargeJump"]]
+            "casual": [["Glide"], ["DoubleJump"]], 
+            "standard": [["AirDash"], ["BashGrenade"], ["ChargeJump"]]
         },
         "L4OuterEntrance": {
-            "casual": [["Open", "Glide"], ["Open", "DoubleJump"]], 
-            "standard": [["Open", "AirDash"], ["Open", "BashGrenade"], ["Open", "ChargeJump"]]
+            "casual": [["Glide"], ["DoubleJump"]], 
+            "standard": [["AirDash"], ["BashGrenade"], ["ChargeJump"]]
         },
         "R4OuterEntrance": {
-            "casual": [["Open", "Glide"], ["Open", "DoubleJump"]], 
-            "standard": [["Open", "AirDash"], ["Open", "BashGrenade"], ["Open", "ChargeJump"]]
+            "casual": [["Glide"], ["DoubleJump"]], 
+            "standard": [["AirDash"], ["BashGrenade"], ["ChargeJump"]]
         }
     },
     "L3OuterDoor": { 
@@ -2823,7 +2842,7 @@ connection_rules = {
             "casual": [["Free"]]
         },
         "HoruInnerEntrance": {
-            "casual": [["Open", "Free"]]
+            "casual": [["Free"]]
         }
     },
     "L4OuterDoor": { 
@@ -2851,6 +2870,7 @@ connection_rules = {
             "master": [["GrenadeJump"]]
         },
         "HoruL4CutscenePeg": {
+            "casual": [["None"]],
             "expert": [["Free"]]
         }
     },
@@ -2869,6 +2889,7 @@ connection_rules = {
             "casual": [["Free"]]
         },
         "L1OuterEntrance": {
+            "casual": [["None"]],
             "expert": [["Free"]]
         }
     },
@@ -2914,6 +2935,7 @@ connection_rules = {
     },
     "HoruR1CutsceneTrigger": { 
         "LowerGinsoTree": {
+            "casual": [["None"]],
             "glitched": [["Dash"]]
         }
     },
@@ -2922,20 +2944,20 @@ connection_rules = {
             "casual": [["Free"]]
         },
         "R3OuterEntrance": {
-            "casual": [["Open", "DoubleJump", "Glide", "WallJump"], ["Open", "DoubleJump", "Glide", "Climb"], ["Open", "ChargeJump", "Glide", "WallJump"], ["Open", "ChargeJump", "Glide", "Climb"]], 
-            "standard": [["Open", "AirDash", "DoubleJump", "WallJump"], ["Open", "AirDash", "DoubleJump", "Climb"], ["Open", "AirDash", "Glide", "WallJump"], ["Open", "AirDash", "Glide", "Climb"]]
+            "casual": [["DoubleJump", "Glide", "WallJump"], ["DoubleJump", "Glide", "Climb"], ["ChargeJump", "Glide", "WallJump"], ["ChargeJump", "Glide", "Climb"]], 
+            "standard": [["AirDash", "DoubleJump", "WallJump"], ["AirDash", "DoubleJump", "Climb"], ["AirDash", "Glide", "WallJump"], ["AirDash", "Glide", "Climb"]]
         },
         "HoruInnerEntrance": {
-            "casual": [["Open", "ChargeJump", "DoubleJump"], ["Open", "DoubleJump", "Glide"]], 
-            "standard": [["Open", "BashGrenade"], ["Open", "AirDash", "DoubleJump"], ["Open", "AirDash", "ChargeJump"], ["Open", "AirDash", "Glide"]]
+            "casual": [["ChargeJump", "DoubleJump"], ["DoubleJump", "Glide"]], 
+            "standard": [["BashGrenade"], ["AirDash", "DoubleJump"], ["AirDash", "ChargeJump"], ["AirDash", "Glide"]]
         },
         "R4OuterEntrance": {
-            "casual": [["Open", "ChargeJump", "DoubleJump"], ["Open", "DoubleJump", "Glide"]], 
-            "standard": [["Open", "BashGrenade"], ["Open", "AirDash", "DoubleJump"], ["Open", "AirDash", "ChargeJump"], ["Open", "AirDash", "Glide"]]
+            "casual": [["ChargeJump", "DoubleJump"], ["DoubleJump", "Glide"]], 
+            "standard": [["BashGrenade"], ["AirDash", "DoubleJump"], ["AirDash", "ChargeJump"], ["AirDash", "Glide"]]
         },
         "L4OuterEntrance": {
-            "casual": [["Open", "ChargeJump", "DoubleJump"], ["Open", "DoubleJump", "Glide"]], 
-            "standard": [["Open", "BashGrenade"], ["Open", "AirDash", "DoubleJump"], ["Open", "AirDash", "ChargeJump"], ["Open", "AirDash", "Glide"]]
+            "casual": [["ChargeJump", "DoubleJump"], ["DoubleJump", "Glide"]], 
+            "standard": [["BashGrenade"], ["AirDash", "DoubleJump"], ["AirDash", "ChargeJump"], ["AirDash", "Glide"]]
         }
     },
     "R2OuterDoor": { 
@@ -2964,16 +2986,16 @@ connection_rules = {
             "casual": [["Free"]]
         },
         "HoruInnerEntrance": {
-            "casual": [["Open", "Glide"], ["Open", "DoubleJump"]], 
-            "standard": [["Open", "AirDash"], ["Open", "BashGrenade"], ["Open", "ChargeJump"]]
+            "casual": [["Glide"], ["DoubleJump"]], 
+            "standard": [["AirDash"], ["BashGrenade"], ["ChargeJump"]]
         },
         "R4OuterEntrance": {
-            "casual": [["Open", "Glide"], ["Open", "DoubleJump"]], 
-            "standard": [["Open", "AirDash"], ["Open", "BashGrenade"], ["Open", "ChargeJump"]]
+            "casual": [["Glide"], ["DoubleJump"]], 
+            "standard": [["AirDash"], ["BashGrenade"], ["ChargeJump"]]
         },
         "L4OuterEntrance": {
-            "casual": [["Open", "Glide"], ["Open", "DoubleJump"]], 
-            "standard": [["Open", "AirDash"], ["Open", "BashGrenade"], ["Open", "ChargeJump"]]
+            "casual": [["Glide"], ["DoubleJump"]], 
+            "standard": [["AirDash"], ["BashGrenade"], ["ChargeJump"]]
         }
     },
     "R3OuterDoor": { 
@@ -3024,11 +3046,11 @@ connection_rules = {
             "casual": [["Free"]]
         },
         "HoruInnerEntrance": {
-            "casual": [["Open", "Free"]]
+            "casual": [["Free"]]
         },
         "L4OuterEntrance": {
-            "casual": [["Open", "Glide"]], 
-            "standard": [["Open", "AirDash", "DoubleJump"]]
+            "casual": [["Glide"]], 
+            "standard": [["AirDash", "DoubleJump"]]
         }
     },
     "R4OuterDoor": { 
@@ -3188,6 +3210,7 @@ connection_rules = {
     },
     "ValleyRight": { 
         "ValleyPostStompDoor": {
+            "casual": [["None"]],
             "expert": [["DoubleJump", ("HealthCell", 4)]], 
             "master": [[("HealthCell", 7)], [("HealthCell", 5), "UltraDefense"]]
         },
@@ -3217,6 +3240,7 @@ connection_rules = {
             "expert": [["ChargeDash", ("EnergyCell", 2)], ["ChargeDash", "DoubleJump"]]
         },
         "ValleyMain": {
+            "casual": [["None"]],
             "expert": [["Bash"]], 
             "master": [["ChargeFlame"], ["Grenade"]]
         },
@@ -3330,6 +3354,7 @@ connection_rules = {
             "standard": [["Stomp"]]
         },
         "ValleyStompFloor": {
+            "casual": [["None"]],
             "expert": [["ChargeJump"]], 
             "casual": [["ChargeJump", "DoubleJump"], ["ChargeJump", "WallJump"], ["ChargeJump", "Climb"], ["ChargeJump", "Bash", "Grenade"]], 
             "master": [["Bash"]]
@@ -3355,6 +3380,7 @@ connection_rules = {
             "casual": [["ForlornKey"]]
         },
         "RightForlorn": {
+            "casual": [["None"]],
             "glitched": [["Free"]]
         }
     },
@@ -3371,8 +3397,8 @@ connection_rules = {
             "casual": [["ForlornKey"]]
         },
         "ForlornOrbPossession": {
-            "casual": [["DoubleJump", "Open"], ["Glide", "Climb", "Open"], ["Glide", "WallJump", "Open"], ["ChargeJump", "Open"], ["Bash", "Grenade", "Open"]], 
-            "standard": [["Dash", "Climb", "Open"], ["Dash", "WallJump", "Open"]], 
+            "casual": [["DoubleJump"], ["Glide", "Climb"], ["Glide", "WallJump"], ["ChargeJump"], ["Bash", "Grenade"]], 
+            "standard": [["Dash", "Climb"], ["Dash", "WallJump"]], 
             "expert": [["Open"]]
         },
         "ForlornGravityRoom": {
@@ -3433,7 +3459,7 @@ connection_rules = {
             "casual": [["Free"]]
         },
         "ForlornOrbPossession": {
-            "casual": [["ForlornKey", "Open"]]
+            "casual": [["ForlornKey"]]
         },
         "ForlornMapArea": {
             "casual": [["WallJump"], ["Climb"], ["ChargeJump"], ["Bash", "Grenade"], ["DoubleJump"], ["Glide"]]
@@ -3530,6 +3556,7 @@ connection_rules = {
             "glitched": [["ChargeJump", "Glide"]]
         },
         "SunstoneArea": {
+            "casual": [["None"]],
             "expert": [["DoubleBash", "Glide"]]
         }
     },
@@ -3540,6 +3567,7 @@ connection_rules = {
     },
     "SorrowMapstoneArea": { 
         "HoruInnerEntrance": {
+            "casual": [["None"]],
             "glitched": [["Dash"]]
         },
         "LowerSorrow": {
@@ -3571,6 +3599,7 @@ connection_rules = {
             "casual": [["Free"]]
         },
         "MiddleSorrow": {
+            "casual": [["None"]],
             "standard": [["Bash", "Dash", "DoubleJump", "Climb"], ["Bash", "Dash", "DoubleJump", "WallJump"]], 
             "expert": [["Bash", "ChargeDash", "Climb"], ["Bash", "ChargeDash", "WallJump"], ["DoubleBash"]], 
             "master": [["ChargeJump", "Stomp", "Glide", "TripleJump", "WallJump"], ["ChargeJump", "Stomp", "AirDash", "Climb"], ["ChargeJump", "Stomp", "ChargeDash", "WallJump"], ["ChargeJump", "Stomp", "TripleJump", "Climb"]]
@@ -3616,9 +3645,11 @@ connection_rules = {
             "expert": [["ChargeJump", "Climb", ("HealthCell", 5)], ["ChargeJump", "WallJump", ("HealthCell", 5)]]
         },
         "LeftSorrow": {
+            "casual": [["None"]],
             "expert": [["ChargeDash", "Stomp", "WallJump"], ["ChargeDash", "Stomp", "Climb"]]
         },
         "LeftSorrowKeystones": {
+            "casual": [["None"]],
             "expert": [["ChargeDash", "Stomp", "WallJump"], ["ChargeDash", "Stomp", "Climb"]]
         },
         "SorrowMainShaftKeystoneArea": {
@@ -3632,6 +3663,7 @@ connection_rules = {
             "expert": [["ChargeJump", "Bash", "Grenade"], ["ChargeJump", "AirDash"]]
         },
         "SunstoneArea": {
+            "casual": [["None"]],
             "expert": [["Bash", "Glide"]]
         }
     },
@@ -3640,9 +3672,11 @@ connection_rules = {
             "casual": [["Free"]]
         },
         "SunstoneArea": {
+            "casual": [["None"]],
             "glitched": [["Glide", "ChargeJump"]]
         },
         "SorrowTeleporter": {
+            "casual": [["None"]],
             "glitched": [["Glide", "ChargeJump", "Climb"]]
         },
         "ChargeJumpDoor": {
@@ -3660,6 +3694,7 @@ connection_rules = {
             "master": [["ChargeJump", "TripleJump", "ChargeDash", ("HealthCell", 4), "UltraDefense"], ["Bash", "Grenade", "WallJump", "TripleJump", "ChargeDash", ("HealthCell", 4), "UltraDefense"], ["Bash", "Grenade", "ChargeJump", "TripleJump", ("HealthCell", 7), "UltraDefense"], ["ChargeJump", "TripleJump", ("HealthCell", 10), "UltraDefense"], ["Bash", "Grenade", "WallJump", "TripleJump", ("HealthCell", 13), "UltraDefense"]]
         },
         "ChargeJumpDoorOpenLeft": {
+            "casual": [["None"]],
             "expert": [["ChargeJump", ("HealthCell", 6)]], 
             "master": [["ChargeJump", ("HealthCell", 5)], ["Lure", "Bash"]]
         }
@@ -3687,6 +3722,7 @@ connection_rules = {
             "master": [["Bash"]]
         },
         "ChargeJumpArea": {
+            "casual": [["None"]],
             "standard": [["Lure", "Bash", "Stomp", "WallJump"], ["Lure", "Bash", "Stomp", "Climb"]], 
             "expert": [["ChargeJump", "Climb", "Bash"], ["ChargeJump", "Bash", "Grenade", "WallJump"], ["ChargeJump", "Bash", "AirDash"], ["ChargeJump", "Climb", "ChargeDash"], ["ChargeDash", "Stomp", "WallJump"], ["ChargeDash", "Stomp", "Climb"], ["ChargeJump", "ChargeDash", ("HealthCell", 6)], ["ChargeJump", "Bash", ("HealthCell", 6)], ["DoubleBash", "WallJump"], ["DoubleBash", "Climb"]], 
             "master": [["GrenadeJump", "Dash"], ["GrenadeJump", ("HealthCell", 6)], ["Bash"]]
@@ -3768,6 +3804,7 @@ connection_rules = {
             "master": [["DoubleJump", "Bash", "Grenade"], ["ChargeDash"], [("HealthCell", 9), "UltraDefense"], [("HealthCell", 10)]]
         },
         "RightForlorn": {
+            "casual": [["None"]],
             "glitched": [["Free"]]
         }
     },
@@ -3793,9 +3830,11 @@ connection_rules = {
             "master": [["DoubleJump", "Stomp"], ["Bash", "Grenade", "DoubleJump"]]
         },
         "ForlornTeleporter": {
+            "casual": [["None"]],
             "glitched": [["Dash"]]
         },
         "RightForlorn": {
+            "casual": [["None"]],
             "glitched": [["Dash"]]
         }
     },
