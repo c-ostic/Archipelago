@@ -3,7 +3,7 @@ from worlds.AutoWorld import World
 
 from .Items import OriBlindForestItem, item_dict
 from .Locations import location_list, all_trees
-from .Options import OriBlindForestOptions
+from .Options import OriBlindForestOptions, LogicDifficulty
 from .Rules import apply_location_rules, apply_connection_rules
 from .Regions import region_list
 
@@ -23,8 +23,26 @@ class OriBlindForestWorld(World):
     logic_sets = {}
 
     def generate_early(self):
-        logic_sets = {"casual"}
-        # TODO: Add options for other logic sets
+        logic_sets = {"casual"} # always include at least casual
+
+        if self.options.logic_difficulty == LogicDifficulty.option_glitched:
+            logic_sets.add("glitched")
+            logic_sets.add("master")
+            logic_sets.add("expert")
+            logic_sets.add("standard")
+        
+        if self.options.logic_difficulty == LogicDifficulty.option_master:
+            logic_sets.add("master")
+            logic_sets.add("expert")
+            logic_sets.add("standard")
+
+        if self.options.logic_difficulty == LogicDifficulty.option_expert:
+            logic_sets.add("expert")
+            logic_sets.add("standard")
+
+        if self.options.logic_difficulty == LogicDifficulty.option_standard:
+            logic_sets.add("standard")
+
         self.logic_sets = logic_sets
 
     def create_region(self, name: str):

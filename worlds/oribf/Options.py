@@ -1,13 +1,18 @@
 from dataclasses import dataclass
 
-from Options import Toggle, PerGameCommonOptions
+from Options import Choice, PerGameCommonOptions
 
 
-class DummyTest(Toggle):
-    """Dummy option."""
-    display_name = "Test"
+class LogicDifficulty(Choice):
+    """Sets the difficulty of the logic"""
+    display_name = "Difficulty"
+    option_casual = 0
+    option_standard = 1
+    option_expert = 2
+    option_master = 3
+    option_glitched = 4
 
 
 @dataclass
 class OriBlindForestOptions(PerGameCommonOptions):
-    dummyTest: DummyTest
+    logic_difficulty: LogicDifficulty
