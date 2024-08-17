@@ -10,8 +10,6 @@ item_dict = {
     "HealthCell": (ItemClassification.progression, 12),
     "EnergyCell": (ItemClassification.progression, 14),
     "KeyStone": (ItemClassification.progression, 40),
-    "Plant": (ItemClassification.useful, 24),
-
     "MapStone": (ItemClassification.progression, 9),
 
     "GinsoKey": (ItemClassification.progression, 1),
@@ -42,7 +40,8 @@ item_dict = {
     "TPHoru": (ItemClassification.progression, 1),
     "TPBlackroot": (ItemClassification.progression, 1),
 
-    "EX15": (ItemClassification.filler, 6),
+    "EX15": (ItemClassification.filler, 10),
+    "EX50": (ItemClassification.filler, 20),
     "EX100": (ItemClassification.filler, 53),
     "EX200": (ItemClassification.filler, 29),
 }
