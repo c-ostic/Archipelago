@@ -27,7 +27,6 @@ class OriBlindForestWorld(World):
 
         if self.options.logic_difficulty == LogicDifficulty.option_glitched:
             logic_sets.add("glitched")
-            logic_sets.add("master")
             logic_sets.add("expert")
             logic_sets.add("standard")
         

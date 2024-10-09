@@ -34,6 +34,9 @@ def apply_connection_rules(world: World):
 
 
 def process_access_point(world: World, access_point: Location | Entrance, rulesets):
+    # preface with a false so all other rules can be combined with OR
+    set_rule(access_point, lambda state: False)
+
     # for each ruleset in the location/entrance, call process_ruleset
     for ruleset_name, ruleset in rulesets.items():
         if ruleset_name in world.logic_sets:
@@ -41,14 +44,15 @@ def process_access_point(world: World, access_point: Location | Entrance, rulese
 
 
 def process_ruleset(world: World, access_point: Location | Entrance, ruleset: list):
-    # for each access set in the ruleset, add a rule for everything in the access set
-    first = True
+    # for each access set in the ruleset, call process_access_set
     for access_set in ruleset:
-        if first:
-            set_rule(access_point, lambda state: all(oribf_has(world, state, item) for item in access_set))
-            first = False
-        else:
-            add_rule(access_point, lambda state: all(oribf_has(world, state, item) for item in access_set), "or")
+        process_access_set(world, access_point, access_set)
+
+def process_access_set(world: World, access_point: Location | Entrance, access_set: list):
+    # add the rule for the access set list using oribf_has
+    # this line needs to be in a separate function from the previous for loop in order to work properly 
+    # (likely lambda function strangeness)
+    add_rule(access_point, lambda state: all(oribf_has(world, state, item) for item in access_set), "or")
             
     
 def oribf_has(world: World, state: CollectionState, item) -> bool:
