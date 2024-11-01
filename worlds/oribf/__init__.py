@@ -1,9 +1,10 @@
+from typing import Dict, Any
 from BaseClasses import ItemClassification, Region
 from worlds.AutoWorld import World
 
-from .Items import OriBlindForestItem, item_dict
+from .Items import OriBlindForestItem, base_items, keystone_items, mapstone_items, item_dict
 from .Locations import location_list, all_trees
-from .Options import OriBlindForestOptions, LogicDifficulty
+from .Options import OriBlindForestOptions, LogicDifficulty, KeystoneLogic, MapstoneLogic
 from .Rules import apply_location_rules, apply_connection_rules
 from .Regions import region_list
 
@@ -68,7 +69,19 @@ class OriBlindForestWorld(World):
     def create_items(self) -> None:
         placed_first_energy_cell = False
 
-        for item_key, item_value in item_dict.items():
+        item_list = dict(base_items)
+
+        if self.options.keystone_logic == KeystoneLogic.option_area_specific:
+            item_list = { **item_list, **keystone_items["AreaSpecific"] }
+        else:
+            item_list = { **item_list, **keystone_items["Anywhere"] }
+
+        if self.options.mapstone_logic == MapstoneLogic.option_area_specific:
+            item_list = { **item_list, **mapstone_items["AreaSpecific"] }
+        else:
+            item_list = { **item_list, **mapstone_items["Anywhere"] }
+
+        for item_key, item_value in item_list.items():
             for count in range(item_value[1]):
                 item = self.create_item(item_key)
                 self.multiworld.itempool.append(item)
@@ -91,3 +104,12 @@ class OriBlindForestWorld(World):
 
         from Utils import visualize_regions
         visualize_regions(self.multiworld.get_region("Menu", self.player), "oribf_world.puml")
+
+    def fill_slot_data(self) -> Dict[str, Any]:
+        slot_data: Dict[str, Any] = {
+            "goal": self.options.goal.value,
+            "logic_difficulty": self.options.logic_difficulty.value,
+            "keystone_logic": self.options.keystone_logic.value,
+            "mapstone_logic": self.options.mapstone_logic.value
+        }
+        return slot_data

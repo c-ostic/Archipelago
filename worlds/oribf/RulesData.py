@@ -58,7 +58,7 @@ location_rules = {
             "casual": [["Free"]]
         },
         "GladesMap": {
-            "casual": [[("MapStone", 9)]]
+            "casual": [[("MapStone", 9)], [("GladesMapStone", 1)]]
         }
     },
     "GladesMainAttic": { 
@@ -306,9 +306,9 @@ location_rules = {
             "glitched": [["Free"]]
         },
         "BlackrootMap": {
-            "casual": [[("MapStone", 9), "WallJump"], [("MapStone", 9), "Climb", "DoubleJump"], [("MapStone", 9), "Bash", "Grenade"], [("MapStone", 9), "ChargeJump"]], 
-            "standard": [[("MapStone", 9), "Climb", "AirDash"]], 
-            "expert": [[("MapStone", 9), "Climb"]]
+            "casual": [[("MapStone", 9), "WallJump"], [("MapStone", 9), "Climb", "DoubleJump"], [("MapStone", 9), "Bash", "Grenade"], [("MapStone", 9), "ChargeJump"], [("BlackrootMapStone", 1), "WallJump"], [("BlackrootMapStone", 1), "Climb", "DoubleJump"], [("BlackrootMapStone", 1), "Bash", "Grenade"], [("BlackrootMapStone", 1), "ChargeJump"]], 
+            "standard": [[("MapStone", 9), "Climb", "AirDash"], [("BlackrootMapStone", 1), "Climb", "AirDash"]], 
+            "expert": [[("MapStone", 9), "Climb"], [("BlackrootMapStone", 1), "Climb"]]
         }
     },
     "GrenadeAreaAccess": {
@@ -402,7 +402,7 @@ location_rules = {
             "master": [["Stomp", "DoubleJump"]]
         },
         "HollowGroveMap": {
-            "casual": [[("MapStone", 9)]]
+            "casual": [[("MapStone", 9)], [("GroveMapStone", 1)]]
         },
         "HollowGroveMapPlant": {
             "casual": [["ChargeFlame"], ["Grenade"]], 
@@ -661,7 +661,7 @@ location_rules = {
     },
     "GumoHideout": { 
         "GumoHideoutMap": {
-            "casual": [[("MapStone", 9)]]
+            "casual": [[("MapStone", 9)], [("GrottoMapStone", 1)]]
         },
         "GumoHideoutMapstone": {
             "casual": [["WallJump"], ["DoubleJump"], ["Climb", "ChargeJump"], ["Climb", "Bash", "Grenade"], ["Glide"]], 
@@ -782,7 +782,7 @@ location_rules = {
     },
     "Swamp": { 
         "SwampMap": {
-            "casual": [[("MapStone", 9)]]
+            "casual": [[("MapStone", 9)], [("SwampMapStone", 1)]]
         },
         "InnerSwampDrainExp": {
             "casual": [["CleanWater", "Climb", "ChargeJump"], ["CleanWater", "WallJump", "DoubleJump"], ["CleanWater", "Climb", "DoubleJump"], ["CleanWater", "WallJump", "Bash", "Grenade"], ["CleanWater", "Climb", "Bash", "Grenade"], ["CleanWater", "Glide", "Bash", "Grenade"], ["CleanWater", "DoubleJump", "Bash", "Grenade"], ["CleanWater", "DoubleJump", "Glide", "ChargeJump"], ["CleanWater", "WallJump", "Glide", "Stomp", "ChargeFlame"], ["CleanWater", "WallJump", "Glide", "Stomp", "Grenade"], ["CleanWater", "Climb", "Dash", "Glide"]], 
@@ -913,7 +913,7 @@ location_rules = {
     },
     "HoruMapLedge": { 
         "HoruMap": {
-            "casual": [[("MapStone", 9)]]
+            "casual": [[("MapStone", 9)], [("HoruMapStone", 1)]]
         }
     },
     "L1OuterEntrance": {
@@ -1186,8 +1186,8 @@ location_rules = {
             "casual": [["Grenade"]]
         },
         "ValleyMap": {
-            "casual": [["Bash", ("MapStone", 9)]], 
-            "expert": [["ChargeFlame", "ChargeJump", ("MapStone", 9)], ["ChargeFlame", "DoubleJump", ("MapStone", 9)], ["Grenade", "ChargeJump", ("MapStone", 9)], ["Grenade", "DoubleJump", ("MapStone", 9)], ["ChargeFlame", "AirDash", ("MapStone", 9)], ["Grenade", "AirDash", ("MapStone", 9)]]
+            "casual": [["Bash", ("MapStone", 9)], ["Bash", ("ValleyMapStone", 1)]], 
+            "expert": [["ChargeFlame", "ChargeJump", ("MapStone", 9)], ["ChargeFlame", "DoubleJump", ("MapStone", 9)], ["Grenade", "ChargeJump", ("MapStone", 9)], ["Grenade", "DoubleJump", ("MapStone", 9)], ["ChargeFlame", "AirDash", ("MapStone", 9)], ["Grenade", "AirDash", ("MapStone", 9)], ["ChargeFlame", "ChargeJump", ("ValleyMapStone", 1)], ["ChargeFlame", "DoubleJump", ("ValleyMapStone", 1)], ["Grenade", "ChargeJump", ("ValleyMapStone", 1)], ["Grenade", "DoubleJump", ("ValleyMapStone", 1)], ["ChargeFlame", "AirDash", ("ValleyMapStone", 1)], ["Grenade", "AirDash", ("ValleyMapStone", 1)]]
         }
     },
     "OutsideForlornCliff": { 
@@ -1236,7 +1236,7 @@ location_rules = {
     },
     "ForlornMapArea": { 
         "ForlornMap": {
-            "casual": [["ForlornKey", ("MapStone", 9)]]
+            "casual": [["ForlornKey", ("MapStone", 9)], ["ForlornKey", ("ForlornMapStone", 1)]]
         },
         "ForlornKeystone4": {
             "casual": [["ForlornKey", "ChargeJump", "WallJump"], ["ForlornKey", "ChargeJump", "Climb"], ["ForlornKey", "Bash", "Grenade", "WallJump"], ["ForlornKey", "Bash", "Grenade", "Climb"]], 
@@ -1328,8 +1328,8 @@ location_rules = {
             "master": [["GrenadeJump"]]
         },
         "SorrowMap": {
-            "casual": [["Stomp", ("MapStone", 9)], ["Bash", ("MapStone", 9)]], 
-            "standard": [["Lure", ("MapStone", 9)]]
+            "casual": [["Stomp", ("MapStone", 9)], ["Bash", ("MapStone", 9)], ["Stomp", ("SorrowMapStone", 1)], ["Bash", ("SorrowMapStone", 1)]], 
+            "standard": [["Lure", ("MapStone", 9)], ["Lure", ("SorrowMapStone", 1)]]
         }
     },
     "SorrowMapstoneWarp": { 
@@ -1605,7 +1605,7 @@ connection_rules = {
     },
     "GladesFirstKeyDoor": { 
         "GladesFirstKeyDoorOpened": {
-            "casual": [[("KeyStone", 10)], ["OpenWorld"]]
+            "casual": [[("KeyStone", 10)], [("GladesKeyStone", 2)], ["OpenWorld"]]
         }
     },
     "GladesFirstKeyDoorOpened": { 
@@ -1729,7 +1729,7 @@ connection_rules = {
     },
     "SpiritCavernsDoor": { 
         "SpiritCavernsDoorOpened": {
-            "casual": [[("KeyStone", 36)]]
+            "casual": [[("KeyStone", 36)], [("GladesKeyStone", 6)]]
         }
     },
     "SpiritCavernsDoorOpened": { 
@@ -1784,7 +1784,7 @@ connection_rules = {
     },
     "SpiritTreeDoor": { 
         "SpiritTreeDoorOpened": {
-            "casual": [[("KeyStone", 36)]]
+            "casual": [[("KeyStone", 36)], [("GladesKeyStone", 8)]]
         }
     },
     "SpiritTreeDoorOpened": { 
@@ -2190,7 +2190,7 @@ connection_rules = {
     },
     "BashTreeDoorClosed": { 
         "BashTreeDoorOpened": {
-            "casual": [[("KeyStone", 36)]]
+            "casual": [[("KeyStone", 36)], [("GinsoKeyStone", 8)]]
         }
     },
     "BashTreeDoorOpened": { 
@@ -2243,7 +2243,7 @@ connection_rules = {
     },
     "UpperGinsoDoorClosed": { 
         "UpperGinsoDoorOpened": {
-            "casual": [[("KeyStone", 36)]]
+            "casual": [[("KeyStone", 36)], [("GinsoKeyStone", 8)]]
         }
     },
     "UpperGinsoDoorOpened": { 
@@ -2411,7 +2411,7 @@ connection_rules = {
     },
     "GumoHideout": { 
         "DoubleJumpKeyDoor": {
-            "casual": [[("KeyStone", 40)]]
+            "casual": [[("KeyStone", 40)], [("GrottoKeyStone", 2)]]
         },
         "LeftGumoHideout": {
             "casual": [["WallJump", "DoubleJump"], ["WallJump", "ChargeJump"], ["Climb", "ChargeJump"], ["Grenade", "Bash"]], 
@@ -2526,7 +2526,7 @@ connection_rules = {
     },
     "SwampKeyDoorPlatform": { 
         "SwampKeyDoorOpened": {
-            "casual": [[("KeyStone", 40)]]
+            "casual": [[("KeyStone", 40)], [("SwampKeyStone", 2)]]
         },
         "InnerSwampSkyArea": {
             "casual": [["Wind", "Glide"]], 
@@ -3472,7 +3472,7 @@ connection_rules = {
     },
     "ForlornKeyDoor": { 
         "ForlornLaserRoom": {
-            "casual": [["ForlornKey", ("KeyStone", 40)]]
+            "casual": [["ForlornKey", ("KeyStone", 40)], ["ForlornKey", ("ForlornKeyStone", 4)]]
         }
     },
     "ForlornLaserRoom": { 
@@ -3542,7 +3542,7 @@ connection_rules = {
             "expert": [["DoubleBash"]]
         },
         "LeftSorrowLowerDoor": {
-            "casual": [[("KeyStone", 36)]]
+            "casual": [[("KeyStone", 36)], [("SorrowKeyStone", 8)]]
         },
         "LeftSorrow": {
             "casual": [["Glide", "Bash"], ["Glide", "ChargeJump"]], 
@@ -3612,7 +3612,7 @@ connection_rules = {
     },
     "LeftSorrowMiddleDoorClosed": { 
         "LeftSorrowMiddleDoorOpen": {
-            "casual": [[("KeyStone", 36)]]
+            "casual": [[("KeyStone", 36)], [("SorrowKeyStone", 8)]]
         }
     },
     "LeftSorrowMiddleDoorOpen": { 
@@ -3685,7 +3685,7 @@ connection_rules = {
     },
     "ChargeJumpDoor": { 
         "ChargeJumpDoorOpen": {
-            "casual": [[("KeyStone", 40)]]
+            "casual": [[("KeyStone", 40)], [("SorrowKeyStone", 12)]]
         }
     },
     "ChargeJumpDoorOpen": { 
@@ -3910,7 +3910,7 @@ connection_rules = {
     },
     "MistyBeforeMiniBoss": { 
         "MistyOrbRoom": {
-            "casual": [[("KeyStone", 40)]]
+            "casual": [[("KeyStone", 40)], [("MistyKeyStone", 4)]]
         }
     },
     "MistyOrbRoom": { 

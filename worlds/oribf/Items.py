@@ -5,12 +5,10 @@ class OriBlindForestItem(Item):
     game: str = "Ori and the Blind Forest"
 
 
-item_dict = {
+base_items = {
     "AbilityCell": (ItemClassification.progression, 33),
     "HealthCell": (ItemClassification.progression, 12),
     "EnergyCell": (ItemClassification.progression, 14),
-    "KeyStone": (ItemClassification.progression, 40),
-    "MapStone": (ItemClassification.progression, 9),
 
     "GinsoKey": (ItemClassification.progression, 1),
     "ForlornKey": (ItemClassification.progression, 1),
@@ -44,4 +42,44 @@ item_dict = {
     "EX50": (ItemClassification.filler, 20),
     "EX100": (ItemClassification.filler, 53),
     "EX200": (ItemClassification.filler, 29),
+}
+
+keystone_items = {
+    "Anywhere" : {
+        "KeyStone": (ItemClassification.progression, 40)
+    },
+    "AreaSpecific" : {
+        "GladesKeyStone": (ItemClassification.progression, 8),
+        "GrottoKeyStone": (ItemClassification.progression, 2),
+        "GinsoKeyStone": (ItemClassification.progression, 8),
+        "SwampKeyStone": (ItemClassification.progression, 2),
+        "MistyKeyStone": (ItemClassification.progression, 4),
+        "ForlornKeyStone": (ItemClassification.progression, 4),
+        "SorrowKeyStone": (ItemClassification.progression, 12)
+    }
+}
+
+mapstone_items = {
+    "Anywhere" : {
+        "MapStone": (ItemClassification.progression, 9),
+    },
+    "AreaSpecific" : {
+        "GladesMapStone": (ItemClassification.progression, 1),
+        "GroveMapStone": (ItemClassification.progression, 1),
+        "GrottoMapStone": (ItemClassification.progression, 1),
+        "SwampMapStone": (ItemClassification.progression, 1),
+        "ValleyMapStone": (ItemClassification.progression, 1),
+        "ForlornMapStone": (ItemClassification.progression, 1),
+        "SorrowMapStone": (ItemClassification.progression, 1),
+        "HoruMapStone": (ItemClassification.progression, 1),
+        "BlackrootMapStone": (ItemClassification.progression, 1)
+    }
+}
+
+item_dict = {
+    **base_items,
+    **keystone_items["Anywhere"],
+    **keystone_items["AreaSpecific"],
+    **mapstone_items["Anywhere"],
+    **mapstone_items["AreaSpecific"]
 }
