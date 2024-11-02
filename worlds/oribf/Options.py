@@ -33,9 +33,20 @@ class MapstoneLogic(Choice):
     option_anywhere = 0
     option_area_specific = 1
 
+class DeathLinkLogic(Choice):
+    """Enable Death Link
+    Disabled: Death Link is disabled
+    Partial: Death Link is enabled, but will not send a death for any instant kill deaths.
+    Full: Death Link is enabled, and will send for every death"""
+    display_name = "Death Link"
+    option_disabled = 0
+    option_partial = 1
+    option_full = 2
+
 @dataclass
 class OriBlindForestOptions(PerGameCommonOptions):
     goal: Goal
     logic_difficulty: LogicDifficulty
     keystone_logic: KeystoneLogic
     mapstone_logic: MapstoneLogic
+    deathlink_logic: DeathLinkLogic

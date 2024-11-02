@@ -110,6 +110,7 @@ class OriBlindForestWorld(World):
             "goal": self.options.goal.value,
             "logic_difficulty": self.options.logic_difficulty.value,
             "keystone_logic": self.options.keystone_logic.value,
-            "mapstone_logic": self.options.mapstone_logic.value
+            "mapstone_logic": self.options.mapstone_logic.value,
+            "deathlink_logic": self.options.deathlink_logic.value
         }
         return slot_data
