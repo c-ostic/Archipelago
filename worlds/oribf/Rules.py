@@ -1,6 +1,7 @@
 from typing import Set
 
-from .RulesData import location_rules, connection_rules
+from .RulesData import location_rules
+from .RulesData import connection_rules
 from .Items import item_dict
 from .Locations import OriBlindForestLocation
 from BaseClasses import CollectionState, Location, Entrance
@@ -33,7 +34,7 @@ def apply_connection_rules(world: World):
             process_access_point(world, access_point, rulesets)
 
 
-def process_access_point(world: World, access_point: Location | Entrance, rulesets):
+def process_access_point(world: World, access_point: Location | Entrance, rulesets: dict[str, list[list[str | tuple[str, int]]]]):
     # preface with a false so all other rules can be combined with OR
     set_rule(access_point, lambda state: False)
 
@@ -43,19 +44,19 @@ def process_access_point(world: World, access_point: Location | Entrance, rulese
             process_ruleset(world, access_point, ruleset)
 
 
-def process_ruleset(world: World, access_point: Location | Entrance, ruleset: list):
+def process_ruleset(world: World, access_point: Location | Entrance, ruleset: list[list[str | tuple[str, int]]]):
     # for each access set in the ruleset, call process_access_set
     for access_set in ruleset:
         process_access_set(world, access_point, access_set)
 
-def process_access_set(world: World, access_point: Location | Entrance, access_set: list):
+def process_access_set(world: World, access_point: Location | Entrance, access_set: list[str | tuple[str, int]]):
     # add the rule for the access set list using oribf_has
     # this line needs to be in a separate function from the previous for loop in order to work properly 
     # (likely lambda function strangeness)
     add_rule(access_point, lambda state: all(oribf_has(world, state, item) for item in access_set), "or")
             
     
-def oribf_has(world: World, state: CollectionState, item) -> bool:
+def oribf_has(world: World, state: CollectionState, item: str | tuple[str, int]) -> bool:
     if type(item) == str:
         if item in item_dict.keys():
             # handles normal abilities like Dash, Climb, Wind, etc.

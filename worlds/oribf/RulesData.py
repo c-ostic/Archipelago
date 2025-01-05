@@ -1,7 +1,7 @@
 # Location and Connection rules copied (with some changes) from 
 # https://github.com/sparkle-preference/ori_rando_server/blob/master/seedbuilder/areas.ori
 
-location_rules = {
+location_rules: dict[str, dict[str, dict[str, list[list[str | tuple[str, int]]]]]] = {
     "TeleporterNetwork": {
     },
     "SunkenGladesRunaway": { 
@@ -1549,7 +1549,7 @@ location_rules = {
     }
 }
 
-connection_rules = {
+connection_rules: dict[str, dict[str, dict[str, list[list[str | tuple[str, int]]]]]] = {
     "TeleporterNetwork": { 
         "SunkenGladesRunaway": {
             "casual": [["TPGlades"]]
