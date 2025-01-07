@@ -1,9 +1,10 @@
-from typing import Set
+from typing import Set, cast
 
 from .RulesData import location_rules
 from .RulesData import connection_rules
 from .Items import item_dict
 from .Locations import OriBlindForestLocation
+from .Options import OriBlindForestOptions
 from BaseClasses import CollectionState, Location, Entrance
 from ..AutoWorld import World
 from ..generic.Rules import add_rule, set_rule
@@ -57,35 +58,47 @@ def process_access_set(world: World, access_point: Location | Entrance, access_s
             
     
 def oribf_has(world: World, state: CollectionState, item: str | tuple[str, int]) -> bool:
+    options: OriBlindForestOptions = cast(OriBlindForestOptions, world.options)
+
     if type(item) == str:
         if item in item_dict.keys():
             # handles normal abilities like Dash, Climb, Wind, etc.
             return state.has(item, world.player)
+        
         elif item == "Free":
             return True
+        
         elif item == "Lure":
-            return True
+            return options.enable_lure == True
+        
         elif item == "DoubleBash":
-            return state.has("Bash", world.player)
+            return options.enable_double_bash == True and state.has("Bash", world.player)
+        
         elif item == "GrenadeJump":
-            return state.has_all(["Climb", "ChargeJump", "Grenade"], world.player)
+            return options.enable_grenade_jump == True and state.has_all(["Climb", "ChargeJump", "Grenade"], world.player)
+        
         elif item == "ChargeFlameBurn":
-            # requires minimum number of ability cells to get the ChargeFlameBurn ability
-            return state.has("ChargeFlame", world.player) and state.has("AbilityCell", world.player, 3)
+            return options.enable_charge_flame_burn == True and \
+                state.has("ChargeFlame", world.player) and state.has("AbilityCell", world.player, 3)
+        
         elif item in ["ChargeDash", "RocketJump"]:
-            # requires minimum number of ability cells to get the ChargeDash ability
-            return state.has("Dash", world.player) and state.has("AbilityCell", world.player, 9)
-        elif item == "AirDash":
-            # requires minimum number of ability cells to get the AirDash ability
-            return state.has("Dash", world.player) and state.has("AbilityCell", world.player, 5)
+            return options.enable_charge_dash == True and \
+                state.has("Dash", world.player) and state.has("AbilityCell", world.player, 6)
+        
+        elif item == "AirDash": 
+            return options.enable_air_dash == True and \
+                state.has("Dash", world.player) and state.has("AbilityCell", world.player, 3)
+        
         elif item == "TripleJump":
-            # requires minimum number of ability cells to get the TripleJump ability
-            return state.has("DoubleJump", world.player) and state.has("AbilityCell", world.player, 16)
+            return options.enable_triple_jump == True and \
+                state.has("DoubleJump", world.player) and state.has("AbilityCell", world.player, 12)
+        
         elif item == "UltraDefense":
-            # requires minimum number of ability cells to get the UltraDefense ability
-            return state.has("AbilityCell", world.player, 19)
+            return options.enable_damage_boost == True and state.has("AbilityCell", world.player, 12)
+        
         elif item == "BashGrenade":
             return state.has_all(["Bash", "Grenade"], world.player)
+        
         elif item in ["Open", "OpenWorld"]:
             # open world not implemented yet
             return False
@@ -93,7 +106,9 @@ def oribf_has(world: World, state: CollectionState, item: str | tuple[str, int])
             return False
     else:
         # if item isnt a string its a tuple (check for number of health, keystones, etc.)
-        return state.has(item[0], world.player, int(item[1]))
+        # if item is a health cell, only add it if damage boost is enabled
+        if (item[0] == "HealthCell" and options.enable_damage_boost == True) or item[0] != "HealthCell":
+            return state.has(item[0], world.player, int(item[1]))
 
     return False
 

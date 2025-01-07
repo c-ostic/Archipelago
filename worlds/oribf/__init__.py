@@ -126,11 +126,9 @@ class OriBlindForestWorld(World):
         visualize_regions(self.multiworld.get_region("Menu", self.player), "oribf_world.puml")
 
     def fill_slot_data(self) -> Dict[str, Any]:
-        slot_data: Dict[str, Any] = {
-            "goal": self.options.goal.value,
-            "logic_difficulty": self.options.logic_difficulty.value,
-            "keystone_logic": self.options.keystone_logic.value,
-            "mapstone_logic": self.options.mapstone_logic.value,
-            "deathlink_logic": self.options.deathlink_logic.value
-        }
+        slot_data: Dict[str, Any] = {}
+
+        for option_name, option_value in self.options.as_dict():
+            slot_data[option_name] = option_value
+
         return slot_data
