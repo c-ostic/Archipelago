@@ -38,10 +38,12 @@ base_items = {
     "TPHoru": (ItemClassification.progression, 1),
     "TPBlackroot": (ItemClassification.progression, 1),
 
+    "WarmthFragment": (ItemClassification.progression, 0),
+
     "EX15": (ItemClassification.filler, 10),
     "EX50": (ItemClassification.filler, 20),
     "EX100": (ItemClassification.filler, 53),
-    "EX200": (ItemClassification.filler, 29),
+    "EX200": (ItemClassification.filler, 29)
 }
 
 keystone_items = {

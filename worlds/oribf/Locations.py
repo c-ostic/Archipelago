@@ -265,3 +265,15 @@ all_trees = [
     "StompSkillTree",
     "WallJumpSkillTree"
 ]
+
+all_maps = [
+    "GladesMap",
+    "BlackrootMap",
+    "HollowGroveMap",
+    "GumoHideoutMap",
+    "SwampMap",
+    "HoruMap",
+    "ValleyMap",
+    "ForlornMap",
+    "SorrowMap"
+]
