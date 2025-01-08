@@ -114,3 +114,7 @@ class OriBlindForestWorld(World):
             "deathlink_logic": self.options.deathlink_logic.value
         }
         return slot_data
+
+    def get_filler_item_name(self) -> str:
+        filler_list = [k for k, v in base_items.items() if v[0] == ItemClassification.filler]
+        return self.random.choice(filler_list)
