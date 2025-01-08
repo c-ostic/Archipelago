@@ -122,9 +122,6 @@ class OriBlindForestWorld(World):
             self.multiworld.completion_condition[self.player] = lambda state: \
                 state.can_reach_region("HoruEscapeInnerDoor", self.player)
 
-        from Utils import visualize_regions
-        visualize_regions(self.multiworld.get_region("Menu", self.player), "oribf_world.puml")
-
     def fill_slot_data(self) -> Dict[str, Any]:
         slot_data: Dict[str, Any] = {}
 
