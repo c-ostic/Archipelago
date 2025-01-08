@@ -99,7 +99,11 @@ def oribf_has(world: World, state: CollectionState, item: str | tuple[str, int])
         elif item == "BashGrenade":
             return state.has_all(["Bash", "Grenade"], world.player)
         
-        elif item in ["Open", "OpenWorld"]:
+        elif item == "Open":
+            # closed dungeons not implemented
+            return True
+
+        elif item == "OpenWorld":
             # open world not implemented yet
             return False
         else:
