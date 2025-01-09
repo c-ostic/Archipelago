@@ -3,10 +3,11 @@ from BaseClasses import ItemClassification, Region
 from worlds.AutoWorld import World
 
 from .Items import OriBlindForestItem, base_items, keystone_items, mapstone_items, item_dict
-from .Locations import location_list, all_trees, all_maps
+from .Locations import location_dict, tagged_locations_dict, area_tags
 from .Options import OriBlindForestOptions, LogicDifficulty, KeystoneLogic, MapstoneLogic, Goal
 from .Rules import apply_location_rules, apply_connection_rules
 from .Regions import region_list
+#from ..generic.Rules import add_item_rule
 
 
 class OriBlindForestWorld(World):
@@ -19,9 +20,11 @@ class OriBlindForestWorld(World):
     # TODO: Determine if this is a good number to use
     base_id = 262144
     item_name_to_id = {name: id for id, name in enumerate(item_dict, base_id)}
-    location_name_to_id = {name: id for id, name in enumerate(location_list, base_id)}
+    location_name_to_id = {name: id for id, name in enumerate(location_dict, base_id)}
 
     logic_sets = {}
+    world_tour_areas = []
+    world_tour_areas_unused = area_tags.copy()
 
     def generate_early(self):
         logic_sets = {"casual"} # always include at least casual
@@ -82,20 +85,36 @@ class OriBlindForestWorld(World):
             item_list = { **item_list, **mapstone_items["Anywhere"] }
 
         for item_key, item_value in item_list.items():
-            # override the item value for warmth fragments since it comes from options
+            # override the item values for counts that come from options
             if item_key == "WarmthFragment" and self.options.goal == Goal.option_warmth_fragments:
                 item_value = (item_value[0], self.options.warmth_fragments_available.value)
+            if item_key == "Relic" and self.options.goal == Goal.option_world_tour:
+                item_value = (item_value[0], self.options.relic_count.value)
 
             for count in range(item_value[1]):
                 item = self.create_item(item_key)
-                self.multiworld.itempool.append(item)
 
                 # place the first energy cell at its normal location so the player can save right away
                 if item_key == "EnergyCell" and not placed_first_energy_cell:
                     self.get_location("FirstEnergyCell").place_locked_item(item)
                     placed_first_energy_cell = True
-
                 
+                # place relics in a random location from a random area
+                # track which areas have been used in order to not have multiple relics in an area
+                elif item_key == "Relic":
+                    random_area: str = self.random.choice(self.world_tour_areas_unused)
+                    self.world_tour_areas_unused.remove(random_area)
+                    self.world_tour_areas.append(random_area)
+
+                    random_location: str = self.random.choice(tagged_locations_dict[random_area])
+                    # handle edge case that this location is picked (since this location is already locked above)
+                    while random_location == "FirstEnergyCell":
+                        random_location = self.random.choice(tagged_locations_dict[random_area])
+                    self.get_location(random_location).place_locked_item(item)
+
+                # otherwise add the item normally
+                else:
+                    self.multiworld.itempool.append(item)
 
     def create_event(self, event: str) -> OriBlindForestItem:
         return OriBlindForestItem(event, ItemClassification.progression, None, self.player)
@@ -107,26 +126,35 @@ class OriBlindForestWorld(World):
         if self.options.goal == Goal.option_all_skill_trees:
             self.multiworld.completion_condition[self.player] = lambda state: \
                 state.can_reach_region("HoruEscapeInnerDoor", self.player) and \
-                all(state.can_reach_location(skill_tree, self.player) for skill_tree in all_trees)
+                all(state.can_reach_location(skill_tree, self.player) for skill_tree in tagged_locations_dict["Skill"])
         elif self.options.goal == Goal.option_all_maps:
             self.multiworld.completion_condition[self.player] = lambda state: \
                 state.can_reach_region("HoruEscapeInnerDoor", self.player) and \
-                all(state.can_reach_location(area_map, self.player) for area_map in all_maps)
+                all(state.can_reach_location(area_map, self.player) for area_map in tagged_locations_dict["Map"])
         elif self.options.goal == Goal.option_warmth_fragments:
             # in case the required value is larger than the available, make the actual amount required equal to the available
             fragments_required: int = min(self.options.warmth_fragments_available.value, self.options.warmth_fragments_required.value)
             self.multiworld.completion_condition[self.player] = lambda state: \
                 state.can_reach_region("HoruEscapeInnerDoor", self.player) and \
                 state.has("WarmthFragment", self.player, fragments_required)
-        elif self.options.goal == Goal.option_none:
+        elif self.options.goal == Goal.option_world_tour:
+            self.multiworld.completion_condition[self.player] = lambda state: \
+                state.can_reach_region("HoruEscapeInnerDoor", self.player) and \
+                state.has("Relic", self.player, self.options.relic_count.value)
+        else: # self.options.goal == Goal.option_none
             self.multiworld.completion_condition[self.player] = lambda state: \
                 state.can_reach_region("HoruEscapeInnerDoor", self.player)
+            
+        #add_item_rule(self.get_location(""), lambda item: item.player == self.player)
 
     def fill_slot_data(self) -> Dict[str, Any]:
         slot_data: Dict[str, Any] = {}
 
         for option_name, option_value in self.options.as_dict():
             slot_data[option_name] = option_value
+
+        slot_data["world_tour_areas"] = self.world_tour_areas
+        print(self.world_tour_areas)
 
         return slot_data
 

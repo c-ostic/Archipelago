@@ -13,20 +13,27 @@ class Goal(Choice):
     option_all_skill_trees = 0
     option_all_maps = 1
     option_warmth_fragments = 2
-    option_none = 3
+    option_world_tour = 3
+    option_none = 4
     default = 0
 
 class WarmthFragmentsAvailable(Range):
     display_name = "Warmth Fragments Available"
     range_start = 0
     range_end = 50
-    default = 0
+    default = 30
 
 class WarmthFragmentsRequired(Range):
     display_name = "Warmth Fragments Required"
     range_start = 0
     range_end = 50
-    default = 0
+    default = 20
+
+class RelicCount(Range):
+    display_name = "Relic Count"
+    range_start = 0
+    range_end = 11
+    default = 8
 
 class LogicDifficulty(Choice):
     """Sets the difficulty of the logic"""
@@ -118,6 +125,7 @@ class OriBlindForestOptions(PerGameCommonOptions):
     goal: Goal
     warmth_fragments_available: WarmthFragmentsAvailable
     warmth_fragments_required: WarmthFragmentsRequired
+    relic_count: RelicCount
     logic_difficulty: LogicDifficulty
     keystone_logic: KeystoneLogic
     mapstone_logic: MapstoneLogic
