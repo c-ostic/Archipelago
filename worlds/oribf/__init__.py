@@ -90,6 +90,8 @@ class OriBlindForestWorld(World):
                 item_value = (item_value[0], self.options.warmth_fragments_available.value)
             if item_key == "Relic" and self.options.goal == Goal.option_world_tour:
                 item_value = (item_value[0], self.options.relic_count.value)
+            if item_key == "MapStone":
+                item_value = (item_value[0], item_value[1] + self.options.extra_mapstones.value)
 
             for count in range(item_value[1]):
                 item = self.create_item(item_key)

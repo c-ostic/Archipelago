@@ -67,6 +67,13 @@ class MapstoneLogic(Choice):
     option_area_specific = 1
     default = 0
 
+class ExtraMapstones(Range):
+    """Adds extra mapstones to the pool to make it easier to get the 9 required. Only affects anywhere mapstone logic"""
+    display_name = "Extra Mapstones"
+    range_start = 0
+    range_end = 9
+    default = 0
+
 class DeathLinkLogic(Choice):
     """Enable Death Link
     Disabled: Death Link is disabled
@@ -133,6 +140,7 @@ class OriBlindForestOptions(PerGameCommonOptions):
     logic_difficulty: LogicDifficulty
     keystone_logic: KeystoneLogic
     mapstone_logic: MapstoneLogic
+    extra_mapstones: ExtraMapstones
     deathlink_logic: DeathLinkLogic
     enable_lure: EnableLure
     enable_damage_boost: EnableDamageBoost
