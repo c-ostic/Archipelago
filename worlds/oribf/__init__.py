@@ -2,7 +2,7 @@ from typing import Dict, Any
 from BaseClasses import ItemClassification, Region
 from worlds.AutoWorld import World
 
-from .Items import OriBlindForestItem, base_items, keystone_items, mapstone_items, item_dict
+from .Items import OriBlindForestItem, base_items, keystone_items, mapstone_items, item_dict, item_alias_list
 from .Locations import location_dict, tagged_locations_dict, area_tags
 from .Options import OriBlindForestOptions, LogicDifficulty, KeystoneLogic, MapstoneLogic, Goal
 from .Rules import apply_location_rules, apply_connection_rules
@@ -21,6 +21,7 @@ class OriBlindForestWorld(World):
     base_id = 262144
     item_name_to_id = {name: id for id, name in enumerate(item_dict, base_id)}
     location_name_to_id = {name: id for id, name in enumerate(location_dict, base_id)}
+    item_name_groups = item_alias_list
 
     logic_sets = {}
     world_tour_areas = []

@@ -86,3 +86,11 @@ item_dict = {
     **mapstone_items["Anywhere"],
     **mapstone_items["AreaSpecific"]
 }
+
+item_alias_list = {
+    "KurosFeather": {"Glide"},
+    "LightBurst": {"Grenade"},
+    "WaterVein": {"GinsoKey"},
+    "GumonSeal": {"ForlornKey"},
+    "Sunstone": {"HoruKey"}
+}
