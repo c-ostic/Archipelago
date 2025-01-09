@@ -7,7 +7,7 @@ from .Locations import location_dict, tagged_locations_dict, area_tags
 from .Options import OriBlindForestOptions, LogicDifficulty, KeystoneLogic, MapstoneLogic, Goal
 from .Rules import apply_location_rules, apply_connection_rules
 from .Regions import region_list
-#from ..generic.Rules import add_item_rule
+from ..generic.Rules import add_item_rule
 
 
 class OriBlindForestWorld(World):
@@ -129,25 +129,33 @@ class OriBlindForestWorld(World):
             self.multiworld.completion_condition[self.player] = lambda state: \
                 state.can_reach_region("HoruEscapeInnerDoor", self.player) and \
                 all(state.can_reach_location(skill_tree, self.player) for skill_tree in tagged_locations_dict["Skill"])
+            if self.options.local_goal_locations == True:
+                for skill_tree in tagged_locations_dict["Skill"]:
+                    add_item_rule(self.get_location(skill_tree), lambda item: item.player == self.player)
+            
         elif self.options.goal == Goal.option_all_maps:
             self.multiworld.completion_condition[self.player] = lambda state: \
                 state.can_reach_region("HoruEscapeInnerDoor", self.player) and \
                 all(state.can_reach_location(area_map, self.player) for area_map in tagged_locations_dict["Map"])
+            if self.options.local_goal_locations == True:
+                for area_map in tagged_locations_dict["Map"]:
+                    add_item_rule(self.get_location(area_map), lambda item: item.player == self.player)
+            
         elif self.options.goal == Goal.option_warmth_fragments:
             # in case the required value is larger than the available, make the actual amount required equal to the available
             fragments_required: int = min(self.options.warmth_fragments_available.value, self.options.warmth_fragments_required.value)
             self.multiworld.completion_condition[self.player] = lambda state: \
                 state.can_reach_region("HoruEscapeInnerDoor", self.player) and \
                 state.has("WarmthFragment", self.player, fragments_required)
+            
         elif self.options.goal == Goal.option_world_tour:
             self.multiworld.completion_condition[self.player] = lambda state: \
                 state.can_reach_region("HoruEscapeInnerDoor", self.player) and \
                 state.has("Relic", self.player, self.options.relic_count.value)
+            
         else: # self.options.goal == Goal.option_none
             self.multiworld.completion_condition[self.player] = lambda state: \
                 state.can_reach_region("HoruEscapeInnerDoor", self.player)
-            
-        #add_item_rule(self.get_location(""), lambda item: item.player == self.player)
 
     def fill_slot_data(self) -> Dict[str, Any]:
         slot_data: Dict[str, Any] = {}
