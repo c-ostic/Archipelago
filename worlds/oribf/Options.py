@@ -7,6 +7,7 @@ class Goal(Choice):
     All Skill Trees: Find all 9 skill trees (excluding Kuro's feather)
     All Maps: Place all 9 mapstones around the map
     Warmth Fragments: Collect the required number of Warmth Fragments
+    World Tour: Collect the required number of Relics. Up to 11 areas (default 8) around Nibel will be chosen to contain a relic in a random location
     None: No extra conditions, just reach and finish the final escape
     """
     display_name = "Goal"
@@ -18,20 +19,23 @@ class Goal(Choice):
     default = 0
 
 class WarmthFragmentsAvailable(Range):
+    """The number of Warmth Fragments that exist"""
     display_name = "Warmth Fragments Available"
-    range_start = 0
+    range_start = 1
     range_end = 50
     default = 30
 
 class WarmthFragmentsRequired(Range):
+    """The number of Warmth Fragments needed for the goal"""
     display_name = "Warmth Fragments Required"
-    range_start = 0
+    range_start = 1
     range_end = 50
     default = 20
 
 class RelicCount(Range):
+    """The number of areas chosen to contain Relics"""
     display_name = "Relic Count"
-    range_start = 0
+    range_start = 1
     range_end = 11
     default = 8
 
