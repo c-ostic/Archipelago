@@ -2,10 +2,10 @@ from typing import Set, cast
 
 from .RulesData import location_rules
 from .RulesData import connection_rules
-from .Items import item_dict
-from .Locations import OriBlindForestLocation
-from .Options import OriBlindForestOptions
-from BaseClasses import CollectionState, Location, Entrance
+from .Items import OriBlindForestItem, item_dict
+from .Locations import OriBlindForestLocation, tagged_locations_dict, event_location_list
+from .Options import OriBlindForestOptions, MapstoneLogic
+from BaseClasses import CollectionState, Location, Entrance, ItemClassification, Region
 from ..AutoWorld import World
 from ..generic.Rules import add_rule, set_rule
 
@@ -15,10 +15,27 @@ def apply_location_rules(world: World):
     # create a location and call process_access_point
     for region_name, locations in location_rules.items():
         region = world.get_region(region_name)
-        region.add_locations({location: world.location_name_to_id[location] for location in locations}, OriBlindForestLocation)
+        valid_location_ids: dict[str, int | None] = get_location_ids(world, list(locations.keys()))
+        region.add_locations(valid_location_ids, OriBlindForestLocation)
 
         for location, rulesets in locations.items():
-            process_access_point(world, world.get_location(location), rulesets)
+            if location in valid_location_ids.keys():
+                process_access_point(world, world.get_location(location), rulesets)
+
+
+def get_location_ids(world: World, locations: list[str]) -> dict[str, int | None]:
+    # get the ids for each location in the list as long as they aren't excluded
+    # if the location is an event, create it with a None id
+    # otherwise add its id from the name_to_id list
+    ids: dict[str, int | None] = {}
+    for location in locations:
+        if location not in world.location_exclusion_list:
+            if location in event_location_list:
+                ids[location] = None
+            else:
+                ids[location] = world.location_name_to_id[location]
+
+    return ids
 
 
 def apply_connection_rules(world: World):
@@ -117,9 +134,34 @@ def oribf_has(world: World, state: CollectionState, item: str | tuple[str, int])
     return False
 
 
-    
-
-
 def oribf_has_all(state: CollectionState, items: Set[str], player: int) -> bool:
     return all(state.has(item, player) if type(item) == str else state.has(item[0], player, int(item[1]))
                for item in items)
+
+
+def create_progressive_maps(world: World):
+    # place the locked items in the events that were created before
+    for event in event_location_list:
+        world.get_location(event).place_locked_item(OriBlindForestItem(event, ItemClassification.progression, None, world.player))
+
+    # create the progressive map locations
+    menu_region: Region = world.get_region("Menu")
+    menu_region.add_locations({location: world.location_name_to_id[location] for location in tagged_locations_dict["ProgressiveMap"]}, \
+                               OriBlindForestLocation)
+
+    for location_name in tagged_locations_dict["ProgressiveMap"]:
+        location: Location = world.get_location(location_name)
+        amount: int = int(location_name[-1])
+        set_progressive_mapstone_rule(world, location, amount)
+
+def set_progressive_mapstone_rule(world: World, location: Location, amount: int):
+    set_rule(location, lambda state: (at_least([state.can_reach_location(map_event, world.player) \
+                                               for map_event in event_location_list], amount=amount)) and \
+                                      state.has("MapStone", world.player, count=amount))
+
+def at_least(conditions: list[bool], amount: int) -> bool:
+    count: int = 0
+    for flag in conditions:
+        if flag:
+            count += 1
+    return count >= amount                                 

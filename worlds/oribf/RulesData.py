@@ -59,6 +59,9 @@ location_rules: dict[str, dict[str, dict[str, list[list[str | tuple[str, int]]]]
         },
         "GladesMap": {
             "casual": [[("MapStone", 9)], [("GladesMapStone", 1)]]
+        },
+        "GladesMapEvent": {
+            "casual": [["Free"]]
         }
     },
     "GladesMainAttic": { 
@@ -309,6 +312,11 @@ location_rules: dict[str, dict[str, dict[str, list[list[str | tuple[str, int]]]]
             "casual": [[("MapStone", 9), "WallJump"], [("MapStone", 9), "Climb", "DoubleJump"], [("MapStone", 9), "Bash", "Grenade"], [("MapStone", 9), "ChargeJump"], [("BlackrootMapStone", 1), "WallJump"], [("BlackrootMapStone", 1), "Climb", "DoubleJump"], [("BlackrootMapStone", 1), "Bash", "Grenade"], [("BlackrootMapStone", 1), "ChargeJump"]], 
             "standard": [[("MapStone", 9), "Climb", "AirDash"], [("BlackrootMapStone", 1), "Climb", "AirDash"]], 
             "expert": [[("MapStone", 9), "Climb"], [("BlackrootMapStone", 1), "Climb"]]
+        },
+        "BlackrootMapEvent": {
+            "casual": [["WallJump"], ["Climb", "DoubleJump"], ["Bash", "Grenade"], ["ChargeJump"]], 
+            "standard": [["Climb", "AirDash"]], 
+            "expert": [["Climb"]]
         }
     },
     "GrenadeAreaAccess": {
@@ -403,6 +411,9 @@ location_rules: dict[str, dict[str, dict[str, list[list[str | tuple[str, int]]]]
         },
         "HollowGroveMap": {
             "casual": [[("MapStone", 9)], [("GroveMapStone", 1)]]
+        },
+        "HollowGroveMapEvent": {
+            "casual": [["Free"]]
         },
         "HollowGroveMapPlant": {
             "casual": [["ChargeFlame"], ["Grenade"]], 
@@ -663,6 +674,9 @@ location_rules: dict[str, dict[str, dict[str, list[list[str | tuple[str, int]]]]
         "GumoHideoutMap": {
             "casual": [[("MapStone", 9)], [("GrottoMapStone", 1)]]
         },
+        "GumoHideoutMapEvent": {
+            "casual": [["Free"]]
+        },
         "GumoHideoutMapstone": {
             "casual": [["WallJump"], ["DoubleJump"], ["Climb", "ChargeJump"], ["Climb", "Bash", "Grenade"], ["Glide"]], 
             "standard": [["Bash", "Grenade"], ["Climb"], ["ChargeJump", ("HealthCell", 4)], ["AirDash"]]
@@ -783,6 +797,9 @@ location_rules: dict[str, dict[str, dict[str, list[list[str | tuple[str, int]]]]
     "Swamp": { 
         "SwampMap": {
             "casual": [[("MapStone", 9)], [("SwampMapStone", 1)]]
+        },
+        "SwampMapEvent": {
+            "casual": [["Free"]]
         },
         "InnerSwampDrainExp": {
             "casual": [["CleanWater", "Climb", "ChargeJump"], ["CleanWater", "WallJump", "DoubleJump"], ["CleanWater", "Climb", "DoubleJump"], ["CleanWater", "WallJump", "Bash", "Grenade"], ["CleanWater", "Climb", "Bash", "Grenade"], ["CleanWater", "Glide", "Bash", "Grenade"], ["CleanWater", "DoubleJump", "Bash", "Grenade"], ["CleanWater", "DoubleJump", "Glide", "ChargeJump"], ["CleanWater", "WallJump", "Glide", "Stomp", "ChargeFlame"], ["CleanWater", "WallJump", "Glide", "Stomp", "Grenade"], ["CleanWater", "Climb", "Dash", "Glide"]], 
@@ -914,6 +931,9 @@ location_rules: dict[str, dict[str, dict[str, list[list[str | tuple[str, int]]]]
     "HoruMapLedge": { 
         "HoruMap": {
             "casual": [[("MapStone", 9)], [("HoruMapStone", 1)]]
+        },
+        "HoruMapEvent": {
+            "casual": [["Free"]]
         }
     },
     "L1OuterEntrance": {
@@ -1188,6 +1208,10 @@ location_rules: dict[str, dict[str, dict[str, list[list[str | tuple[str, int]]]]
         "ValleyMap": {
             "casual": [["Bash", ("MapStone", 9)], ["Bash", ("ValleyMapStone", 1)]], 
             "expert": [["ChargeFlame", "ChargeJump", ("MapStone", 9)], ["ChargeFlame", "DoubleJump", ("MapStone", 9)], ["Grenade", "ChargeJump", ("MapStone", 9)], ["Grenade", "DoubleJump", ("MapStone", 9)], ["ChargeFlame", "AirDash", ("MapStone", 9)], ["Grenade", "AirDash", ("MapStone", 9)], ["ChargeFlame", "ChargeJump", ("ValleyMapStone", 1)], ["ChargeFlame", "DoubleJump", ("ValleyMapStone", 1)], ["Grenade", "ChargeJump", ("ValleyMapStone", 1)], ["Grenade", "DoubleJump", ("ValleyMapStone", 1)], ["ChargeFlame", "AirDash", ("ValleyMapStone", 1)], ["Grenade", "AirDash", ("ValleyMapStone", 1)]]
+        },
+        "ValleyMapEvent": {
+            "casual": [["Bash"]], 
+            "expert": [["ChargeFlame", "ChargeJump"], ["ChargeFlame", "DoubleJump"], ["Grenade", "ChargeJump"], ["Grenade", "DoubleJump"], ["ChargeFlame", "AirDash"], ["Grenade", "AirDash"]]
         }
     },
     "OutsideForlornCliff": { 
@@ -1237,6 +1261,9 @@ location_rules: dict[str, dict[str, dict[str, list[list[str | tuple[str, int]]]]
     "ForlornMapArea": { 
         "ForlornMap": {
             "casual": [[("MapStone", 9)], [("ForlornMapStone", 1)]]
+        },
+        "ForlornMapEvent": {
+            "casual": [["Free"]]
         },
         "ForlornKeystone4": {
             "casual": [["ChargeJump", "WallJump"], ["ChargeJump", "Climb"], ["Bash", "Grenade", "WallJump"], ["Bash", "Grenade", "Climb"]], 
@@ -1330,6 +1357,10 @@ location_rules: dict[str, dict[str, dict[str, list[list[str | tuple[str, int]]]]
         "SorrowMap": {
             "casual": [["Stomp", ("MapStone", 9)], ["Bash", ("MapStone", 9)], ["Stomp", ("SorrowMapStone", 1)], ["Bash", ("SorrowMapStone", 1)]], 
             "standard": [["Lure", ("MapStone", 9)], ["Lure", ("SorrowMapStone", 1)]]
+        },
+        "SorrowMapEvent": {
+            "casual": [["Stomp"], ["Bash"]], 
+            "standard": [["Lure"]]
         }
     },
     "SorrowMapstoneWarp": { 

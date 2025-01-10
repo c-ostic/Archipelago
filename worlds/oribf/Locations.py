@@ -259,8 +259,31 @@ location_dict: dict[str, list[str]] = {
 	"MistyGrenade": ["ExpLarge", "Misty"],
 	"MistyKeystone2": ["Keystone", "Misty"],
 	"MistyAbilityCell": ["AbilityCell", "Misty"],
-	"GumonSeal": ["Event", "Misty"]
+	"GumonSeal": ["Event", "Misty"],
+    
+	"ProgressiveMap1": ["ProgressiveMap"],
+    "ProgressiveMap2": ["ProgressiveMap"],
+    "ProgressiveMap3": ["ProgressiveMap"],
+    "ProgressiveMap4": ["ProgressiveMap"],
+    "ProgressiveMap5": ["ProgressiveMap"],
+    "ProgressiveMap6": ["ProgressiveMap"],
+    "ProgressiveMap7": ["ProgressiveMap"],
+    "ProgressiveMap8": ["ProgressiveMap"],
+    "ProgressiveMap9": ["ProgressiveMap"]
 }
+
+# these are in a separate list because they don't need ids
+event_location_list = [
+    "GladesMapEvent",
+    "BlackrootMapEvent",
+    "HollowGroveMapEvent",
+    "GumoHideoutMapEvent",
+    "SwampMapEvent",
+    "HoruMapEvent",
+    "ValleyMapEvent",
+    "ForlornMapEvent",
+    "SorrowMapEvent"
+]
 
 area_tags = [
     "Blackroot",

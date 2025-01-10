@@ -67,14 +67,17 @@ class KeystoneLogic(Choice):
 class MapstoneLogic(Choice):
     """Choose how mapstones can be used.
     Anywhere: All mapstones can be used anywhere.
-    Area Specific: Mapstones are restricted to be used only in their given area."""
+    Area Specific: Mapstones are restricted to be used only in their given area.
+    Progressive: Similar to anywhere, but it doesn't matter where the mapstone is used.
+        The first mapstone used will always send ProgressiveMapstone1 and the last will send ProgressiveMapstone9"""
     display_name = "Mapstone Logic"
     option_anywhere = 0
     option_area_specific = 1
+    option_progressive = 2
     default = 0
 
 class ExtraMapstones(Range):
-    """Adds extra mapstones to the pool to make it easier to get the 9 required. Only affects anywhere mapstone logic"""
+    """Adds extra mapstones to the pool to make it easier to get the 9 required. Affects anywhere and progressive mapstone logic"""
     display_name = "Extra Mapstones"
     range_start = 0
     range_end = 9

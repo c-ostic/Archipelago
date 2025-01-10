@@ -3,9 +3,9 @@ from BaseClasses import ItemClassification, Region
 from worlds.AutoWorld import World
 
 from .Items import OriBlindForestItem, base_items, keystone_items, mapstone_items, item_dict, item_alias_list
-from .Locations import location_dict, tagged_locations_dict, area_tags
+from .Locations import location_dict, tagged_locations_dict, area_tags, event_location_list
 from .Options import OriBlindForestOptions, LogicDifficulty, KeystoneLogic, MapstoneLogic, Goal
-from .Rules import apply_location_rules, apply_connection_rules
+from .Rules import apply_location_rules, apply_connection_rules, create_progressive_maps
 from .Regions import region_list
 from ..generic.Rules import add_item_rule
 
@@ -23,9 +23,10 @@ class OriBlindForestWorld(World):
     location_name_to_id = {name: id for id, name in enumerate(location_dict, base_id)}
     item_name_groups = item_alias_list
 
-    logic_sets = {}
-    world_tour_areas = []
-    world_tour_areas_unused = area_tags.copy()
+    logic_sets: set[str] = set()
+    location_exclusion_list: list[str] = []
+    world_tour_areas: list[str] = []
+    world_tour_areas_unused: list[str] = area_tags.copy()
 
     def generate_early(self):
         logic_sets = {"casual"} # always include at least casual
@@ -49,6 +50,11 @@ class OriBlindForestWorld(World):
 
         self.logic_sets = logic_sets
 
+        if self.options.mapstone_logic == MapstoneLogic.option_progressive:
+            self.location_exclusion_list.extend(tagged_locations_dict["Map"])
+        else:
+            self.location_exclusion_list.extend(event_location_list)
+
     def create_region(self, name: str):
         return Region(name, self.player, self.multiworld)
 
@@ -66,6 +72,9 @@ class OriBlindForestWorld(World):
 
         apply_connection_rules(self)
         apply_location_rules(self)
+
+        if self.options.mapstone_logic == MapstoneLogic.option_progressive:
+            create_progressive_maps(self)
 
     def create_item(self, name: str) -> OriBlindForestItem:
         return OriBlindForestItem(name, item_dict[name][0], self.item_name_to_id[name], self.player)
@@ -135,11 +144,17 @@ class OriBlindForestWorld(World):
                     add_item_rule(self.get_location(skill_tree), lambda item: item.player == self.player)
             
         elif self.options.goal == Goal.option_all_maps:
+            location_tag: str = ""
+            if self.options.mapstone_logic == MapstoneLogic.option_progressive:
+                location_tag = "ProgressiveMap"
+            else:
+                location_tag = "Map"
+
             self.multiworld.completion_condition[self.player] = lambda state: \
                 state.can_reach_region("HoruEscapeInnerDoor", self.player) and \
-                all(state.can_reach_location(area_map, self.player) for area_map in tagged_locations_dict["Map"])
+                all(state.can_reach_location(area_map, self.player) for area_map in tagged_locations_dict[location_tag])
             if self.options.local_goal_locations == True:
-                for area_map in tagged_locations_dict["Map"]:
+                for area_map in tagged_locations_dict[location_tag]:
                     add_item_rule(self.get_location(area_map), lambda item: item.player == self.player)
             
         elif self.options.goal == Goal.option_warmth_fragments:
@@ -165,7 +180,6 @@ class OriBlindForestWorld(World):
             slot_data[option_name] = option_value
 
         slot_data["world_tour_areas"] = self.world_tour_areas
-        print(self.world_tour_areas)
 
         return slot_data
 
