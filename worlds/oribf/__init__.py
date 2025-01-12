@@ -4,7 +4,7 @@ from worlds.AutoWorld import World
 
 from .Items import OriBlindForestItem, base_items, keystone_items, mapstone_items, item_dict, item_alias_list
 from .Locations import location_dict, tagged_locations_dict, area_tags, event_location_list
-from .Options import OriBlindForestOptions, LogicDifficulty, KeystoneLogic, MapstoneLogic, Goal
+from .Options import OriBlindForestOptions, LogicDifficulty, KeystoneLogic, MapstoneLogic, Goal, slot_data_options
 from .Rules import apply_location_rules, apply_connection_rules, create_progressive_maps
 from .Regions import region_list
 from ..generic.Rules import add_item_rule
@@ -176,7 +176,7 @@ class OriBlindForestWorld(World):
     def fill_slot_data(self) -> Dict[str, Any]:
         slot_data: Dict[str, Any] = {}
 
-        for option_name, option_value in self.options.as_dict():
+        for option_name, option_value in self.options.as_dict(*slot_data_options).items():
             slot_data[option_name] = option_value
 
         slot_data["world_tour_areas"] = self.world_tour_areas

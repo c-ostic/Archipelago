@@ -160,3 +160,22 @@ class OriBlindForestOptions(PerGameCommonOptions):
     enable_charge_dash: EnableChargeDash
     enable_triple_jump: EnableTripleJump
     enable_charge_flame_burn: EnableChargeFlameBurn
+
+slot_data_options: list[str] = [
+    "goal",
+    "warmth_fragments_available",
+    "warmth_fragments_required",
+    "relic_count",
+    "logic_difficulty",
+    "keystone_logic",
+    "mapstone_logic",
+    "deathlink_logic",
+    "enable_lure",
+    "enable_damage_boost",
+    "enable_double_bash",
+    "enable_grenade_jump",
+    "enable_air_dash",
+    "enable_charge_dash",
+    "enable_triple_jump",
+    "enable_charge_flame_burn"
+]
