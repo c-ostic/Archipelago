@@ -18,12 +18,6 @@ class Goal(Choice):
     option_none = 4
     default = 0
 
-class LocalGoalLocations(Toggle):
-    """When using all skill trees or all maps goal mode, force their respective locations to have local items.
-    This prevents these locations from being checked if other worlds use !collect"""
-    display_name = "Local Goal Locations"
-    default = 1
-
 class WarmthFragmentsAvailable(Range):
     """The number of Warmth Fragments that exist"""
     display_name = "Warmth Fragments Available"
@@ -143,7 +137,6 @@ class EnableChargeFlameBurn(Toggle):
 @dataclass
 class OriBlindForestOptions(PerGameCommonOptions):
     goal: Goal
-    local_goal_locations: LocalGoalLocations
     warmth_fragments_available: WarmthFragmentsAvailable
     warmth_fragments_required: WarmthFragmentsRequired
     relic_count: RelicCount

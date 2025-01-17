@@ -135,9 +135,6 @@ class OriBlindForestWorld(World):
             self.multiworld.completion_condition[self.player] = lambda state: \
                 state.can_reach_region("HoruEscapeInnerDoor", self.player) and \
                 all(state.can_reach_location(skill_tree, self.player) for skill_tree in tagged_locations_dict["Skill"])
-            if self.options.local_goal_locations == True:
-                for skill_tree in tagged_locations_dict["Skill"]:
-                    add_item_rule(self.get_location(skill_tree), lambda item: item.player == self.player)
             
         elif self.options.goal == Goal.option_all_maps:
             location_tag: str = ""
@@ -149,9 +146,6 @@ class OriBlindForestWorld(World):
             self.multiworld.completion_condition[self.player] = lambda state: \
                 state.can_reach_region("HoruEscapeInnerDoor", self.player) and \
                 all(state.can_reach_location(area_map, self.player) for area_map in tagged_locations_dict[location_tag])
-            if self.options.local_goal_locations == True:
-                for area_map in tagged_locations_dict[location_tag]:
-                    add_item_rule(self.get_location(area_map), lambda item: item.player == self.player)
             
         elif self.options.goal == Goal.option_warmth_fragments:
             # in case the required value is larger than the available, make the actual amount required equal to the available
