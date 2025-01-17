@@ -23,32 +23,28 @@ class OriBlindForestWorld(World):
     location_name_to_id = {name: id for id, name in enumerate(location_dict, base_id)}
     item_name_groups = item_alias_list
 
-    logic_sets: set[str] = set()
-    location_exclusion_list: list[str] = []
-    world_tour_areas: list[str] = []
-    world_tour_areas_unused: list[str] = area_tags.copy()
-
     def generate_early(self):
-        logic_sets = {"casual"} # always include at least casual
+        self.logic_sets: set[str] = {"casual"} # always include at least casual
+        self.location_exclusion_list: list[str] = []
+        self.world_tour_areas: list[str] = []
+        self.world_tour_areas_unused: list[str] = area_tags.copy()
 
         if self.options.logic_difficulty == LogicDifficulty.option_glitched:
-            logic_sets.add("glitched")
-            logic_sets.add("expert")
-            logic_sets.add("standard")
+            self.logic_sets.add("glitched")
+            self.logic_sets.add("expert")
+            self.logic_sets.add("standard")
         
         if self.options.logic_difficulty == LogicDifficulty.option_master:
-            logic_sets.add("master")
-            logic_sets.add("expert")
-            logic_sets.add("standard")
+            self.logic_sets.add("master")
+            self.logic_sets.add("expert")
+            self.logic_sets.add("standard")
 
         if self.options.logic_difficulty == LogicDifficulty.option_expert:
-            logic_sets.add("expert")
-            logic_sets.add("standard")
+            self.logic_sets.add("expert")
+            self.logic_sets.add("standard")
 
         if self.options.logic_difficulty == LogicDifficulty.option_standard:
-            logic_sets.add("standard")
-
-        self.logic_sets = logic_sets
+            self.logic_sets.add("standard")
 
         if self.options.mapstone_logic == MapstoneLogic.option_progressive:
             self.location_exclusion_list.extend(tagged_locations_dict["Map"])
@@ -119,8 +115,8 @@ class OriBlindForestWorld(World):
                     self.world_tour_areas.append(random_area)
 
                     random_location: str = self.random.choice(tagged_locations_dict[random_area])
-                    # handle edge case that this location is picked (since this location is already locked above)
-                    while random_location == "FirstEnergyCell":
+                    # the random location can't be an excluded location or "FirstEnergyCell" (since this was locked above)
+                    while random_location in self.location_exclusion_list or random_location == "FirstEnergyCell":
                         random_location = self.random.choice(tagged_locations_dict[random_area])
                     self.get_location(random_location).place_locked_item(item)
 
