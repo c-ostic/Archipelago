@@ -4,7 +4,7 @@ from Options import Toggle, Choice, Range, PerGameCommonOptions
 
 class Goal(Choice):
     """Choose the end goal. All goals determine what unlocks the final Horu escape sequence
-    All Skill Trees: Find all 9 skill trees (excluding Kuro's feather)
+    All Skill Trees: Find all 10 skill trees (including Kuro's feather)
     All Maps: Place all 9 mapstones around the map
     Warmth Fragments: Collect the required number of Warmth Fragments
     World Tour: Collect the required number of Relics. Up to 11 areas (default 8) around Nibel will be chosen to contain a relic in a random location
