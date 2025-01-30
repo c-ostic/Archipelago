@@ -1993,7 +1993,9 @@ connection_rules: dict[str, dict[str, dict[str, list[list[str | tuple[str, int]]
         },
         "RazielNoArea": {
             "casual": [["Dash", "WallJump"], ["Dash", "ChargeJump"], ["Dash", "Bash", "Grenade"], ["Dash", "Climb", "DoubleJump"]], 
-            "standard": [["Bash", "Grenade"], ["Climb", "AirDash"]]
+            "standard": [["Bash", "Grenade"], ["WallJump", "Rekindle"], ["ChargeJump", "Rekindle"], ["Climb", "DoubleJump", "Rekindle"], ["Climb", "AirDash"]], 
+            "expert": [["Climb", "Rekindle"]], 
+            "master": [["DoubleJump", "Rekindle"]]
         }
     },
     "DashAreaMapstoneAccess": {

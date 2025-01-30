@@ -22,6 +22,7 @@ class OriBlindForestWorld(World):
     item_name_to_id = {name: id for id, name in enumerate(item_dict, base_id)}
     location_name_to_id = {name: id for id, name in enumerate(location_dict, base_id)}
     item_name_groups = item_alias_list
+    location_name_groups = {location: set(tags) for location, tags in tagged_locations_dict.items()}
 
     def generate_early(self):
         self.logic_sets: set[str] = {"casual"} # always include at least casual

@@ -134,6 +134,12 @@ class EnableChargeFlameBurn(Toggle):
     display_name = "Enable Charge Flame Burn"
     default = 1
 
+class EnableRekindle(Toggle):
+    """Allows rekindle ability to be considered for logic. Only affects standard, expert, and master
+    for specifically the Ghost Lever trick in Blackroot Burrows"""
+    display_name = "Enable Rekindle"
+    default = 1
+
 @dataclass
 class OriBlindForestOptions(PerGameCommonOptions):
     goal: Goal
@@ -153,6 +159,7 @@ class OriBlindForestOptions(PerGameCommonOptions):
     enable_charge_dash: EnableChargeDash
     enable_triple_jump: EnableTripleJump
     enable_charge_flame_burn: EnableChargeFlameBurn
+    enable_rekindle: EnableRekindle
 
 slot_data_options: list[str] = [
     "goal",
@@ -170,5 +177,6 @@ slot_data_options: list[str] = [
     "enable_air_dash",
     "enable_charge_dash",
     "enable_triple_jump",
-    "enable_charge_flame_burn"
+    "enable_charge_flame_burn",
+    "enable_rekindle"
 ]

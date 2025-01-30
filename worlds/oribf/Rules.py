@@ -116,6 +116,9 @@ def oribf_has(world: World, state: CollectionState, item: str | tuple[str, int])
         elif item == "BashGrenade":
             return state.has_all(["Bash", "Grenade"], world.player)
         
+        elif item == "Rekindle":
+            return options.enable_rekindle == True
+        
         elif item == "Open":
             # closed dungeons not implemented
             return True
