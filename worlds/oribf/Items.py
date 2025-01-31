@@ -39,12 +39,7 @@ base_items = {
     "TPBlackroot": (ItemClassification.progression, 1),
 
     "WarmthFragment": (ItemClassification.progression, 0),
-    "Relic": (ItemClassification.progression, 0),
-
-    "EX15": (ItemClassification.filler, 10),
-    "EX50": (ItemClassification.filler, 30),
-    "EX100": (ItemClassification.filler, 60),
-    "EX200": (ItemClassification.filler, 30)
+    "Relic": (ItemClassification.progression, 0)
 }
 
 keystone_items = {
@@ -79,12 +74,22 @@ mapstone_items = {
     }
 }
 
+filler_items = {
+    # since filler is added dynamically at the end of item generation, the numbers here don't correspond
+    # with how many are in the multiworld. Rather they are weights relative to each other
+    "EX15": (ItemClassification.filler, 2),
+    "EX50": (ItemClassification.filler, 3),
+    "EX100": (ItemClassification.filler, 4),
+    "EX200": (ItemClassification.filler, 2)
+}
+
 item_dict = {
     **base_items,
     **keystone_items["Anywhere"],
     **keystone_items["AreaSpecific"],
     **mapstone_items["Anywhere"],
-    **mapstone_items["AreaSpecific"]
+    **mapstone_items["AreaSpecific"],
+    **filler_items
 }
 
 item_alias_list = {
