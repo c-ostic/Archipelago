@@ -125,11 +125,10 @@ class OriBlindForestWorld(World):
                 # otherwise add the item normally
                 else:
                     self.multiworld.itempool.append(item)
-                
-                item_count += 1
+                    item_count += 1
 
         unfilled_locations = len(self.multiworld.get_unfilled_locations(self.player))
-        self.multiworld.itempool += [self.create_filler() for _ in range(unfilled_locations - item_count + 1)]
+        self.multiworld.itempool += [self.create_filler() for _ in range(unfilled_locations - item_count)]
 
     def create_event(self, event: str) -> OriBlindForestItem:
         return OriBlindForestItem(event, ItemClassification.progression, None, self.player)
