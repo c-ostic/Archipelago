@@ -140,6 +140,12 @@ class EnableRekindle(Toggle):
     display_name = "Enable Rekindle"
     default = 1
 
+class RestrictDungeonKeys(Toggle):
+    """Due to teleporters, it is possible for dungeon keys (ex. GinsoKey) to end up placed inside 
+    their dungeon. This option prevents those keys from being placed there"""
+    display_name = "Restrict Dungeon Keys"
+    default = 0
+
 @dataclass
 class OriBlindForestOptions(PerGameCommonOptions):
     goal: Goal
@@ -160,6 +166,7 @@ class OriBlindForestOptions(PerGameCommonOptions):
     enable_triple_jump: EnableTripleJump
     enable_charge_flame_burn: EnableChargeFlameBurn
     enable_rekindle: EnableRekindle
+    restrict_dungeon_keys: RestrictDungeonKeys
 
 slot_data_options: list[str] = [
     "goal",
