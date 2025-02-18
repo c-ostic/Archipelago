@@ -74,12 +74,14 @@ class OriBlindForestWorld(World):
             create_progressive_maps(self)
         
         if self.options.restrict_dungeon_keys == True:
-            for ginsoLocation in tagged_locations_dict["Ginso"]:
-                add_item_rule(self.get_location(ginsoLocation), lambda item: item.name != "GinsoKey")
-            for forlornLocation in tagged_locations_dict["Forlorn"]:
-                add_item_rule(self.get_location(forlornLocation), lambda item: item.name != "ForlornKey")
-            for horuLocation in tagged_locations_dict["Horu"]:
-                add_item_rule(self.get_location(horuLocation), lambda item: item.name != "HoruKey")
+            self.restrict_item("Ginso", "GinsoKey")
+            self.restrict_item("Forlorn", "ForlornKey")
+            self.restrict_item("Horu", "HoruKey")
+
+    def restrict_item(self, tag: str, item_name: str):
+        for location in tagged_locations_dict[tag]:
+            if location not in self.location_exclusion_list:
+                add_item_rule(self.get_location(location), lambda item: item.name != item_name)
 
     def create_item(self, name: str) -> OriBlindForestItem:
         return OriBlindForestItem(name, item_dict[name][0], self.item_name_to_id[name], self.player)
