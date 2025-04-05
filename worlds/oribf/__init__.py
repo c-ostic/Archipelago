@@ -30,11 +30,6 @@ class OriBlindForestWorld(World):
         self.world_tour_areas: list[str] = []
         self.world_tour_areas_unused: list[str] = area_tags.copy()
 
-        if self.options.logic_difficulty == LogicDifficulty.option_glitched:
-            self.logic_sets.add("glitched")
-            self.logic_sets.add("expert")
-            self.logic_sets.add("standard")
-        
         if self.options.logic_difficulty == LogicDifficulty.option_master:
             self.logic_sets.add("master")
             self.logic_sets.add("expert")
@@ -46,6 +41,9 @@ class OriBlindForestWorld(World):
 
         if self.options.logic_difficulty == LogicDifficulty.option_standard:
             self.logic_sets.add("standard")
+
+        if "Glitches" in self.options.logic_modifiers.value:
+            self.logic_sets.add("glitched")
 
         if self.options.mapstone_logic == MapstoneLogic.option_progressive:
             self.location_exclusion_list.extend(tagged_locations_dict["Map"])
