@@ -167,4 +167,32 @@ def at_least(conditions: list[bool], amount: int) -> bool:
     for flag in conditions:
         if flag:
             count += 1
-    return count >= amount                                 
+    return count >= amount        
+
+def get_goal_condition(world: World, state: CollectionState, goal: str):
+    options: OriBlindForestOptions = cast(OriBlindForestOptions, world.options)
+
+    if goal == "HoruEscape":
+        return state.can_reach_region("HoruEscapeInnerDoor", world.player)
+
+    elif goal == "AllSkillTrees":
+        return all(state.can_reach_location(skill_tree, world.player) for skill_tree in tagged_locations_dict["Skill"])
+
+    elif goal == "AllMaps":
+        location_tag: str = ""
+        if options.mapstone_logic == MapstoneLogic.option_progressive:
+            location_tag = "ProgressiveMap"
+        else:
+            location_tag = "Map"
+
+        return all(state.can_reach_location(area_map, world.player) for area_map in tagged_locations_dict[location_tag])
+
+    elif goal == "WarmthFragments":
+        # in case the required value is larger than the available, make the actual amount required equal to the available
+        fragments_required: int = min(options.warmth_fragments_available.value, options.warmth_fragments_required.value)
+        options.warmth_fragments_required.value = fragments_required
+        
+        return state.has("WarmthFragment", world.player, fragments_required)
+
+    elif goal == "WorldTour":
+        return state.has("Relic", world.player, options.relic_count.value)

@@ -5,7 +5,7 @@ from worlds.AutoWorld import World
 from .Items import OriBlindForestItem, base_items, keystone_items, mapstone_items, filler_items, item_dict, item_alias_list
 from .Locations import location_dict, tagged_locations_dict, area_tags, event_location_list
 from .Options import OriBlindForestOptions, LogicDifficulty, KeystoneLogic, MapstoneLogic, Goal, slot_data_options
-from .Rules import apply_location_rules, apply_connection_rules, create_progressive_maps
+from .Rules import apply_location_rules, apply_connection_rules, create_progressive_maps, get_goal_condition
 from .Regions import region_list
 from ..generic.Rules import add_item_rule
 
@@ -102,9 +102,9 @@ class OriBlindForestWorld(World):
 
         for item_key, item_value in item_list.items():
             # override the item values for counts that come from options
-            if item_key == "WarmthFragment" and self.options.goal == Goal.option_warmth_fragments:
+            if item_key == "WarmthFragment" and "WarmthFragments" in self.options.goal.value:
                 item_value = (item_value[0], self.options.warmth_fragments_available.value)
-            if item_key == "Relic" and self.options.goal == Goal.option_world_tour:
+            if item_key == "Relic" and "WorldTour" in self.options.goal.value:
                 item_value = (item_value[0], self.options.relic_count.value)
             if item_key == "MapStone":
                 item_value = (item_value[0], item_value[1] + self.options.extra_mapstones.value)
@@ -145,37 +145,9 @@ class OriBlindForestWorld(World):
         # most of the rules are set above in create_regions
 
         # set the goal condition
-        if self.options.goal == Goal.option_all_skill_trees:
-            self.multiworld.completion_condition[self.player] = lambda state: \
-                state.can_reach_region("HoruEscapeInnerDoor", self.player) and \
-                all(state.can_reach_location(skill_tree, self.player) for skill_tree in tagged_locations_dict["Skill"])
-            
-        elif self.options.goal == Goal.option_all_maps:
-            location_tag: str = ""
-            if self.options.mapstone_logic == MapstoneLogic.option_progressive:
-                location_tag = "ProgressiveMap"
-            else:
-                location_tag = "Map"
-
-            self.multiworld.completion_condition[self.player] = lambda state: \
-                state.can_reach_region("HoruEscapeInnerDoor", self.player) and \
-                all(state.can_reach_location(area_map, self.player) for area_map in tagged_locations_dict[location_tag])
-            
-        elif self.options.goal == Goal.option_warmth_fragments:
-            # in case the required value is larger than the available, make the actual amount required equal to the available
-            fragments_required: int = min(self.options.warmth_fragments_available.value, self.options.warmth_fragments_required.value)
-            self.multiworld.completion_condition[self.player] = lambda state: \
-                state.can_reach_region("HoruEscapeInnerDoor", self.player) and \
-                state.has("WarmthFragment", self.player, fragments_required)
-            
-        elif self.options.goal == Goal.option_world_tour:
-            self.multiworld.completion_condition[self.player] = lambda state: \
-                state.can_reach_region("HoruEscapeInnerDoor", self.player) and \
-                state.has("Relic", self.player, self.options.relic_count.value)
-            
-        else: # self.options.goal == Goal.option_none
-            self.multiworld.completion_condition[self.player] = lambda state: \
-                state.can_reach_region("HoruEscapeInnerDoor", self.player)
+        self.multiworld.completion_condition[self.player] = lambda state: \
+            all(get_goal_condition(self, state, goal) for goal in self.options.goal.value) and \
+            state.can_reach_region("HoruEscapeInnerDoor", self.player) if self.options.require_final_escape else True
 
     def fill_slot_data(self) -> Dict[str, Any]:
         slot_data: Dict[str, Any] = {}

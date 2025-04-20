@@ -2,21 +2,30 @@ from dataclasses import dataclass
 
 from Options import Toggle, Choice, Range, OptionSet, PerGameCommonOptions
 
-class Goal(Choice):
-    """Choose the end goal. All goals determine what unlocks the final Horu escape sequence
-    All Skill Trees: Find all 10 skill trees (including Kuro's feather)
-    All Maps: Place all 9 mapstones around the map
-    Warmth Fragments: Collect the required number of Warmth Fragments
-    World Tour: Collect the required number of Relics. Up to 11 areas (default 8) around Nibel will be chosen to contain a relic in a random location
-    None: No extra conditions, just reach and finish the final escape
+class Goal(OptionSet):
+    """Choose the end goal. You may choose multiple
+    AllSkillTrees: Find all 10 skill trees (including Kuro's feather)
+    AllMaps: Place all 9 mapstones around the map
+    WarmthFragments: Collect the required number of Warmth Fragments
+    WorldTour: Collect the required number of Relics. Up to 11 areas (default 8) around Nibel will be chosen to contain a relic in a random location
     """
     display_name = "Goal"
-    option_all_skill_trees = 0
-    option_all_maps = 1
-    option_warmth_fragments = 2
-    option_world_tour = 3
-    option_none = 4
-    default = 0
+    valid_keys = {
+        "AllSkillTrees",
+        "AllMaps",
+        "WarmthFragments",
+        "WorldTour"
+    }
+    default = {
+        "AllSkillTrees"
+    }
+
+class RequireFinalEscape(Toggle):
+    """Whether or not the final escape in Mount Horu is required to goal
+    If true, the final escape will need to be completed. The door to the escape will only open once other all other goals are complete.
+    If false, there will be a keybind to trigger completion once all other goals are complete"""
+    display_name = "Require Final Escape"
+    default = 1
 
 class WarmthFragmentsAvailable(Range):
     """The number of Warmth Fragments that exist"""
@@ -153,6 +162,7 @@ class RestrictDungeonKeys(Toggle):
 @dataclass
 class OriBlindForestOptions(PerGameCommonOptions):
     goal: Goal
+    require_final_escape: RequireFinalEscape
     warmth_fragments_available: WarmthFragmentsAvailable
     warmth_fragments_required: WarmthFragmentsRequired
     relic_count: RelicCount
@@ -167,6 +177,7 @@ class OriBlindForestOptions(PerGameCommonOptions):
 # determines which options are passed through to the slot data
 slot_data_options: list[str] = [
     "goal",
+    "require_final_escape",
     "warmth_fragments_available",
     "warmth_fragments_required",
     "relic_count",
