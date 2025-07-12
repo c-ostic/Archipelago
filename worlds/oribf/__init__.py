@@ -2,7 +2,7 @@ from typing import Dict, Any
 from BaseClasses import ItemClassification, Region
 from worlds.AutoWorld import World
 
-from .Items import OriBlindForestItem, base_items, keystone_items, mapstone_items, filler_items, item_dict, item_alias_list
+from .Items import OriBlindForestItem, skills, world_events, keystone_items, mapstone_items, filler_items, base_items, item_dict, item_alias_list
 from .Locations import location_dict, tagged_locations_dict, area_tags, event_location_list
 from .Options import OriBlindForestOptions, LogicDifficulty, KeystoneLogic, MapstoneLogic, Goal, slot_data_options
 from .Rules import apply_location_rules, apply_connection_rules, create_progressive_maps, get_goal_condition
@@ -108,6 +108,10 @@ class OriBlindForestWorld(World):
                 item_value = (item_value[0], self.options.relic_count.value)
             if item_key == "MapStone":
                 item_value = (item_value[0], item_value[1] + self.options.extra_mapstones.value)
+            if item_key in keystone_items["Anywhere"] or item_key in keystone_items["AreaSpecific"]:
+                item_value = (item_value[0], int(item_value[1] * (1 + self.options.extra_keystones / 100)))
+            if (item_key in skills or item_key in world_events) and self.options.extra_skills:
+                item_value = (item_value[0], item_value[1] + 1)
 
             for count in range(item_value[1]):
                 item = self.create_item(item_key)

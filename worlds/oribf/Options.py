@@ -78,6 +78,21 @@ class MapstoneLogic(Choice):
     option_progressive = 2
     default = 0
 
+class ExtraSkills(Toggle):
+    """Adds an extra copy of each of the skills. Also adds an extra copy of Clean Water and Wind"""
+    display_name = "Extra Skills"
+    default = 0
+
+class ExtraKeystones(Range):
+    """Adds extra keystones to the pool to make them easier to get. Affects anywhere and area specific logic
+    Due to differences between anywhere and area specific counts, this acts as a percentage to add to the base.
+    Ex. at 50%, 40 keystones (anywhere logic) becomes 60 keystones 
+        and 8 Ginso keystones (area specific logic) becomes 12 Ginso keystones"""
+    display_name = "Extra Keystones"
+    range_start = 0
+    range_end = 100
+    default = 0
+
 class ExtraMapstones(Range):
     """Adds extra mapstones to the pool to make it easier to get the 9 required. Affects anywhere and progressive mapstone logic"""
     display_name = "Extra Mapstones"
@@ -169,7 +184,9 @@ class OriBlindForestOptions(PerGameCommonOptions):
     logic_difficulty: LogicDifficulty
     keystone_logic: KeystoneLogic
     mapstone_logic: MapstoneLogic
+    extra_keystones: ExtraKeystones
     extra_mapstones: ExtraMapstones
+    extra_skills: ExtraSkills
     deathlink_logic: DeathLinkLogic
     logic_modifiers: LogicModifiers
     restrict_dungeon_keys: RestrictDungeonKeys
