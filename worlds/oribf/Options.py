@@ -78,6 +78,11 @@ class MapstoneLogic(Choice):
     option_progressive = 2
     default = 0
 
+class IncludeTeleporters(Toggle):
+    """Whether or not teleporters are included in the item pool"""
+    display_name = "Include Teleporters"
+    default = 1
+
 class ExtraSkills(Toggle):
     """Adds an extra copy of each of the skills. Also adds an extra copy of Clean Water and Wind"""
     display_name = "Extra Skills"
@@ -192,6 +197,7 @@ class OriBlindForestOptions(PerGameCommonOptions):
     logic_difficulty: LogicDifficulty
     keystone_logic: KeystoneLogic
     mapstone_logic: MapstoneLogic
+    include_teleporters: IncludeTeleporters
     extra_keystones: ExtraKeystones
     extra_mapstones: ExtraMapstones
     extra_skills: ExtraSkills

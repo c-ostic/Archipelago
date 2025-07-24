@@ -2,7 +2,7 @@ from typing import Dict, Any
 from BaseClasses import ItemClassification, Region
 from worlds.AutoWorld import World
 
-from .Items import OriBlindForestItem, skills, world_events, keystone_items, mapstone_items, filler_items, base_items, item_dict, item_alias_list
+from .Items import OriBlindForestItem, skills, world_events, keystone_items, mapstone_items, filler_items, teleporters, base_items, item_dict, item_alias_list
 from .Locations import location_dict, tagged_locations_dict, area_tags, event_location_list
 from .Options import OriBlindForestOptions, LogicDifficulty, KeystoneLogic, MapstoneLogic, Goal, slot_data_options
 from .Rules import apply_location_rules, apply_connection_rules, create_progressive_maps, get_goal_condition
@@ -99,6 +99,9 @@ class OriBlindForestWorld(World):
             item_list = { **item_list, **mapstone_items["AreaSpecific"] }
         else:
             item_list = { **item_list, **mapstone_items["Anywhere"] }
+
+        if self.options.include_teleporters == True:
+            item_list = { **item_list, **teleporters }
 
         for item_key, item_value in item_list.items():
             # override the item values for counts that come from options

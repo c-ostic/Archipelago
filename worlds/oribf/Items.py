@@ -99,7 +99,6 @@ base_items = {
     **dungeon_keys,
     **world_events,
     **skills,
-    **teleporters,
     **goal_items # since warmth fragments and relics are 0 by default, they can be here
 }
 
