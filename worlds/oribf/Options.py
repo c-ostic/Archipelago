@@ -111,6 +111,14 @@ class DeathLinkLogic(Choice):
     option_full = 2
     default = 0
 
+class DeathLinkCount(Range):
+    """How many deaths are allowed before sending a death link
+    Has no effect if death link is disabled"""
+    display_name = "Death Link Count"
+    range_start = 1
+    range_end = 30
+    default = 1
+
 class LogicModifiers(OptionSet):
     """Additional modifiers to add to the base logic difficulty. Some options only affect higher difficulties.
     The default is all modifiers are enabled except for Glitches.
@@ -188,6 +196,7 @@ class OriBlindForestOptions(PerGameCommonOptions):
     extra_mapstones: ExtraMapstones
     extra_skills: ExtraSkills
     deathlink_logic: DeathLinkLogic
+    deathlink_count: DeathLinkCount
     logic_modifiers: LogicModifiers
     restrict_dungeon_keys: RestrictDungeonKeys
 
@@ -202,5 +211,6 @@ slot_data_options: list[str] = [
     "keystone_logic",
     "mapstone_logic",
     "deathlink_logic",
+    "deathlink_count",
     "logic_modifiers"
 ]
