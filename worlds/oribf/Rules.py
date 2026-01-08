@@ -188,11 +188,7 @@ def get_goal_condition(world: World, state: CollectionState, goal: str):
         return all(state.can_reach_location(area_map, world.player) for area_map in tagged_locations_dict[location_tag])
 
     elif goal == "WarmthFragments":
-        # in case the required value is larger than the available, make the actual amount required equal to the available
-        fragments_required: int = min(options.warmth_fragments_available.value, options.warmth_fragments_required.value)
-        options.warmth_fragments_required.value = fragments_required
-        
-        return state.has("WarmthFragment", world.player, fragments_required)
+        return state.has("WarmthFragment", world.player, options.warmth_fragments_required.value)
 
     elif goal == "WorldTour":
         return state.has("Relic", world.player, options.relic_count.value)

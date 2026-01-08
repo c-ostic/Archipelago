@@ -106,7 +106,9 @@ class OriBlindForestWorld(World):
         for item_key, item_value in item_list.items():
             # override the item values for counts that come from options
             if item_key == "WarmthFragment" and "WarmthFragments" in self.options.goal.value:
-                item_value = (item_value[0], self.options.warmth_fragments_available.value)
+                # ensures there is always enough warmth fragments, even if required is greater than available
+                self.fragments_available: int = max(self.options.warmth_fragments_available.value, self.options.warmth_fragments_required.value)
+                item_value = (item_value[0], self.fragments_available)
             if item_key == "Relic" and "WorldTour" in self.options.goal.value:
                 item_value = (item_value[0], self.options.relic_count.value)
             if item_key == "MapStone":
@@ -163,6 +165,7 @@ class OriBlindForestWorld(World):
             slot_data[option_name] = option_value
 
         slot_data["world_tour_areas"] = self.world_tour_areas
+        slot_data["warmth_fragments_available"] = self.fragments_available
 
         return slot_data
 

@@ -55,6 +55,7 @@ region_list = [
     "OuterSwampHealthCellWarp",
     "OuterSwampMortarAbilityCellLedge",
     "OuterSwampMortarPlantAccess",
+    "OuterSwampSwarmLedge",
     "GinsoOuterDoor",
     "GinsoInnerDoor",
     "LowerGinsoTree",
