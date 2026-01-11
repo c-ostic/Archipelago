@@ -4,7 +4,7 @@ from worlds.AutoWorld import World
 
 from .Items import OriBlindForestItem, skills, world_events, keystone_items, mapstone_items, filler_items, teleporters, base_items, item_dict, item_alias_list
 from .Locations import location_dict, tagged_locations_dict, area_tags, event_location_list
-from .Options import OriBlindForestOptions, LogicDifficulty, KeystoneLogic, MapstoneLogic, Goal, slot_data_options
+from .Options import OriBlindForestOptions, LogicDifficulty, KeystoneLogic, MapstoneLogic, SeinLogic, Goal, slot_data_options
 from .Rules import apply_location_rules, apply_connection_rules, create_progressive_maps, get_goal_condition
 from .Regions import region_list
 from ..generic.Rules import add_item_rule
@@ -29,6 +29,7 @@ class OriBlindForestWorld(World):
         self.location_exclusion_list: list[str] = []
         self.world_tour_areas: list[str] = []
         self.world_tour_areas_unused: list[str] = area_tags.copy()
+        self.fragments_available = 0
 
         if self.options.logic_difficulty == LogicDifficulty.option_master:
             self.logic_sets.add("master")
@@ -120,6 +121,14 @@ class OriBlindForestWorld(World):
 
             for count in range(item_value[1]):
                 item = self.create_item(item_key)
+
+                # place Sein either in the normal location or in the starting inventory based on options
+                if item_key == "Sein":
+                    if self.options.sein_logic == SeinLogic.option_vanilla:
+                        self.get_location("Sein").place_locked_item(item)
+                    else: # if SeinLogic.option_start
+                        self.multiworld.push_precollected(item)
+                    # if Sein ever gets randomized, it would be done here with another SeinLogic option
 
                 # place the first energy cell at its normal location so the player can save right away
                 if item_key == "EnergyCell" and not placed_first_energy_cell:

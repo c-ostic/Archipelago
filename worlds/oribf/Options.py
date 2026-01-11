@@ -23,7 +23,7 @@ class Goal(OptionSet):
 class RequireFinalEscape(Toggle):
     """Whether or not the final escape in Mount Horu is required to goal
     If true, the final escape will need to be completed. The door to the escape will only open once other all other goals are complete.
-    If false, there will be a keybind to trigger completion once all other goals are complete"""
+    If false, the player only needs to reach the escape door once all other goals are complete"""
     display_name = "Require Final Escape"
     default = 1
 
@@ -124,6 +124,15 @@ class DeathLinkCount(Range):
     range_end = 30
     default = 1
 
+class SeinLogic(Choice):
+    """How to place Sein in the multiworld
+    Vanilla: Sein is placed at the normal location
+    Start: Adds Sein to the starting inventory"""
+    display_name = "Sein Logic"
+    option_vanilla = 0
+    option_start = 1
+    default = 0
+
 class LogicModifiers(OptionSet):
     """Additional modifiers to add to the base logic difficulty. Some options only affect higher difficulties.
     The default is all modifiers are enabled except for Glitches.
@@ -203,6 +212,7 @@ class OriBlindForestOptions(PerGameCommonOptions):
     extra_skills: ExtraSkills
     deathlink_logic: DeathLinkLogic
     deathlink_count: DeathLinkCount
+    sein_logic: SeinLogic
     logic_modifiers: LogicModifiers
     restrict_dungeon_keys: RestrictDungeonKeys
 

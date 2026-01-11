@@ -14,6 +14,9 @@ location_rules: dict[str, dict[str, dict[str, list[list[str | tuple[str, int]]]]
         "FronkeyFight": {
             "casual": [["Free"]]
         },
+        "Sein":{
+            "casual": [["Free"]]
+        },
         "GladesKeystone1": {
             "casual": [["Free"]]
         },

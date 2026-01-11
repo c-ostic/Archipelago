@@ -7,7 +7,8 @@ class OriBlindForestItem(Item):
 base_pickups = {
     "AbilityCell": (ItemClassification.progression, 33),
     "HealthCell": (ItemClassification.progression, 12),
-    "EnergyCell": (ItemClassification.progression, 14)
+    "EnergyCell": (ItemClassification.progression, 14),
+    "Sein": (ItemClassification.progression, 1)
 }
 
 dungeon_keys = {
@@ -84,6 +85,11 @@ mapstone_items = {
     }
 }
 
+bonus_items = {
+    "HealthRegen": (ItemClassification.useful, 3),
+    "EnergyRegen": (ItemClassification.useful, 3)
+}
+
 filler_items = {
     # since filler is added dynamically at the end of item generation, the numbers here don't correspond
     # with how many are in the multiworld. Rather they are weights relative to each other
@@ -99,7 +105,8 @@ base_items = {
     **dungeon_keys,
     **world_events,
     **skills,
-    **goal_items # since warmth fragments and relics are 0 by default, they can be here
+    **goal_items, # since warmth fragments and relics are 0 by default, they can be here
+    **bonus_items
 }
 
 # dictionary of every potential item that could be in the pool
@@ -114,6 +121,7 @@ item_dict = {
     **keystone_items["AreaSpecific"],
     **mapstone_items["Anywhere"],
     **mapstone_items["AreaSpecific"],
+    **bonus_items,
     **filler_items
 }
 
