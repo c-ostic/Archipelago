@@ -123,7 +123,7 @@ class OriBlindForestWorld(World):
                 item = self.create_item(item_key)
 
                 # place Sein either in the normal location or in the starting inventory based on options
-                if item_key == "Sein":
+                if item_key == "SpiritFlame":
                     if self.options.sein_logic == SeinLogic.option_vanilla:
                         self.get_location("Sein").place_locked_item(item)
                     else: # if SeinLogic.option_start

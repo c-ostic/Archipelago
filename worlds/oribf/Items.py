@@ -8,7 +8,7 @@ base_pickups = {
     "AbilityCell": (ItemClassification.progression, 33),
     "HealthCell": (ItemClassification.progression, 12),
     "EnergyCell": (ItemClassification.progression, 14),
-    "Sein": (ItemClassification.progression, 1)
+    "SpiritFlame": (ItemClassification.progression, 1)
 }
 
 dungeon_keys = {
