@@ -1,20 +1,18 @@
 from dataclasses import dataclass
 from typing import Tuple, Sequence, Mapping
 
-from .game_item import Source, ItemTag
+from .game_item import ItemSource, ItemTag
 from ..strings.season_names import Season
 
 
 @dataclass(frozen=True, kw_only=True)
-class ForagingSource(Source):
+class ForagingSource(ItemSource):
     regions: Tuple[str, ...]
     seasons: Tuple[str, ...] = Season.all
-    require_all_regions: bool = False
-    grind_months: int = 0
 
 
 @dataclass(frozen=True, kw_only=True)
-class SeasonalForagingSource(Source):
+class SeasonalForagingSource(ItemSource):
     season: str
     days: Sequence[int]
     regions: Tuple[str, ...]
@@ -24,17 +22,17 @@ class SeasonalForagingSource(Source):
 
 
 @dataclass(frozen=True, kw_only=True)
-class FruitBatsSource(Source):
+class FruitBatsSource(ItemSource):
     ...
 
 
 @dataclass(frozen=True, kw_only=True)
-class MushroomCaveSource(Source):
+class MushroomCaveSource(ItemSource):
     ...
 
 
 @dataclass(frozen=True, kw_only=True)
-class HarvestFruitTreeSource(Source):
+class HarvestFruitTreeSource(ItemSource):
     add_tags = (ItemTag.CROPSANITY,)
 
     sapling: str
@@ -48,7 +46,7 @@ class HarvestFruitTreeSource(Source):
 
 
 @dataclass(frozen=True, kw_only=True)
-class HarvestCropSource(Source):
+class HarvestCropSource(ItemSource):
     add_tags = (ItemTag.CROPSANITY,)
 
     seed: str
@@ -63,5 +61,5 @@ class HarvestCropSource(Source):
 
 
 @dataclass(frozen=True, kw_only=True)
-class ArtifactSpotSource(Source):
+class ArtifactSpotSource(ItemSource):
     amount: int

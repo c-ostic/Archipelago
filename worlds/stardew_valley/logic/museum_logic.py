@@ -1,15 +1,19 @@
-import math
+from typing import Union
 
 from Utils import cache_self1
+from .action_logic import ActionLogicMixin
 from .base_logic import BaseLogic, BaseLogicMixin
+from .has_logic import HasLogicMixin
+from .received_logic import ReceivedLogicMixin
+from .region_logic import RegionLogicMixin
+from .time_logic import TimeLogicMixin
+from .tool_logic import ToolLogicMixin
 from .. import options
 from ..data.museum_data import MuseumItem, all_museum_items, all_museum_artifacts, all_museum_minerals
 from ..stardew_rule import StardewRule, False_
 from ..strings.metal_names import Mineral
 from ..strings.region_names import Region
-from ..strings.tool_names import ToolMaterial, Tool
-
-gems = (Mineral.amethyst, Mineral.aquamarine, Mineral.emerald, Mineral.ruby, Mineral.topaz)
+from ..strings.tool_names import Tool, ToolMaterial
 
 
 class MuseumLogicMixin(BaseLogicMixin):
@@ -18,7 +22,7 @@ class MuseumLogicMixin(BaseLogicMixin):
         self.museum = MuseumLogic(*args, **kwargs)
 
 
-class MuseumLogic(BaseLogic):
+class MuseumLogic(BaseLogic[Union[ReceivedLogicMixin, HasLogicMixin, TimeLogicMixin, RegionLogicMixin, ActionLogicMixin, ToolLogicMixin, MuseumLogicMixin]]):
 
     def can_donate_museum_items(self, number: int) -> StardewRule:
         return self.logic.region.can_reach(Region.museum) & self.logic.museum.can_find_museum_items(number)
@@ -28,12 +32,10 @@ class MuseumLogic(BaseLogic):
 
     @cache_self1
     def can_find_museum_item(self, item: MuseumItem) -> StardewRule:
-        if item.artifact_spot_locations:
-            number_locations = len(item.artifact_spot_locations)
-            number_required_locations = math.ceil(number_locations / 2)
-            artifact_spot_rule = self.logic.count(number_required_locations, *[self.logic.tool.can_use_tool_at(Tool.hoe, ToolMaterial.basic, spot) for spot in item.artifact_spot_locations])
+        if item.locations:
+            region_rule = self.logic.region.can_reach_all_except_one(item.locations)
         else:
-            artifact_spot_rule = False_()
+            region_rule = False_()
         if item.geodes:
             geodes_rule = self.logic.and_(*(self.logic.action.can_open_geode(geode) for geode in item.geodes))
         else:
@@ -43,8 +45,8 @@ class MuseumLogic(BaseLogic):
         time_rule = self.logic.time.has_lived_months(time_needed_to_grind)
         pan_rule = False_()
         if item.item_name == Mineral.earth_crystal or item.item_name == Mineral.fire_quartz or item.item_name == Mineral.frozen_tear:
-            pan_rule = self.logic.tool.has_pan(ToolMaterial.iridium)
-        return (pan_rule | artifact_spot_rule | geodes_rule) & time_rule  # & monster_rule & extra_rule
+            pan_rule = self.logic.tool.has_tool(Tool.pan, ToolMaterial.iridium)
+        return (pan_rule | region_rule | geodes_rule) & time_rule  # & monster_rule & extra_rule
 
     def can_find_museum_artifacts(self, number: int) -> StardewRule:
         rules = []
@@ -81,9 +83,3 @@ class MuseumLogic(BaseLogic):
 
     def can_donate(self, item: str) -> StardewRule:
         return self.logic.has(item) & self.logic.region.can_reach(Region.museum)
-
-    def has_any_gem(self) -> StardewRule:
-        return self.logic.has_any(*gems)
-
-    def has_all_gems(self) -> StardewRule:
-        return self.logic.has_all(*gems)

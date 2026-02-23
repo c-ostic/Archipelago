@@ -1,6 +1,17 @@
+from typing import Union
+
 from ..mod_data import ModNames
 from ...data.craftable_data import all_crafting_recipes_by_name
+from ...logic.action_logic import ActionLogicMixin
+from ...logic.artisan_logic import ArtisanLogicMixin
 from ...logic.base_logic import BaseLogicMixin, BaseLogic
+from ...logic.crafting_logic import CraftingLogicMixin
+from ...logic.has_logic import HasLogicMixin
+from ...logic.received_logic import ReceivedLogicMixin
+from ...logic.region_logic import RegionLogicMixin
+from ...logic.relationship_logic import RelationshipLogicMixin
+from ...logic.season_logic import SeasonLogicMixin
+from ...logic.wallet_logic import WalletLogicMixin
 from ...strings.ap_names.community_upgrade_names import CommunityUpgrade
 from ...strings.artisan_good_names import ArtisanGood
 from ...strings.craftable_names import Consumable, Edible, Bomb
@@ -22,10 +33,11 @@ class ModSpecialOrderLogicMixin(BaseLogicMixin):
         self.special_order = ModSpecialOrderLogic(*args, **kwargs)
 
 
-class ModSpecialOrderLogic(BaseLogic):
+class ModSpecialOrderLogic(BaseLogic[Union[ActionLogicMixin, ArtisanLogicMixin, CraftingLogicMixin, HasLogicMixin, RegionLogicMixin,
+ReceivedLogicMixin, RelationshipLogicMixin, SeasonLogicMixin, WalletLogicMixin]]):
     def get_modded_special_orders_rules(self):
         special_orders = {}
-        if self.content.is_enabled(ModNames.juna):
+        if ModNames.juna in self.options.mods:
             special_orders.update({
                 ModSpecialOrder.junas_monster_mash: self.logic.relationship.has_hearts(ModNPC.juna, 4) &
                                                     self.registry.special_order_rules[SpecialOrder.a_curious_substance] &
@@ -34,7 +46,7 @@ class ModSpecialOrderLogic(BaseLogic):
                                                     self.logic.has("Energy Tonic") & self.logic.has(Material.sap) & self.logic.has(Loot.bug_meat) &
                                                     self.logic.has(Edible.oil_of_garlic) & self.logic.has(Meal.strange_bun)
             })
-        if self.content.is_enabled(ModNames.sve):
+        if ModNames.sve in self.options.mods:
             special_orders.update({
                 ModSpecialOrder.andys_cellar: self.logic.has(Material.stone) & self.logic.has(Material.wood) & self.logic.has(Material.hardwood) &
                                               self.logic.has(MetalBar.iron) & self.logic.received(CommunityUpgrade.movie_theater, 1) &
@@ -52,12 +64,12 @@ class ModSpecialOrderLogic(BaseLogic):
                                                      self.logic.region.can_reach(SVERegion.susans_house)  # quest requires you make the fertilizer
             })
 
-        if self.content.is_enabled(ModNames.jasper):
+        if ModNames.jasper in self.options.mods:
             special_orders.update({
                 ModSpecialOrder.dwarf_scroll: self.logic.has_all(*(Artifact.dwarf_scroll_i, Artifact.dwarf_scroll_ii, Artifact.dwarf_scroll_iii,
                                                                    Artifact.dwarf_scroll_iv,)),
                 ModSpecialOrder.geode_order: self.logic.has_all(*(Geode.geode, Geode.frozen, Geode.magma, Geode.omni,)) &
-                                             self.logic.relationship.has_hearts(ModNPC.jasper, 8) & self.logic.special_order.can_complete_special_order(SpecialOrder.fragments_of_the_past)
+                                             self.logic.relationship.has_hearts(ModNPC.jasper, 8)
             })
 
         return special_orders
