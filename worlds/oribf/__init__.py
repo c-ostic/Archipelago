@@ -130,9 +130,9 @@ class OriBlindForestWorld(World):
                         self.multiworld.push_precollected(item)
                     # if Sein ever gets randomized, it would be done here with another SeinLogic option
 
-                # place the first energy cell at its normal location so the player can save right away
+                # add the first energy cell to the starting inventory to allow the player to save right away
                 if item_key == "EnergyCell" and not placed_first_energy_cell:
-                    self.get_location("FirstEnergyCell").place_locked_item(item)
+                    self.multiworld.push_precollected(item)
                     placed_first_energy_cell = True
                 
                 # place relics in a random location from a random area
