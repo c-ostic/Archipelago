@@ -8,14 +8,15 @@ import argparse
 import collections
 import gc
 import logging
+import os
+import sys
 import time
 import typing
 
 from BaseClasses import CollectionState, Location
 from Utils import init_logging
-from ..bases import setup_solo_multiworld
-from ..options import presets
-from ...stardew_rule.rule_explain import explain
+from worlds.stardew_valley.stardew_rule.rule_explain import explain
+from ... import test
 
 
 def run_locations_benchmark():
@@ -55,12 +56,12 @@ def run_locations_benchmark():
                 parser.add_argument('--state', help="Define the state in which the location will be benchmarked.", type=str, default=None)
                 args = parser.parse_args()
                 options_set = args.options
-                options = getattr(presets, options_set)()
+                options = getattr(test, options_set)()
                 seed = args.seed
                 location = args.location
                 state = args.state
 
-                multiworld = setup_solo_multiworld(options, seed)
+                multiworld = test.setup_solo_multiworld(options, seed)
                 gc.collect()
 
                 if location:
@@ -117,8 +118,22 @@ class TimeIt:
     def __exit__(self, exc_type, exc_val, exc_tb):
         if not self.end_timer:
             self.end_timer = time.perf_counter()
-        # if self.logger:
-        #     self.logger.info(f"{self.dif:.4f} seconds in {self.name}.")
+        if self.logger:
+            self.logger.info(f"{self.dif:.4f} seconds in {self.name}.")
+
+
+def change_home():
+    """Allow scripts to run from "this" folder."""
+    old_home = os.path.dirname(__file__)
+    sys.path.remove(old_home)
+    new_home = os.path.normpath(os.path.join(os.path.dirname(__file__), os.pardir, os.pardir))
+    os.chdir(new_home)
+    sys.path.append(new_home)
+    # fallback to local import
+    sys.path.append(old_home)
+
+    from Utils import local_path
+    local_path.cached_path = new_home
 
 
 if __name__ == "__main__":

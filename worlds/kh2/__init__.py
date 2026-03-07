@@ -3,8 +3,7 @@ from typing import List
 
 from BaseClasses import Tutorial, ItemClassification
 from Fill import fast_fill
-from Utils import local_path
-from worlds.LauncherComponents import Component, components, icon_paths, Type, launch as launch_component
+from worlds.LauncherComponents import Component, components, Type, launch as launch_component
 from worlds.AutoWorld import World, WebWorld
 from .Items import *
 from .Locations import *
@@ -17,12 +16,11 @@ from .Subclasses import KH2Item
 
 
 def launch_client():
-    from .ClientStuff.Client import launch
+    from .Client import launch
     launch_component(launch, name="KH2Client")
 
 
-icon_paths['kh2apicon'] = f"ap:{__name__}/data/khapicon.png"
-components.append(Component("KH2 Client", func=launch_client, component_type=Type.CLIENT, icon='kh2apicon'))
+components.append(Component("KH2 Client", "KH2Client", func=launch_client, component_type=Type.CLIENT))
 
 
 class KingdomHearts2Web(WebWorld):
@@ -104,20 +102,16 @@ class KH2World(World):
                 self.goofy_ability_dict[ability] -= 1
 
         slot_data = self.options.as_dict(
-                "Goal",
-                "FinalXemnas",
-                "LuckyEmblemsRequired",
-                "BountyRequired",
-                "FightLogic",
-                "FinalFormLogic",
-                "AutoFormLogic",
-                "LevelDepth",
-                "DonaldGoofyStatsanity",
-                "CorSkipToggle",
-                "SuperBosses",
-                "Cups",
-                "AtlanticaToggle",
-                "SummonLevelLocationToggle",
+            "Goal", 
+            "FinalXemnas", 
+            "LuckyEmblemsRequired", 
+            "BountyRequired",
+            "FightLogic",
+            "FinalFormLogic",
+            "AutoFormLogic",
+            "LevelDepth",
+            "DonaldGoofyStatsanity",
+            "CorSkipToggle"
         )
         slot_data.update({
             "hitlist":                [],  # remove this after next update
@@ -207,7 +201,6 @@ class KH2World(World):
         """
         Determines the quantity of items and maps plando locations to items.
         """
-
         # Item: Quantity Map
         # Example. Quick Run: 4
         self.total_locations = len(all_locations.keys())
@@ -253,8 +246,6 @@ class KH2World(World):
         # hitlist
         if self.options.Goal not in ["lucky_emblem_hunt", "three_proofs"]:
             self.random_super_boss_list.extend(exclusion_table["Hitlist"])
-            if self.options.CasualBounties:
-                self.random_super_boss_list.extend(exclusion_table["HitlistCasual"])
             self.bounties_amount = self.options.BountyAmount.value
             self.bounties_required = self.options.BountyRequired.value
 
@@ -286,7 +277,9 @@ class KH2World(World):
         if self.options.FillerItemsLocal:
             for item in filler_items:
                 self.options.local_items.value.add(item)
-
+        # By imitating remote this doesn't have to be plandoded filler anymore
+        #  for location in {LocationName.JunkMedal, LocationName.JunkMedal}:
+        #    self.plando_locations[location] = random_stt_item
         if not self.options.SummonLevelLocationToggle:
             self.total_locations -= 6
 
@@ -399,20 +392,19 @@ class KH2World(World):
         # take one of the 2 out
         # randomize the list with only
         for location in goofy_weapon_location_list:
-            i = self.random.randrange(len(self.goofy_weapon_abilities))
-            random_ability = self.goofy_weapon_abilities.pop(i)
+            random_ability = self.random.choice(self.goofy_weapon_abilities)
             location.place_locked_item(random_ability)
+            self.goofy_weapon_abilities.remove(random_ability)
 
         if not self.options.DonaldGoofyStatsanity:
             # plando goofy get bonuses
             goofy_get_bonus_location_pool = [self.multiworld.get_location(location, self.player) for location in
                                              Goofy_Checks.keys() if Goofy_Checks[location].yml != "Keyblade"]
-            if len(goofy_get_bonus_location_pool) > len(self.goofy_get_bonus_abilities):
-                raise Exception(f"Too little abilities to fill goofy get bonus locations for player {self.player_name}.")
             for location in goofy_get_bonus_location_pool:
-                i = self.random.randrange(len(self.goofy_get_bonus_abilities))
-                random_ability = self.goofy_get_bonus_abilities.pop(i)
+                self.random.choice(self.goofy_get_bonus_abilities)
+                random_ability = self.random.choice(self.goofy_get_bonus_abilities)
                 location.place_locked_item(random_ability)
+                self.goofy_get_bonus_abilities.remove(random_ability)
 
     def donald_pre_fill(self):
         donald_weapon_location_list = [self.multiworld.get_location(location, self.player) for location in
@@ -421,19 +413,18 @@ class KH2World(World):
         # take one of the 2 out
         # randomize the list with only
         for location in donald_weapon_location_list:
-            i = self.random.randrange(len(self.donald_weapon_abilities))
-            random_ability = self.donald_weapon_abilities.pop(i)
+            random_ability = self.random.choice(self.donald_weapon_abilities)
             location.place_locked_item(random_ability)
-        # if option is turned off
+            self.donald_weapon_abilities.remove(random_ability)
+
         if not self.options.DonaldGoofyStatsanity:
+            # plando goofy get bonuses
             donald_get_bonus_location_pool = [self.multiworld.get_location(location, self.player) for location in
                                               Donald_Checks.keys() if Donald_Checks[location].yml != "Keyblade"]
-            if len(donald_get_bonus_location_pool) > len(self.donald_get_bonus_abilities):
-                raise Exception(f"Too little abilities to fill donald get bonus locations for player {self.player_name}.")
             for location in donald_get_bonus_location_pool:
-                i = self.random.randrange(len(self.donald_get_bonus_abilities))
-                random_ability = self.donald_get_bonus_abilities.pop(i)
+                random_ability = self.random.choice(self.donald_get_bonus_abilities)
                 location.place_locked_item(random_ability)
+                self.donald_get_bonus_abilities.remove(random_ability)
 
     def keyblade_pre_fill(self):
         """
@@ -444,10 +435,6 @@ class KH2World(World):
         fast_fill(self.multiworld, keyblade_ability_pool_copy, keyblade_locations)
         for location in keyblade_locations:
             location.locked = True
-
-    def get_pre_fill_items(self) -> List["Item"]:
-        return [self.create_item(item) for item in [*DonaldAbility_Table.keys(), *GoofyAbility_Table.keys(),
-                                                    *SupportAbility_Table.keys()]]
 
     def starting_invo_verify(self):
         """
@@ -489,20 +476,6 @@ class KH2World(World):
         for location in self.options.exclude_locations.value:
             if location in self.random_super_boss_list:
                 self.random_super_boss_list.remove(location)
-
-        if self.options.LevelDepth == "level_1":
-            if LocationName.Lvl50 in self.random_super_boss_list:
-                self.random_super_boss_list.remove(LocationName.Lvl50)
-            if LocationName.Lvl99 in self.random_super_boss_list:
-                self.random_super_boss_list.remove(LocationName.Lvl99)
-
-        # We only want the bounty corresponding to our max level, remove the other level bounty
-        if self.options.LevelDepth in ["level_50", "level_50_sanity"] and LocationName.Lvl99 in self.random_super_boss_list:
-            self.random_super_boss_list.remove(LocationName.Lvl99)
-
-        # We only want the bounty corresponding to our max level, remove the other level bounty
-        if self.options.LevelDepth in ["level_99", "level_99_sanity"] and LocationName.Lvl50 in self.random_super_boss_list:
-            self.random_super_boss_list.remove(LocationName.Lvl50)
 
         if not self.options.SummonLevelLocationToggle and LocationName.Summonlvl7 in self.random_super_boss_list:
             self.random_super_boss_list.remove(LocationName.Summonlvl7)

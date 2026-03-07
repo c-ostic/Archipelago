@@ -1,9 +1,13 @@
 import math
+from typing import Union
 
 from .base_logic import BaseLogicMixin, BaseLogic
+from .received_logic import ReceivedLogicMixin
+from .region_logic import RegionLogicMixin
+from .time_logic import TimeLogicMixin
+from .tool_logic import ToolLogicMixin
 from ..content.feature.friendsanity import pet_heart_item_name
 from ..stardew_rule import StardewRule, True_
-from ..strings.building_names import Building
 from ..strings.region_names import Region
 
 
@@ -13,9 +17,10 @@ class PetLogicMixin(BaseLogicMixin):
         self.pet = PetLogic(*args, **kwargs)
 
 
-class PetLogic(BaseLogic):
+class PetLogic(BaseLogic[Union[RegionLogicMixin, ReceivedLogicMixin, TimeLogicMixin, ToolLogicMixin]]):
     def has_pet_hearts(self, hearts: int = 1) -> StardewRule:
-        if hearts <= 0:
+        assert hearts >= 0, "You can't have negative hearts with a pet."
+        if hearts == 0:
             return True_()
 
         if self.content.features.friendsanity.is_pet_randomized:
@@ -28,17 +33,15 @@ class PetLogic(BaseLogic):
                                    math.ceil(hearts / self.content.features.friendsanity.heart_size))
 
     def can_befriend_pet(self, hearts: int) -> StardewRule:
-        if hearts <= 0:
+        assert hearts >= 0, "You can't have negative hearts with a pet."
+        if hearts == 0:
             return True_()
 
-        heart_size = self.content.features.friendsanity.heart_size
-        previous_heart = max(hearts - heart_size, 0)
-        previous_heart_rule = self.has_pet_hearts(previous_heart)
         points = hearts * 200
         points_per_month = 12 * 14
         points_per_water_month = 18 * 14
         farm_rule = self.logic.region.can_reach(Region.farm)
-        time_with_water_rule = self.logic.tool.can_water() & self.logic.time.has_lived_months(points // points_per_water_month)
+        time_with_water_rule = self.logic.tool.can_water(0) & self.logic.time.has_lived_months(points // points_per_water_month)
         time_without_water_rule = self.logic.time.has_lived_months(points // points_per_month)
         time_rule = time_with_water_rule | time_without_water_rule
-        return farm_rule & time_rule & self.logic.building.has_building(Building.pet_bowl) & previous_heart_rule
+        return farm_rule & time_rule

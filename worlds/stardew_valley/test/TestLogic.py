@@ -3,16 +3,11 @@ import unittest
 from unittest import TestCase, SkipTest
 
 from BaseClasses import MultiWorld
-from .assertion import RuleAssertMixin
-from .bases import setup_solo_multiworld, skip_long_tests
-from .options.presets import minimal_locations_maximal_items, allsanity_mods_7_x_x
+from . import RuleAssertMixin, setup_solo_multiworld, allsanity_mods_6_x_x, minimal_locations_maximal_items
 from .. import StardewValleyWorld
-from ..data.bundles_data.bundle_data import all_bundle_items_except_money
+from ..data.bundle_data import all_bundle_items_except_money
 from ..logic.logic import StardewLogic
 from ..options import BundleRandomization
-
-if skip_long_tests():
-    raise unittest.SkipTest("Long tests disabled")
 
 
 def collect_all(mw):
@@ -52,9 +47,9 @@ class LogicTestBase(RuleAssertMixin, TestCase):
                 self.assert_rule_can_be_resolved(rule, self.multiworld.state)
 
     def test_given_building_rule_then_can_be_resolved(self):
-        for building in self.world.content.farm_buildings:
+        for building in self.logic.registry.building_rules.keys():
             with self.subTest(msg=building):
-                rule = self.logic.building.can_build(building)
+                rule = self.logic.registry.building_rules[building]
                 self.assert_rule_can_be_resolved(rule, self.multiworld.state)
 
     def test_given_quest_rule_then_can_be_resolved(self):
@@ -101,7 +96,7 @@ class LogicTestBase(RuleAssertMixin, TestCase):
 
 
 class TestAllSanityLogic(LogicTestBase):
-    options = allsanity_mods_7_x_x()
+    options = allsanity_mods_6_x_x()
 
 
 @unittest.skip("This test does not pass because some content is still not in content packs.")
