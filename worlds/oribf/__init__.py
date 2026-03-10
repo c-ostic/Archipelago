@@ -26,10 +26,12 @@ class OriBlindForestWorld(World):
 
     def generate_early(self):
         self.logic_sets: set[str] = {"casual"} # always include at least casual
-        self.location_exclusion_list: list[str] = []
         self.world_tour_areas: list[str] = []
         self.world_tour_areas_unused: list[str] = area_tags.copy()
         self.fragments_available = 0
+
+        # list of locations to not be included in the multiworld at all
+        self.location_exclusion_list: list[str] = []
 
         if self.options.logic_difficulty == LogicDifficulty.option_master:
             self.logic_sets.add("master")
@@ -131,7 +133,7 @@ class OriBlindForestWorld(World):
                     # if Sein ever gets randomized, it would be done here with another SeinLogic option
 
                 # add the first energy cell to the starting inventory to allow the player to save right away
-                if item_key == "EnergyCell" and not placed_first_energy_cell:
+                elif item_key == "EnergyCell" and not placed_first_energy_cell:
                     self.multiworld.push_precollected(item)
                     placed_first_energy_cell = True
                 
@@ -143,8 +145,8 @@ class OriBlindForestWorld(World):
                     self.world_tour_areas.append(random_area)
 
                     random_location: str = self.random.choice(tagged_locations_dict[random_area])
-                    # the random location can't be an excluded location or "FirstEnergyCell" (since this was locked above)
-                    while random_location in self.location_exclusion_list or random_location == "FirstEnergyCell":
+                    # the random location can't be an excluded location or "Sein" (since this was locked above if vanilla Sein logic is on)
+                    while random_location in self.location_exclusion_list or (self.options.sein_logic == SeinLogic.option_vanilla and random_location == "Sein"):
                         random_location = self.random.choice(tagged_locations_dict[random_area])
                     self.get_location(random_location).place_locked_item(item)
 

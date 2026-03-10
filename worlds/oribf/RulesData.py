@@ -154,8 +154,6 @@ location_rules: dict[str, dict[str, dict[str, list[list[str | tuple[str, int]]]]
             "master": [["TripleJump"]]
         }
     },
-    "SpiritCavernsACWarp": {
-    },
     "MidSpiritCaverns": {
     },
     "UpperSpiritCaverns": { 
@@ -217,8 +215,6 @@ location_rules: dict[str, dict[str, dict[str, list[list[str | tuple[str, int]]]]
             "master": [["TripleJump"]]
         }
     },
-    "AboveChargeFlameTreeExpWarp": { 
-    },
     "SpiderSacTetherArea": { 
         "SpiderSacHealthCell": {
             "casual": [["ChargeFlame", "WallJump"], ["ChargeFlame", "DoubleJump"], ["ChargeFlame", "Climb", "ChargeJump"], ["Grenade", "WallJump"], ["Grenade", "DoubleJump"], ["Grenade", "Climb", "ChargeJump"], ["ChargeFlame", ("HealthCell", 3)], ["Grenade", ("HealthCell", 3)]], 
@@ -235,8 +231,6 @@ location_rules: dict[str, dict[str, dict[str, list[list[str | tuple[str, int]]]]
             "casual": [["Grenade", "Bash"], ["Grenade", "DoubleJump", "WallJump"], ["Grenade", "ChargeJump"]], 
             "expert": [["Grenade", "DoubleJump", "Climb"], ["Grenade", "ChargeDash"]]
         }
-    },
-    "SpiderSacEnergyDoorWarp": {
     },
     "SpiderSacArea": {
     },
@@ -386,8 +380,6 @@ location_rules: dict[str, dict[str, dict[str, list[list[str | tuple[str, int]]]]
             "master": [["GrenadeJump"], ["Grenade", "DoubleJump", ("HealthCell", 3)], ["Grenade", "TripleJump"], ["Dash", "DoubleJump"]]
         }
     },
-    "LostGroveLaserLeverWarp": {
-    },
     "HollowGrove": { 
         "HollowGroveMapstone": {
             "casual": [["Free"]]
@@ -429,10 +421,6 @@ location_rules: dict[str, dict[str, dict[str, list[list[str | tuple[str, int]]]]
             "master": [["ChargeJump", "DoubleJump", "Glide"], ["Lure", "Bash"], ["ChargeJump", "TripleJump"], ["GrenadeJump"]]
         }
     },
-    "GroveWaterStompAbilityCellWarp": {
-    },
-    "HollowGroveTreeAbilityCellWarp": { 
-    },
     "SwampTeleporter": {
     },
     "OuterSwampUpperArea": { 
@@ -458,8 +446,6 @@ location_rules: dict[str, dict[str, dict[str, list[list[str | tuple[str, int]]]]
             "expert": [["Climb", "DoubleJump"], ["ChargeDash", ("EnergyCell", 1)]],
             "master": [["Bash"], ["DoubleJump", "Glide"], ["TripleJump"]]
         }
-    },
-    "OuterSwampHealthCellWarp": { 
     },
     "OuterSwampMortarAbilityCellLedge": { 
         "OuterSwampMortarAbilityCell": {
@@ -557,8 +543,6 @@ location_rules: dict[str, dict[str, dict[str, list[list[str | tuple[str, int]]]]
             "standard": [["ChargeJump", "Climb"]], 
             "expert": [["ChargeJump", "Dash"], ["ChargeFlame"]]
         }
-    },
-    "UpperGinsoEnergyCellWarp": { 
     },
     "UpperGinsoDoorClosed": {
     },
@@ -704,8 +688,6 @@ location_rules: dict[str, dict[str, dict[str, list[list[str | tuple[str, int]]]]
             "expert": [["DoubleJump"]]
         }
     },
-    "AboveGrottoCrushersWarp": { 
-    },
     "DoubleJumpKeyDoor": {
     },
     "DoubleJumpKeyDoorOpened": { 
@@ -787,8 +769,6 @@ location_rules: dict[str, dict[str, dict[str, list[list[str | tuple[str, int]]]]
             "casual": [["WallJump"], ["Climb", "Glide"], ["Climb", "DoubleJump"], ["ChargeJump"], ["Bash", "Grenade"]]
         }
     },
-    "GrottoEnergyVaultWarp": { 
-    },
     "SwampEntryArea": { 
         "SwampEntranceSwim": {
             "casual": [["CleanWater"]], 
@@ -836,8 +816,6 @@ location_rules: dict[str, dict[str, dict[str, list[list[str | tuple[str, int]]]]
             "casual": [["Free"]]
         }
     },
-    "SwampWaterWarp": { 
-    },
     "SwampWater": { 
         "InnerSwampHiddenSwimExp": {
             "casual": [["Free"]]
@@ -874,8 +852,6 @@ location_rules: dict[str, dict[str, dict[str, list[list[str | tuple[str, int]]]]
             "expert": [["Grenade", "CleanWater", "ChargeDash", ("EnergyCell", 3)], ["Grenade", "CleanWater", "Stomp", "ChargeDash"], ["Grenade", "CleanWater", "Climb", "DoubleJump", "Stomp", "AirDash", ("HealthCell", 3)], ["Grenade", "CleanWater", "WallJump", "DoubleJump", "Stomp", ("HealthCell", 3)], ["Grenade", "Bash", ("HealthCell", 3)], ["Grenade", "ChargeJump", ("HealthCell", 4)], ["Grenade", "ChargeDash", ("HealthCell", 4), ("EnergyCell", 3)], ["Grenade", "Climb", "DoubleJump", "Stomp", "AirDash", ("HealthCell", 4)], ["Grenade", "WallJump", "DoubleJump", "Stomp", ("HealthCell", 4)], ["Grenade", "CleanWater", "DoubleBash"]], 
             "master": [["Grenade", "CleanWater", "DoubleJump", "Stomp", ("HealthCell", 5)], ["Grenade", "CleanWater", "TripleJump", "UltraDefense", ("HealthCell", 5)], ["Grenade", "DoubleJump", "Stomp", ("HealthCell", 4)], ["Grenade", "DoubleJump", ("HealthCell", 5)], ["CleanWater", "GrenadeJump"]]
         }
-    },
-    "StompAreaRoofExpWarp": { 
     },
     "HoruFields": {
     },
@@ -1158,8 +1134,6 @@ location_rules: dict[str, dict[str, dict[str, list[list[str | tuple[str, int]]]]
             "master": [["WallJump", "TripleJump", ("HealthCell", 3)]]
         }
     },
-    "ValleyRightFastStomplessCellWarp": { 
-    },
     "ValleyStompless": { 
     },
     "ValleyMain": { 
@@ -1198,8 +1172,6 @@ location_rules: dict[str, dict[str, dict[str, list[list[str | tuple[str, int]]]]
             "expert": [["Dash", "DoubleJump"], ["ChargeDash"]], 
             "master": [["GrenadeJump"], ["TripleJump"]]
         }
-    },
-    "VallleyThreeBirdACWarp": { 
     },
     "ValleyStompFloor": {
     },
@@ -1316,8 +1288,6 @@ location_rules: dict[str, dict[str, dict[str, list[list[str | tuple[str, int]]]]
             "master": [["ChargeJump", ("HealthCell", 4), "UltraDefense"], ["WallJump", "TripleJump"]]
         }
     },
-    "WilhelmExpWarp": { 
-    },
     "SorrowBashLedge": {
     },
     "LowerSorrow": { 
@@ -1368,8 +1338,6 @@ location_rules: dict[str, dict[str, dict[str, list[list[str | tuple[str, int]]]]
             "standard": [["Lure"]]
         }
     },
-    "SorrowMapstoneWarp": { 
-    },
     "LeftSorrowLowerDoor": {
     },
     "LeftSorrow": { 
@@ -1418,8 +1386,6 @@ location_rules: dict[str, dict[str, dict[str, list[list[str | tuple[str, int]]]]
     },
     "LeftSorrowMiddleDoorOpen": {
     },
-    "LeftSorrowTumbleweedDoorWarp": { 
-    },
     "MiddleSorrow": {
     },
     "UpperSorrow": { 
@@ -1455,8 +1421,6 @@ location_rules: dict[str, dict[str, dict[str, list[list[str | tuple[str, int]]]]
         "ChargeJumpSkillTree": {
             "casual": [["Free"]]
         }
-    },
-    "ChargeJumpDoorOpenLeft": { 
     },
     "AboveChargeJumpArea": { 
         "AboveChargeJumpAbilityCell": {
@@ -1792,11 +1756,6 @@ connection_rules: dict[str, dict[str, dict[str, list[list[str | tuple[str, int]]
             "casual": [["Open"]]
         }
     },
-    "SpiritCavernsACWarp": { 
-        "LowerSpiritCaverns": {
-            "casual": [["Free"]]
-        }
-    },
     "MidSpiritCaverns": { 
         "LowerSpiritCaverns": {
             "casual": [["Free"]]
@@ -1902,11 +1861,6 @@ connection_rules: dict[str, dict[str, dict[str, list[list[str | tuple[str, int]]
             "master": [["ChargeFlame", "DoubleJump"], ["Grenade", "DoubleJump"], ["ChargeDash", "DoubleJump"]]
         }
     },
-    "AboveChargeFlameTreeExpWarp": { 
-        "SpiritTreeRefined": {
-            "casual": [["Free"]]
-        }
-    },
     "SpiderSacTetherArea": { 
         "SpiderWaterArea": {
             "casual": [["ChargeFlame"], ["Grenade"]], 
@@ -1915,11 +1869,6 @@ connection_rules: dict[str, dict[str, dict[str, list[list[str | tuple[str, int]]
         "SpiderSacEnergyNook": {
             "casual": [["ChargeFlame"], ["Grenade"]], 
             "expert": [["ChargeDash", "ChargeJump"], ["ChargeDash", "Bash", "Grenade"]]
-        }
-    },
-    "SpiderSacEnergyDoorWarp": { 
-        "SpiderSacArea": {
-            "casual": [[("EnergyCell", 4)]]
         }
     },
     "SpiderSacArea": { 
@@ -2069,18 +2018,6 @@ connection_rules: dict[str, dict[str, dict[str, list[list[str | tuple[str, int]]
             "master": [["GrenadeJump"], ["Grenade", "DoubleJump", ("HealthCell", 3)], ["Grenade", "TripleJump"]]
         }
     },
-    "LostGroveLaserLeverWarp": { 
-        "LostGroveExit": {
-            "casual": [["WallJump", "DoubleJump"], ["Climb", "ChargeJump"], ["ChargeJump", "DoubleJump"], ["BashGrenade"]], 
-            "expert": [["ChargeJump"]]
-        },
-        "LostGrove": {
-            "casual": [["BashGrenade"], ["Grenade", "WallJump", "DoubleJump", "Glide"], ["Grenade", "Climb", "DoubleJump", "Glide"]], 
-            "standard": [["Grenade", "AirDash", "WallJump", ("HealthCell", 3)], ["Grenade", "AirDash", "Climb", ("HealthCell", 3)], ["Grenade", "AirDash", "ChargeJump", ("HealthCell", 3)], ["Grenade", "AirDash", "Glide", "WallJump"], ["Grenade", "AirDash", "Glide", "Climb"], ["Grenade", "AirDash", "DoubleJump", "WallJump"], ["Grenade", "AirDash", "DoubleJump", "Climb"], ["Grenade", "Glide", "WallJump", ("HealthCell", 3)], ["Grenade", "Glide", "Climb", ("HealthCell", 3)], ["Grenade", "DoubleJump", "WallJump", ("HealthCell", 3)], ["Grenade", "DoubleJump", "Climb", ("HealthCell", 3)], ["Grenade", "Glide", "ChargeJump", ("HealthCell", 3)], ["Grenade", "DoubleJump", "ChargeJump", ("HealthCell", 3)]], 
-            "expert": [["Grenade", "ChargeJump", ("HealthCell", 5)]], 
-            "master": [["Grenade", "AirDash", "DoubleJump"], ["GrenadeJump"], ["Grenade", "DoubleJump", ("HealthCell", 3)], ["Grenade", "TripleJump"]]
-        }
-    },
     "HollowGrove": { 
         "SpiderWaterArea": {
             "casual": [["WallJump"], ["Climb"], ["ChargeJump"], ["DoubleJump"], ["CleanWater"]], 
@@ -2110,13 +2047,6 @@ connection_rules: dict[str, dict[str, dict[str, list[list[str | tuple[str, int]]
         "MoonGrottoStompPlantAccess": {
             "casual": [["None"]],
             "master": [["Lure", "WallJump", ("HealthCell", 4)], ["Lure", "ChargeJump", ("HealthCell", 4)], ["Lure", "DoubleJump"], ["Lure", "WallJump", "Glide"], ["Lure", "ChargeDash"]]
-        }
-    },
-    "GroveWaterStompAbilityCellWarp": {
-    },
-    "HollowGroveTreeAbilityCellWarp": { 
-        "HollowGrove": {
-            "casual": [["Free"]]
         }
     },
     "SwampTeleporter": { 
@@ -2188,11 +2118,6 @@ connection_rules: dict[str, dict[str, dict[str, list[list[str | tuple[str, int]]
             "casual": [["Free"]]
         },
         "SwampEntryArea": {
-            "casual": [["Free"]]
-        }
-    },
-    "OuterSwampHealthCellWarp": { 
-        "OuterSwampSwarmLedge": {
             "casual": [["Free"]]
         }
     },
@@ -2281,13 +2206,6 @@ connection_rules: dict[str, dict[str, dict[str, list[list[str | tuple[str, int]]
             "standard": [["Climb", "ChargeJump"]], 
             "expert": [["ChargeJump", "ChargeFlame"], ["ChargeJump", "AirDash"]], 
             "master": [["Bash"]]
-        }
-    },
-    "UpperGinsoEnergyCellWarp": { 
-        "UpperGinsoTree": {
-            "casual": [["ChargeJump"]], 
-            "standard": [["WallJump", "Bash"], ["Climb", "Bash"], ["DoubleJump", "Bash"]], 
-            "expert": [["DoubleBash"]]
         }
     },
     "UpperGinsoDoorClosed": { 
@@ -2460,11 +2378,6 @@ connection_rules: dict[str, dict[str, dict[str, list[list[str | tuple[str, int]]
             "expert": [["DoubleBash"]]
         }
     },
-    "AboveGrottoCrushersWarp": { 
-        "GumoHideout": {
-            "casual": [["Free"]]
-        }
-    },
     "DoubleJumpKeyDoor": { 
         "DoubleJumpKeyDoorOpened": {
             "casual": [["WallJump"], ["Climb"], ["Bash", "Grenade"], ["ChargeJump"]], 
@@ -2524,13 +2437,6 @@ connection_rules: dict[str, dict[str, dict[str, list[list[str | tuple[str, int]]
         }
     },
     "GumoHideoutRedirectEnergyVault": {
-    },
-    "GrottoEnergyVaultWarp": { 
-        "GumoHideoutRedirectArea": {
-            "casual": [["Climb", "ChargeJump", "Glide"], ["Climb", "ChargeJump", "DoubleJump"], ["Stomp", "WallJump", "Glide"], ["Stomp", "WallJump", "DoubleJump"], ["Stomp", "Glide", "ChargeJump", ("HealthCell", 3)], ["Stomp", "DoubleJump", "ChargeJump", ("HealthCell", 3)], ["Stomp", "Glide", "ChargeJump", ("HealthCell", 3)]], 
-            "standard": [["Stomp", "WallJump"], ["Climb", "ChargeJump"], ["Stomp", "ChargeJump", ("HealthCell", 3)]], 
-            "expert": [["ChargeDash", "WallJump", ("EnergyCell", 1)], ["ChargeFlame", "WallJump"], ["ChargeDash", "ChargeJump", ("EnergyCell", 1), ("HealthCell", 3)], ["ChargeFlame", "ChargeJump", ("EnergyCell", 2), ("HealthCell", 3)]]
-        }
     },
     "SwampEntryArea": { 
         "SwampDrainlessArea": {
@@ -2609,19 +2515,9 @@ connection_rules: dict[str, dict[str, dict[str, list[list[str | tuple[str, int]]
             "casual": [["Free"]]
         }
     },
-    "SwampWaterWarp": { 
-        "Swamp": {
-            "casual": [["CleanWater"]]
-        }
-    },
     "SwampWater": {
     },
     "RightSwamp": {
-    },
-    "StompAreaRoofExpWarp": { 
-        "RightSwamp": {
-            "casual": [["Stomp"], ["Climb", "ChargeJump"]]
-        }
     },
     "HoruFields": { 
         "HoruFieldsPushBlock": {
@@ -3263,11 +3159,6 @@ connection_rules: dict[str, dict[str, dict[str, list[list[str | tuple[str, int]]
             "casual": [["Free"]]
         }
     },
-    "ValleyRightFastStomplessCellWarp": { 
-        "ValleyStomplessApproach": {
-            "casual": [["Free"]]
-        }
-    },
     "ValleyStompless": { 
         "WilhelmLedge": {
             "casual": [["Wind", "Glide"], ["Bash"]], 
@@ -3350,21 +3241,6 @@ connection_rules: dict[str, dict[str, dict[str, list[list[str | tuple[str, int]]
         },
         "ValleyStompFloor": {
             "casual": [["Free"]]
-        }
-    },
-    "VallleyThreeBirdACWarp": { 
-        "ValleyEntry": {
-            "casual": [["OpenWorld"]]
-        },
-        "ValleyThreeBirdLever": {
-            "casual": [["Bash"], ["Glide", "Wind"], ["DoubleJump", "Glide"], ["Climb", "ChargeJump", "Glide"]], 
-            "standard": [["DoubleJump", "AirDash"], ["ChargeJump", "DoubleJump", "Climb"], ["ChargeJump", "DoubleJump", "WallJump", ("HealthCell", 4)]], 
-            "expert": [["RocketJump"]], 
-            "master": [["TripleJump"], ["GrenadeJump"]]
-        },
-        "ValleyStompFloor": {
-            "casual": [["Glide"], ["DoubleJump"], ["Bash"]], 
-            "standard": [["AirDash"], [("HealthCell", 4)]]
         }
     },
     "ValleyStompFloor": { 
@@ -3548,11 +3424,6 @@ connection_rules: dict[str, dict[str, dict[str, list[list[str | tuple[str, int]]
             "glitched": [["ChargeJump"]]
         }
     },
-    "WilhelmExpWarp": { 
-        "WilhelmLedge": {
-            "casual": [["Free"]]
-        }
-    },
     "SorrowBashLedge": { 
         "LowerSorrow": {
             "casual": [["Wind", "Glide"]], 
@@ -3610,11 +3481,6 @@ connection_rules: dict[str, dict[str, dict[str, list[list[str | tuple[str, int]]
             "standard": [["Lure", "Free"]]
         }
     },
-    "SorrowMapstoneWarp": { 
-        "SorrowMapstoneArea": {
-            "casual": [["Free"]]
-        }
-    },
     "LeftSorrowLowerDoor": { 
         "LeftSorrow": {
             "casual": [["Glide", "Bash", "Stomp"]], 
@@ -3662,15 +3528,6 @@ connection_rules: dict[str, dict[str, dict[str, list[list[str | tuple[str, int]]
             "casual": [["Stomp", "DoubleJump"], ["Climb", "ChargeJump", "DoubleJump"]], 
             "standard": [["Stomp", "BashGrenade"], ["Climb", "ChargeJump"], ["Stomp", "AirDash", "Climb"], ["Stomp", "AirDash", "WallJump"]], 
             "expert": [["Stomp", "Dash", "Climb"], ["Stomp", "Dash", "WallJump"], ["Stomp", "ChargeDash", ("EnergyCell", 1)], ["Stomp", ("HealthCell", 5)], ["BashGrenade", "ChargeJump"]]
-        }
-    },
-    "LeftSorrowTumbleweedDoorWarp": { 
-        "LeftSorrowMiddleDoorClosed": {
-            "casual": [["Free"]]
-        },
-        "LeftSorrowKeystones": {
-            "casual": [["Glide"]], 
-            "expert": [["DoubleJump", "WallJump"], ["DoubleJump", "Climb"], ["AirDash", "Climb", ("HealthCell", 5)], ["AirDash", "WallJump", ("HealthCell", 5)], ["BashGrenade", "Climb", ("HealthCell", 5)], ["BashGrenade", "WallJump", ("HealthCell", 5)]]
         }
     },
     "MiddleSorrow": { 
@@ -3727,11 +3584,6 @@ connection_rules: dict[str, dict[str, dict[str, list[list[str | tuple[str, int]]
         "ChargeJumpArea": {
             "casual": [["Glide"]], 
             "master": [["ChargeJump", "TripleJump", "ChargeDash", ("HealthCell", 4), "UltraDefense"], ["Bash", "Grenade", "WallJump", "TripleJump", "ChargeDash", ("HealthCell", 4), "UltraDefense"], ["Bash", "Grenade", "ChargeJump", "TripleJump", ("HealthCell", 7), "UltraDefense"], ["ChargeJump", "TripleJump", ("HealthCell", 10), "UltraDefense"], ["Bash", "Grenade", "WallJump", "TripleJump", ("HealthCell", 13), "UltraDefense"]]
-        },
-        "ChargeJumpDoorOpenLeft": {
-            "casual": [["None"]],
-            "expert": [["ChargeJump", ("HealthCell", 6)]], 
-            "master": [["ChargeJump", ("HealthCell", 5)], ["Lure", "Bash"]]
         }
     },
     "ChargeJumpArea": { 
@@ -3742,12 +3594,6 @@ connection_rules: dict[str, dict[str, dict[str, list[list[str | tuple[str, int]]
         },
         "ChargeJumpDoor": {
             "casual": [["Open"]]
-        }
-    },
-    "ChargeJumpDoorOpenLeft": { 
-        "UpperSorrow": {
-            "casual": [["Glide"]], 
-            "master": [["ChargeJump", "TripleJump", ("HealthCell", 10), "UltraDefense"], ["ChargeJump", "ChargeDash", ("HealthCell", 7), ("EnergyCell", 2), "UltraDefense"], ["ChargeJump", "ChargeDash", ("HealthCell", 9), ("EnergyCell", 2)], ["Lure", "Bash"]]
         }
     },
     "AboveChargeJumpArea": { 
