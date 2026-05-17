@@ -172,10 +172,7 @@ def at_least(conditions: list[bool], amount: int) -> bool:
 def get_goal_condition(world: World, state: CollectionState, goal: str):
     options: OriBlindForestOptions = cast(OriBlindForestOptions, world.options)
 
-    if goal == "HoruEscape":
-        return state.can_reach_region("HoruEscapeInnerDoor", world.player)
-
-    elif goal == "AllSkillTrees":
+    if goal == "AllSkillTrees":
         return all(state.can_reach_location(skill_tree, world.player) for skill_tree in tagged_locations_dict["Skill"])
 
     elif goal == "AllMaps":

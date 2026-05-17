@@ -167,7 +167,7 @@ class OriBlindForestWorld(World):
         # set the goal condition
         self.multiworld.completion_condition[self.player] = lambda state: \
             all(get_goal_condition(self, state, goal) for goal in self.options.goal.value) and \
-            state.can_reach_region("HoruEscapeInnerDoor", self.player) if self.options.require_final_escape else True
+            (state.can_reach_region("HoruEscapeInnerDoor", self.player) if self.options.require_final_escape else True)
 
     def fill_slot_data(self) -> Dict[str, Any]:
         slot_data: Dict[str, Any] = {}
